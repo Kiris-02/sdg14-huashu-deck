@@ -1,160 +1,104 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=1920, height=1080">
-<title>Slide 02 — Three Targets One Risk Chain</title>
+<title>Slide 02 — Three Targets Follow One Chain of Ocean Risk</title>
 <link rel="stylesheet" href="../shared/deck.css">
 <style>
-  .chain-container {
-    display: flex;
-    flex-direction: column;
-    gap: 36px;
-    height: 100%;
-    justify-content: center;
-  }
-  
-  .chain-row {
+  .chain-grid {
     display: grid;
-    grid-template-columns: 1fr 60px 1fr 60px 1fr;
-    align-items: center;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    height: 100%;
+    align-items: stretch;
   }
-  
-  .target-node {
+
+  .chain-card {
     background: var(--bg-card);
     border: 1px solid var(--border-subtle);
     border-radius: 20px;
     padding: 36px 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     position: relative;
-    box-shadow: 0 16px 36px rgba(0,0,0,0.4);
-    transition: transform 0.3s ease;
+    cursor: pointer;
+    transition: all .25s ease;
   }
-  
-  .target-node:hover {
-    transform: translateY(-4px);
+
+  .chain-card:hover, .chain-card.active {
     border-color: var(--cyan);
+    transform: translateY(-8px);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.6), 0 0 25px rgba(56, 189, 248, 0.2);
+    background: rgba(16, 36, 64, 0.9);
   }
-  
-  .node-header {
+
+  .chain-step-num {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--cyan);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
   }
-  
-  .node-code {
-    font-family: var(--font-mono);
-    font-size: 28px;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-  }
-  
-  .node-tag {
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    padding: 4px 10px;
-    border-radius: 999px;
-    font-weight: 600;
-  }
-  
-  .node-14-1 { border-top: 4px solid var(--amber); }
-  .node-14-1 .node-code { color: var(--amber); }
-  .node-14-1 .node-tag { background: rgba(245, 158, 11, 0.15); color: var(--amber); }
-  
-  .node-14-2 { border-top: 4px solid var(--emerald); }
-  .node-14-2 .node-code { color: var(--emerald); }
-  .node-14-2 .node-tag { background: rgba(16, 185, 129, 0.15); color: var(--emerald); }
-  
-  .node-14-3 { border-top: 4px solid var(--cyan); }
-  .node-14-3 .node-code { color: var(--cyan); }
-  .node-14-3 .node-tag { background: rgba(56, 189, 248, 0.15); color: var(--cyan); }
-  
-  .node-title {
+
+  .chain-title {
     font-family: var(--font-display);
-    font-size: 26px;
+    font-size: 32px;
     font-weight: 700;
     color: #FFFFFF;
     margin-bottom: 12px;
-    line-height: 1.25;
+    line-height: 1.2;
   }
-  
-  .node-desc {
+
+  .chain-desc {
     font-size: 16px;
     color: var(--text-dim);
-    line-height: 1.55;
-    margin-bottom: 20px;
+    line-height: 1.6;
+    margin-bottom: 24px;
   }
-  
-  .node-metric-chip {
+
+  .chain-metrics {
+    background: rgba(15, 23, 42, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 16px;
     display: flex;
-    align-items: center;
+    flex-direction: column;
     gap: 8px;
-    background: rgba(255,255,255,0.04);
-    padding: 8px 14px;
-    border-radius: 8px;
     font-family: var(--font-mono);
     font-size: 13px;
-    color: var(--text-dim);
   }
-  
-  .chain-arrow {
+
+  .chain-metric-row {
     display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .chain-arrow svg {
-    width: 32px;
-    height: 32px;
-    fill: none;
-    stroke: var(--text-muted);
-    stroke-width: 2;
-  }
-  
-  /* Governance Ribbon */
-  .governance-band {
-    background: rgba(15, 23, 42, 0.8);
-    border: 1px dashed rgba(56, 189, 248, 0.3);
-    border-radius: 14px;
-    padding: 20px 32px;
-    display: flex;
-    align-items: center;
     justify-content: space-between;
-  }
-  
-  .gov-label {
-    display: flex;
     align-items: center;
-    gap: 12px;
-    font-family: var(--font-display);
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--cyan);
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
   }
-  
-  .gov-items {
+  .chain-metric-label { color: var(--text-muted); }
+  .chain-metric-val { color: var(--cyan); font-weight: 600; }
+
+  /* Interactive Banner */
+  .chain-simulator-bar {
+    margin-top: 24px;
+    background: rgba(15, 23, 42, 0.8);
+    border: 1px solid var(--border-subtle);
+    border-radius: 16px;
+    padding: 20px 28px;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 40px;
+  }
+  .sim-status-text {
     font-size: 15px;
-    color: var(--text-dim);
+    color: #E2E8F0;
   }
-  
-  .gov-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  
-  .gov-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--cyan);
-  }
+  .sim-status-text strong { color: var(--cyan); }
 </style>
 </head>
 <body>
@@ -163,91 +107,105 @@
     <div class="header-left">
       <div class="badge-row">
         <div class="speaker-pill">Speaker 1</div>
-        <div class="target-badge">Causal Risk Architecture</div>
+        <div class="target-badge">Integrated Policy Architecture</div>
       </div>
-      <h2 class="slide-title">Three targets follow one chain of ocean risk</h2>
+      <h2 class="slide-title">Three targets follow one connected chain of ocean risk</h2>
     </div>
     <div class="header-right">
       <div class="slide-number-display">02 <span>/ 15</span></div>
-      <div class="track-label">Systemic Synthesis</div>
+      <div class="track-label">Causal Continuum</div>
     </div>
   </div>
 
   <div class="slide-body">
-    <div class="chain-container">
-      <div class="chain-row">
-        <!-- Node 1 -->
-        <div class="target-node node-14-1">
-          <div class="node-header">
-            <div class="node-code">TARGET 14.1</div>
-            <div class="node-tag">Physical Pressure</div>
+    <div class="chain-grid">
+      <!-- Target 14.1 -->
+      <div class="chain-card active" onclick="selectNode(1)">
+        <div>
+          <div class="chain-step-num">
+            <span>Phase 1 · Upstream Source</span>
+            <span class="interactive-chip">Target 14.1</span>
           </div>
-          <div class="node-title">Reduce Pollution Pressure</div>
-          <div class="node-desc">Land-based nutrient runoff & plastic debris entering the coastal fringe from cities, farms, and waterways.</div>
-          <div class="node-metric-chip">
-            <span>Indicator 14.1.1: Eutrophication & Plastic</span>
-          </div>
+          <h3 class="chain-title">Pressure Reduction</h3>
+          <p class="chain-desc">Stops land-based contaminants before reaching the coast. Focuses on agricultural nutrient runoff (eutrophication) and synthetic plastic debris density.</p>
         </div>
-
-        <div class="chain-arrow">
-          <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-        </div>
-
-        <!-- Node 2 -->
-        <div class="target-node node-14-2">
-          <div class="node-header">
-            <div class="node-code">TARGET 14.2</div>
-            <div class="node-tag">Ecological State</div>
-          </div>
-          <div class="node-title">Protect Ecosystem Resilience</div>
-          <div class="node-desc">Integrated management across conflicting marine activities (fishing, shipping, tourism) to prevent cumulative collapse.</div>
-          <div class="node-metric-chip">
-            <span>Indicator 14.2.1: Ecosystem-based Management</span>
-          </div>
-        </div>
-
-        <div class="chain-arrow">
-          <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-        </div>
-
-        <!-- Node 3 -->
-        <div class="target-node node-14-3">
-          <div class="node-header">
-            <div class="node-code">TARGET 14.3</div>
-            <div class="node-tag">Chemical Regime</div>
-          </div>
-          <div class="node-title">Track Changing Chemistry</div>
-          <div class="node-desc">Global atmospheric CO₂ absorption driving oceanic carbonate equilibrium decline, threatening biocalcification.</div>
-          <div class="node-metric-chip">
-            <span>Indicator 14.3.1: Marine Acidity (pH)</span>
-          </div>
+        <div class="chain-metrics">
+          <div class="chain-metric-row"><span class="chain-metric-label">Domain:</span><span class="chain-metric-val">Source-to-Sea Basins</span></div>
+          <div class="chain-metric-row"><span class="chain-metric-label">Key Indicator:</span><span class="chain-metric-val">14.1.1 (Chl-a & Plastics)</span></div>
+          <div class="chain-metric-row"><span class="chain-metric-label">Custodian:</span><span class="chain-metric-val">UNEP</span></div>
         </div>
       </div>
 
-      <!-- Governance Foundation Band -->
-      <div class="governance-band">
-        <div class="gov-label">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          Unified Governance Chain
+      <!-- Target 14.2 -->
+      <div class="chain-card" onclick="selectNode(2)">
+        <div>
+          <div class="chain-step-num">
+            <span>Phase 2 · In-Situ Resilience</span>
+            <span class="interactive-chip">Target 14.2</span>
+          </div>
+          <h3 class="chain-title">Ecosystem Management</h3>
+          <p class="chain-desc">Builds ecological buffer capacity. Replaces fragmented sectoral exploitation with integrated spatial planning, marine protected areas, and active restoration.</p>
         </div>
-        <div class="gov-items">
-          <div class="gov-item"><div class="gov-dot"></div><span>Source Control (14.1)</span></div>
-          <div class="gov-item"><div class="gov-dot"></div><span>Spatial Planning & MPAs (14.2)</span></div>
-          <div class="gov-item"><div class="gov-dot"></div><span>Global Climate Mitigation (14.3)</span></div>
-          <div class="gov-item"><div class="gov-dot"></div><span>Inter-Institutional Enforcement</span></div>
+        <div class="chain-metrics">
+          <div class="chain-metric-row"><span class="chain-metric-label">Domain:</span><span class="chain-metric-val">EEZ & Coastal Waters</span></div>
+          <div class="chain-metric-row"><span class="chain-metric-label">Key Indicator:</span><span class="chain-metric-val">14.2.1 (EBM Plans)</span></div>
+          <div class="chain-metric-row"><span class="chain-metric-label">Custodian:</span><span class="chain-metric-val">UNEP / Regional Seas</span></div>
         </div>
+      </div>
+
+      <!-- Target 14.3 -->
+      <div class="chain-card" onclick="selectNode(3)">
+        <div>
+          <div class="chain-step-num">
+            <span>Phase 3 · Planetary Chemistry</span>
+            <span class="interactive-chip">Target 14.3</span>
+          </div>
+          <h3 class="chain-title">Chemical Shift</h3>
+          <p class="chain-desc">Tracks planetary-scale acidification driven by atmospheric CO₂ absorption. Quantifies long-term decline in seawater pH and aragonite calcification saturation.</p>
+        </div>
+        <div class="chain-metrics">
+          <div class="chain-metric-row"><span class="chain-metric-label">Domain:</span><span class="chain-metric-val">Global Water Column</span></div>
+          <div class="chain-metric-row"><span class="chain-metric-label">Key Indicator:</span><span class="chain-metric-val">14.3.1 (Average Marine pH)</span></div>
+          <div class="chain-metric-row"><span class="chain-metric-label">Custodian:</span><span class="chain-metric-val">IOC-UNESCO</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Interactive Continuum Banner -->
+    <div class="chain-simulator-bar">
+      <div class="sim-status-text" id="chainStatus">
+        <strong>The Cascading Reality:</strong> If nutrient and plastic pressure (14.1) is not curbed, coastal ecosystem resilience (14.2) collapses, rendering marine habitats completely defenseless against ocean acidification (14.3).
+      </div>
+      <div style="font-family:var(--font-mono); font-size:12px; color:var(--text-muted);">
+        Click any phase to highlight systemic interdependence
       </div>
     </div>
   </div>
 
   <div class="slide-footer">
     <div class="footer-source">
-      <strong>Source:</strong> Synthesis based on official Target 14.1–14.3 statutory wording [1].
+      <strong>Source:</strong> UN Statistics Division, Goal 14 targets framework; UNEP / IOC-UNESCO [1–2, 9].
     </div>
     <div class="footer-rule">
-      Rule: Connect physical input pressures with ecological status and global chemical baselines.
+      Rule: 14.1 controls input pressures; 14.2 manages resilience; 14.3 tracks global chemical changes.
     </div>
   </div>
 </div>
+<script src="../shared/deck.js"></script>
+<script>
+function selectNode(idx) {
+  document.querySelectorAll('.chain-card').forEach((c, i) => {
+    c.classList.toggle('active', i === (idx - 1));
+  });
+  const statusEl = document.getElementById('chainStatus');
+  if (idx === 1) {
+    statusEl.innerHTML = "<strong>Target 14.1 Diagnostic:</strong> Land-based agriculture & plastic leakage overwhelm coastal lagoons. Without source-control, marine ecosystems suffer chronic hypoxia.";
+  } else if (idx === 2) {
+    statusEl.innerHTML = "<strong>Target 14.2 Diagnostic:</strong> Marine spatial planning and MPAs protect critical coral reefs and seagrass beds, giving biodiversity the buffer needed to survive external shocks.";
+  } else if (idx === 3) {
+    statusEl.innerHTML = "<strong>Target 14.3 Diagnostic:</strong> Atmospheric CO₂ lowers seawater pH globally. Even pristine marine parks face shell dissolution without planetary decarbonization.";
+  }
+}
+</script>
 </body>
 </html>

@@ -1,150 +1,134 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=1920, height=1080">
-<title>Slide 09 — Four-Step National Documentation Process</title>
+<title>Slide 09 — The 4-Stage Maturity Assessment</title>
 <link rel="stylesheet" href="../shared/deck.css">
 <style>
-  .process-layout {
+  .ladder-layout {
     display: grid;
-    grid-template-columns: 1.15fr 1fr;
+    grid-template-columns: 1fr 1.25fr;
     gap: 40px;
     height: 100%;
-    align-items: center;
+    align-items: stretch;
   }
-  
-  /* Left: 4-Step Vertical Flow */
-  .vertical-steps {
+
+  .ladder-steps {
     display: flex;
     flex-direction: column;
     gap: 16px;
+    justify-content: space-between;
   }
-  
-  .step-card {
+
+  .step-box {
     background: var(--bg-card);
     border: 1px solid var(--border-subtle);
-    border-radius: 14px;
+    border-radius: 16px;
     padding: 20px 24px;
-    display: flex;
-    align-items: flex-start;
+    cursor: pointer;
+    transition: all .25s ease;
+    display: grid;
+    grid-template-columns: 60px 1fr auto;
+    align-items: center;
     gap: 20px;
-    position: relative;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
   }
-  
-  .step-index-circle {
-    width: 38px;
-    height: 38px;
+
+  .step-box:hover, .step-box.active {
+    border-color: var(--cyan);
+    background: rgba(16, 36, 64, 0.9);
+    transform: translateX(8px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  }
+
+  .step-num-circle {
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
-    background: rgba(16, 185, 129, 0.15);
-    border: 1px solid var(--emerald);
-    color: var(--emerald);
-    font-family: var(--font-mono);
-    font-size: 16px;
-    font-weight: 700;
+    background: rgba(56, 189, 248, 0.12);
+    border: 1px solid var(--border-strong);
+    color: var(--cyan);
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-shrink: 0;
-  }
-  
-  .step-card-content h4 {
-    font-family: var(--font-display);
-    font-size: 19px;
+    font-family: var(--font-mono);
+    font-size: 18px;
     font-weight: 700;
+  }
+
+  .step-info h4 {
+    font-family: var(--font-display);
+    font-size: 18px;
     color: #FFFFFF;
-    margin-bottom: 4px;
+    margin-bottom: 2px;
   }
-  
-  .step-card-content p {
-    font-size: 14px;
+  .step-info p {
+    font-size: 13px;
     color: var(--text-dim);
-    line-height: 1.45;
   }
-  
-  /* Right: Implementation Maturity Stage Ladder */
-  .maturity-box {
+
+  /* Right Side: Detailed Audit Rubric */
+  .rubric-container {
     background: var(--bg-card);
-    border: 1px solid var(--border-subtle);
+    border: 1px solid var(--border-strong);
     border-radius: 20px;
     padding: 32px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 100%;
-    box-shadow: 0 16px 36px rgba(0,0,0,0.4);
   }
-  
-  .maturity-title {
-    font-family: var(--font-mono);
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--emerald);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-bottom: 20px;
+
+  .rubric-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-bottom: 16px;
   }
-  
-  .ladder-stages {
+
+  .rubric-details-box {
+    background: rgba(15, 23, 42, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 24px;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 16px;
   }
-  
-  .stage-row {
-    background: rgba(15, 23, 42, 0.7);
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    border-radius: 10px;
-    padding: 16px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  
-  .stage-1 { border-left: 4px solid var(--text-muted); }
-  .stage-2 { border-left: 4px solid var(--cyan); }
-  .stage-3 { border-left: 4px solid var(--amber); }
-  .stage-4 { border-left: 4px solid var(--emerald); background: rgba(16, 185, 129, 0.08); }
-  
-  .stage-meta h5 {
-    font-family: var(--font-display);
-    font-size: 16px;
-    font-weight: 700;
-    color: #FFFFFF;
-    margin-bottom: 2px;
-  }
-  
-  .stage-meta span {
-    font-size: 12px;
-    color: var(--text-dim);
-  }
-  
-  .stage-status-chip {
+
+  .rubric-section-title {
     font-family: var(--font-mono);
-    font-size: 11px;
-    padding: 4px 10px;
-    border-radius: 6px;
-    font-weight: 600;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--cyan);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
   }
-  
-  .stage-1 .stage-status-chip { background: rgba(255,255,255,0.06); color: var(--text-muted); }
-  .stage-2 .stage-status-chip { background: rgba(56, 189, 248, 0.15); color: var(--cyan); }
-  .stage-3 .stage-status-chip { background: rgba(245, 158, 11, 0.15); color: var(--amber); }
-  .stage-4 .stage-status-chip { background: var(--emerald); color: #02160F; }
-  
-  .audit-note {
-    background: rgba(56, 189, 248, 0.06);
-    border: 1px solid rgba(56, 189, 248, 0.18);
-    border-radius: 10px;
-    padding: 14px 18px;
+
+  .rubric-text {
+    font-size: 15px;
+    color: #E2E8F0;
+    line-height: 1.6;
+  }
+
+  .audit-req-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     font-size: 13px;
     color: var(--text-dim);
-    line-height: 1.45;
   }
-  
-  .audit-note strong {
-    color: var(--cyan);
+  .audit-req-list li {
+    list-style: none;
+    position: relative;
+    padding-left: 20px;
+  }
+  .audit-req-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--emerald);
+    font-weight: bold;
   }
 </style>
 </head>
@@ -154,93 +138,81 @@
     <div class="header-left">
       <div class="badge-row">
         <div class="speaker-pill">Speaker 4</div>
-        <div class="target-badge">National Verification Protocol</div>
+        <div class="target-badge">UNEP Measurement Rubric</div>
       </div>
-      <h2 class="slide-title">Countries document plans, boundaries and implementation stage</h2>
+      <h2 class="slide-title">Indicator 14.2.1 classifies plans through a 4-stage maturity ladder</h2>
     </div>
     <div class="header-right">
       <div class="slide-number-display">09 <span>/ 15</span></div>
-      <div class="track-label">Target 14.2 Assessment</div>
+      <div class="track-label">Maturity Rubric</div>
     </div>
   </div>
 
   <div class="slide-body">
-    <div class="process-layout">
-      <!-- 4-Step Vertical Submission Process -->
-      <div class="vertical-steps">
-        <div class="step-card">
-          <div class="step-index-circle">1</div>
-          <div class="step-card-content">
-            <h4>Identify Responsible Authorities</h4>
-            <p>Designate designated government agencies responsible for inter-sectoral coastal and marine spatial planning across ministries.</p>
+    <div class="ladder-layout">
+      <!-- Left Column: 4 Stages -->
+      <div class="ladder-steps">
+        <div class="step-box" onclick="showStage(1)">
+          <div class="step-num-circle">1</div>
+          <div class="step-info">
+            <h4>Initial Preparation</h4>
+            <p>Mandate established; planning authority identified.</p>
           </div>
+          <span class="interactive-chip">Stage 1</span>
         </div>
 
-        <div class="step-card">
-          <div class="step-index-circle">2</div>
-          <div class="step-card-content">
-            <h4>Map Plan Boundaries</h4>
-            <p>Delineate precise geographic coordinates and maritime zones (territorial seas, baseline, EEZ, specific estuaries or bays).</p>
+        <div class="step-box" onclick="showStage(2)">
+          <div class="step-num-circle">2</div>
+          <div class="step-info">
+            <h4>Plan Development</h4>
+            <p>Spatial mapping, baseline evidence, stakeholder input.</p>
           </div>
+          <span class="interactive-chip">Stage 2</span>
         </div>
 
-        <div class="step-card">
-          <div class="step-index-circle">3</div>
-          <div class="step-card-content">
-            <h4>Complete National Questionnaire</h4>
-            <p>Submit standardized statutory reporting forms to UNEP documenting plan legal status, participating sectors, and public consultation.</p>
+        <div class="step-box" onclick="showStage(3)">
+          <div class="step-num-circle">3</div>
+          <div class="step-info">
+            <h4>Formal Adoption</h4>
+            <p>Legally gazetted or designated by cabinet / ministry.</p>
           </div>
+          <span class="interactive-chip">Stage 3</span>
         </div>
 
-        <div class="step-card">
-          <div class="step-index-circle">4</div>
-          <div class="step-card-content">
-            <h4>Classify Development Stage</h4>
-            <p>Assign each management framework into one of four recognized maturity phases ranging from conceptual preparation to adaptive execution.</p>
+        <div class="step-box active" onclick="showStage(4)">
+          <div class="step-num-circle" style="background:rgba(16,185,129,0.15); border-color:var(--emerald); color:var(--emerald);">4</div>
+          <div class="step-info">
+            <h4>Adaptive Implementation</h4>
+            <p>Enforced monitoring, dedicated budget, iterative reviews.</p>
           </div>
+          <span class="interactive-chip" style="color:var(--emerald); border-color:rgba(16,185,129,0.3);">Stage 4</span>
         </div>
       </div>
 
-      <!-- Implementation Maturity Ladder -->
-      <div class="maturity-box">
-        <div class="maturity-title">Four Official Implementation Phases</div>
-
-        <div class="ladder-stages">
-          <div class="stage-row stage-1">
-            <div class="stage-meta">
-              <h5>Phase 1: Initial Preparation</h5>
-              <span>Scoping stakeholder priorities and establishing inter-ministerial taskforces.</span>
-            </div>
-            <div class="stage-status-chip">DRAFTING</div>
-          </div>
-
-          <div class="stage-row stage-2">
-            <div class="stage-meta">
-              <h5>Phase 2: Plan Development</h5>
-              <span>Zoning analysis, conflict mapping, and drafting statutory spatial allocations.</span>
-            </div>
-            <div class="stage-status-chip">TECHNICAL MAP</div>
-          </div>
-
-          <div class="stage-row stage-3">
-            <div class="stage-meta">
-              <h5>Phase 3: Formal Adoption</h5>
-              <span>Legally enacted into law or formally gazetted by cabinet / parliament.</span>
-            </div>
-            <div class="stage-status-chip">LEGAL STATUTE</div>
-          </div>
-
-          <div class="stage-row stage-4">
-            <div class="stage-meta">
-              <h5>Phase 4: Adaptive Management</h5>
-              <span>Active operational enforcement, funded monitoring, and iterative periodic review.</span>
-            </div>
-            <div class="stage-status-chip">OPERATIONAL</div>
-          </div>
+      <!-- Right Column: Audit Rubric Panel -->
+      <div class="rubric-container">
+        <div class="rubric-header">
+          <span style="font-family:var(--font-mono); font-size:13px; font-weight:700; color:var(--cyan); text-transform:uppercase;">UNEP Questionnaire Verification</span>
+          <span class="interactive-chip" id="rubricStageTitle">Stage 4: Adaptive Implementation</span>
         </div>
 
-        <div class="audit-note">
-          <strong>Quality Assurance:</strong> UNEP and Regional Seas bodies run automated checks, manual review, and national registry cross-referencing. Missing national data are never imputed.
+        <div class="rubric-details-box">
+          <span class="rubric-section-title">Assessment Rubric & Threshold</span>
+          <p class="rubric-text" id="rubricText">
+            The plan has active regulatory enforcement, dedicated financial appropriations, and a built-in cycle of monitoring and iterative revision based on observed environmental response.
+          </p>
+
+          <span class="rubric-section-title">UNEP Verification Requirements</span>
+          <ul class="audit-req-list" id="auditList">
+            <li>Publicly verifiable legal gazette citation or statutory decree.</li>
+            <li>Identified institutional authority with maritime enforcement jurisdiction.</li>
+            <li>Documented monitoring indicators and scheduled 5-year review revisions.</li>
+            <li>No imputation: missing national questionnaire data is recorded as null.</li>
+          </ul>
+        </div>
+
+        <div style="font-family:var(--font-mono); font-size:12px; color:var(--text-muted); padding-top:10px;">
+          * UNEP Regional Seas coordinates automated checks and manual data validation.
         </div>
       </div>
     </div>
@@ -248,12 +220,42 @@
 
   <div class="slide-footer">
     <div class="footer-source">
-      <strong>Source:</strong> UN Statistics Division Metadata for Indicator 14.2.1 [5].
+      <strong>Source:</strong> UN Statistics Division, Indicator 14.2.1 metadata; UNEP Regional Seas Programme [1, 5–6].
     </div>
     <div class="footer-rule">
-      Rule: Detail the four-phase ladder so the audience understands what constitutes an "adopted plan".
+      Rule: Detail all four maturity stages and explicitly note that missing values are not imputed.
     </div>
   </div>
 </div>
+<script src="../shared/deck.js"></script>
+<script>
+function showStage(stage) {
+  document.querySelectorAll('.step-box').forEach((box, i) => {
+    box.classList.toggle('active', i === (stage - 1));
+  });
+
+  const title = document.getElementById('rubricStageTitle');
+  const text = document.getElementById('rubricText');
+  const list = document.getElementById('auditList');
+
+  if (stage === 1) {
+    title.textContent = 'Stage 1: Initial Preparation';
+    text.textContent = 'A national, sub-national, or inter-ministerial mandate has been formally authorized to initiate marine spatial planning or ICZM.';
+    list.innerHTML = '<li>Identification of lead government agency.</li><li>Scoping of jurisdictional maritime boundaries.</li><li>Preliminary budget allocation for planning team.</li>';
+  } else if (stage === 2) {
+    title.textContent = 'Stage 2: Plan Development';
+    text.textContent = 'Spatial data compilation, cumulative impact analysis, stakeholder consultation with fisheries, shipping, tourism, and indigenous communities.';
+    list.innerHTML = '<li>Draft spatial zoning maps and conflict-resolution matrices.</li><li>Documented multi-sector stakeholder consultations.</li><li>Drafting of regulatory management provisions.</li>';
+  } else if (stage === 3) {
+    title.textContent = 'Stage 3: Formal Adoption';
+    text.textContent = 'The marine management plan is officially signed, designated, or legislated into national law by parliament, cabinet, or the competent minister.';
+    list.innerHTML = '<li>Statutory decree or formal government publication.</li><li>Binding spatial boundaries established in law.</li><li>Transition into operational agency jurisdiction.</li>';
+  } else if (stage === 4) {
+    title.textContent = 'Stage 4: Adaptive Implementation';
+    text.textContent = 'The plan has active regulatory enforcement, dedicated financial appropriations, and a built-in cycle of monitoring and iterative revision.';
+    list.innerHTML = '<li>Publicly verifiable legal gazette citation.</li><li>Identified institutional authority with maritime patrol enforcement.</li><li>Documented monitoring indicators and scheduled iterative revisions.</li><li>No imputation: missing national questionnaire data recorded as null.</li>';
+  }
+}
+</script>
 </body>
 </html>

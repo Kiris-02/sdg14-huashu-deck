@@ -1,12 +1,12 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SDG 14.1–14.3 — Huashu Cinematic Presentation Deck</title>
+<title>SDG 14.1–14.3 — Huashu Studio Presentation Deck</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <script>
   window.DECK_MANIFEST = [
@@ -28,17 +28,49 @@
   ];
   window.DECK_WIDTH = 1920;
   window.DECK_HEIGHT = 1080;
-  window.DECK_OVERVIEW = 'grid'; // Grid wall mode default
 </script>
 
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --primary-cyan: #38BDF8;
+    --primary-emerald: #10B981;
+    --accent-rose: #F43F5E;
+    --accent-amber: #F59E0B;
+    --bg-base: #030712;
+    --bg-panel: rgba(15, 23, 42, 0.9);
+    --border-subtle: rgba(56, 189, 248, 0.2);
+    --border-strong: rgba(56, 189, 248, 0.45);
+    --font-sans: 'Plus Jakarta Sans', sans-serif;
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
   html, body {
     height: 100%;
     overflow: hidden;
-    font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
-    background: #030712;
+    font-family: var(--font-sans);
+    background: var(--bg-base);
     color: #F8FAFC;
+    user-select: none;
+  }
+
+  /* Progress Bar */
+  #progress-bar-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.08);
+    z-index: 9999;
+  }
+  #progress-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #0284C7, #38BDF8, #2DD4BF);
+    box-shadow: 0 0 10px #38BDF8;
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .overview { position: fixed; inset: 0; }
@@ -46,17 +78,17 @@
   body[data-mode="present"] .start-btn { display: none; }
   body[data-mode="overview"] #present-ui { display: none; }
 
-  /* Grid Wall Overview Mode */
+  /* 3D Overview Grid Wall */
   #ov-grid {
     display: flex;
     justify-content: center;
-    perspective: 2000px;
-    perspective-origin: 50% 40%;
+    perspective: 2200px;
+    perspective-origin: 50% 35%;
     background: radial-gradient(130% 100% at 50% 0%, #0A192F 0%, #030712 85%);
     overflow-y: auto;
     overflow-x: hidden;
     align-items: flex-start;
-    padding: 70px 40px 100px;
+    padding: 80px 40px 120px;
   }
 
   .overview-header-bar {
@@ -72,34 +104,51 @@
   }
 
   .deck-brand-tag {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: var(--font-display);
     font-size: 15px;
     font-weight: 700;
-    color: #38BDF8;
+    color: var(--primary-cyan);
     letter-spacing: 0.05em;
-    background: rgba(15, 23, 42, 0.85);
-    border: 1px solid rgba(56, 189, 248, 0.25);
-    padding: 8px 16px;
+    background: var(--bg-panel);
+    border: 1px solid var(--border-subtle);
+    padding: 8px 18px;
     border-radius: 999px;
     pointer-events: auto;
-    backdrop-filter: blur(8px);
+    backdrop-filter: blur(12px);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .deck-brand-tag::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: var(--primary-cyan);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--primary-cyan);
+    animation: pulseGlow 2s infinite ease-in-out;
+  }
+
+  @keyframes pulseGlow {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.3); opacity: 0.6; }
   }
 
   .overview-instructions {
     font-size: 13px;
     color: #94A3B8;
-    background: rgba(15, 23, 42, 0.85);
+    background: var(--bg-panel);
     border: 1px solid rgba(255, 255, 255, 0.1);
     padding: 8px 18px;
     border-radius: 999px;
     pointer-events: auto;
-    backdrop-filter: blur(8px);
+    backdrop-filter: blur(12px);
   }
 
   .wall {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: 22px;
+    gap: 24px;
     width: 100%;
     max-width: 1760px;
     margin: 20px auto 0;
@@ -113,16 +162,16 @@
     border-radius: 12px;
     overflow: hidden;
     background: #071220;
-    border: 1px solid rgba(56, 189, 248, 0.18);
+    border: 1px solid var(--border-subtle);
     cursor: pointer;
     box-shadow: 0 12px 28px rgba(0,0,0,0.5);
-    transition: transform .25s cubic-bezier(.2,.7,.2,1), box-shadow .25s, border-color .25s;
+    transition: transform .28s cubic-bezier(.2,.7,.2,1), box-shadow .28s, border-color .28s;
   }
 
   .card:hover {
-    transform: scale(1.08) translateY(-6px);
-    border-color: #38BDF8;
-    box-shadow: 0 24px 50px rgba(0,0,0,0.8), 0 0 25px rgba(56, 189, 248, 0.25);
+    transform: scale(1.08) translateY(-8px);
+    border-color: var(--primary-cyan);
+    box-shadow: 0 24px 50px rgba(0,0,0,0.8), 0 0 30px rgba(56, 189, 248, 0.3);
     z-index: 50;
   }
 
@@ -147,15 +196,15 @@
 
   .card .num-badge {
     position: absolute;
-    bottom: 8px;
-    left: 8px;
-    background: rgba(3, 7, 18, 0.9);
-    color: #38BDF8;
-    border: 1px solid rgba(56, 189, 248, 0.3);
-    font-family: 'JetBrains Mono', monospace;
+    bottom: 10px;
+    left: 10px;
+    background: rgba(3, 7, 18, 0.92);
+    color: var(--primary-cyan);
+    border: 1px solid var(--border-subtle);
+    font-family: var(--font-mono);
     font-size: 11px;
     font-weight: 700;
-    padding: 4px 8px;
+    padding: 4px 10px;
     border-radius: 6px;
     pointer-events: none;
     z-index: 10;
@@ -163,28 +212,31 @@
 
   .start-btn {
     position: fixed;
-    bottom: 30px;
+    bottom: 32px;
     right: 40px;
-    background: #38BDF8;
+    background: linear-gradient(135deg, #0284C7, #38BDF8);
     color: #030712;
     border: none;
-    padding: 14px 28px;
+    padding: 15px 32px;
     border-radius: 999px;
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 15px;
+    font-family: var(--font-display);
+    font-size: 16px;
     font-weight: 700;
     cursor: pointer;
     z-index: 200;
     box-shadow: 0 10px 30px rgba(56, 189, 248, 0.4);
-    transition: transform .18s, box-shadow .18s;
+    transition: transform .2s, box-shadow .2s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
   }
 
   .start-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 14px 40px rgba(56, 189, 248, 0.6);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 16px 45px rgba(56, 189, 248, 0.6);
   }
 
-  /* Presentation Mode */
+  /* Presentation Stage */
   #stage {
     position: fixed;
     top: 50%;
@@ -203,96 +255,420 @@
     background: #030712;
   }
 
-  .counter-display {
+  /* Navigation Zones */
+  .nav-zone {
     position: fixed;
-    bottom: 24px;
-    right: 32px;
-    background: rgba(15, 23, 42, 0.85);
-    border: 1px solid rgba(255,255,255,0.12);
-    color: #FFFFFF;
-    padding: 8px 18px;
-    border-radius: 999px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 13px;
-    font-weight: 600;
-    z-index: 100;
-    backdrop-filter: blur(12px);
+    top: 0;
+    bottom: 0;
+    width: 120px;
+    cursor: pointer;
+    z-index: 90;
+    display: flex;
+    align-items: center;
+    transition: background 0.2s;
   }
+  .nav-zone.left { left: 0; justify-content: flex-start; }
+  .nav-zone.right { right: 0; justify-content: flex-end; }
+  .nav-zone:hover { background: rgba(56, 189, 248, 0.03); }
 
-  .counter-display .label {
-    color: #38BDF8;
-    margin-left: 8px;
+  .nav-hint-arrow {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--bg-panel);
+    border: 1px solid var(--border-subtle);
+    color: #E2E8F0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    opacity: 0;
+    transform: translateY(-50%) scale(0.9);
+    transition: opacity 0.25s, transform 0.25s;
+    pointer-events: none;
+    backdrop-filter: blur(8px);
   }
+  .nav-zone.left .nav-hint-arrow { margin-left: 24px; }
+  .nav-zone.right .nav-hint-arrow { margin-right: 24px; }
+  .nav-zone:hover .nav-hint-arrow { opacity: 1; transform: translateY(-50%) scale(1); }
 
+  /* Action Bar (Top) */
   .action-btn-group {
     position: fixed;
-    top: 24px;
-    left: 32px;
+    top: 20px;
+    left: 30px;
     display: flex;
-    gap: 12px;
+    gap: 10px;
     z-index: 100;
   }
 
   .top-btn {
-    background: rgba(15, 23, 42, 0.85);
-    border: 1px solid rgba(255,255,255,0.12);
+    background: var(--bg-panel);
+    border: 1px solid var(--border-subtle);
     color: #E2E8F0;
     padding: 8px 16px;
     border-radius: 999px;
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: var(--font-sans);
     font-size: 13px;
     font-weight: 600;
     cursor: pointer;
     backdrop-filter: blur(12px);
     transition: all .2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
   }
 
   .top-btn:hover {
-    background: #38BDF8;
-    color: #030712;
-    border-color: #38BDF8;
+    background: rgba(30, 41, 59, 0.95);
+    border-color: var(--primary-cyan);
+    color: #FFFFFF;
+    transform: translateY(-1px);
   }
 
-  .nav-zone {
+  .top-btn.active {
+    background: rgba(56, 189, 248, 0.2);
+    border-color: var(--primary-cyan);
+    color: var(--primary-cyan);
+    box-shadow: 0 0 14px rgba(56, 189, 248, 0.35);
+  }
+
+  /* Audio Visualizer */
+  .eq-visualizer {
+    display: inline-flex;
+    align-items: flex-end;
+    gap: 2px;
+    height: 14px;
+    width: 14px;
+  }
+  .eq-bar {
+    width: 2px;
+    background: var(--primary-cyan);
+    border-radius: 1px;
+    height: 3px;
+    transition: height 0.15s ease;
+  }
+  .bgm-playing .eq-bar:nth-child(1) { animation: eqJump 0.8s infinite ease-in-out; }
+  .bgm-playing .eq-bar:nth-child(2) { animation: eqJump 0.6s infinite ease-in-out 0.15s; }
+  .bgm-playing .eq-bar:nth-child(3) { animation: eqJump 0.9s infinite ease-in-out 0.3s; }
+  .bgm-playing .eq-bar:nth-child(4) { animation: eqJump 0.7s infinite ease-in-out 0.1s; }
+
+  @keyframes eqJump {
+    0%, 100% { height: 3px; }
+    50% { height: 14px; }
+  }
+
+  /* Slide Counter */
+  .counter-display {
+    position: fixed;
+    bottom: 24px;
+    right: 32px;
+    background: var(--bg-panel);
+    border: 1px solid var(--border-subtle);
+    color: #FFFFFF;
+    padding: 8px 20px;
+    border-radius: 999px;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    font-weight: 600;
+    z-index: 100;
+    backdrop-filter: blur(12px);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .counter-display .label {
+    color: var(--primary-cyan);
+    font-family: var(--font-sans);
+    font-weight: 500;
+  }
+
+  /* Speaker Teleprompter Drawer */
+  #prompter-drawer {
     position: fixed;
     top: 0;
+    right: 0;
     bottom: 0;
-    width: 12%;
-    cursor: pointer;
-    z-index: 50;
+    width: 520px;
+    background: rgba(10, 20, 36, 0.96);
+    border-left: 1px solid var(--border-strong);
+    box-shadow: -20px 0 60px rgba(0,0,0,0.8);
+    backdrop-filter: blur(24px);
+    z-index: 2000;
+    transform: translateX(100%);
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    flex-direction: column;
   }
 
-  .nav-zone.left { left: 0; }
-  .nav-zone.right { right: 0; }
+  #prompter-drawer.open {
+    transform: translateX(0);
+  }
 
-  .nav-hint-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    background: rgba(15, 23, 42, 0.8);
-    border: 1px solid rgba(56, 189, 248, 0.3);
-    color: #38BDF8;
+  .prompter-header {
+    padding: 24px 28px 18px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .prompter-header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .prompter-title {
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--primary-cyan);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .close-prompter-btn {
+    background: transparent;
+    border: none;
+    color: #94A3B8;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 4px;
+    line-height: 1;
+    transition: color 0.15s;
+  }
+  .close-prompter-btn:hover { color: #FFFFFF; }
+
+  .speaker-meta-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(15, 23, 42, 0.6);
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .speaker-id-tag {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--primary-emerald);
+    text-transform: uppercase;
+  }
+
+  .stopwatch-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .stopwatch-time {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    font-weight: 700;
+    color: #F8FAFC;
+    background: rgba(0,0,0,0.4);
+    padding: 4px 8px;
+    border-radius: 6px;
+    letter-spacing: 0.05em;
+  }
+
+  .stopwatch-btn {
+    background: rgba(56, 189, 248, 0.15);
+    border: 1px solid var(--border-subtle);
+    color: var(--primary-cyan);
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .stopwatch-btn:hover { background: rgba(56, 189, 248, 0.3); }
+
+  .prompter-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 28px;
+    background: rgba(0,0,0,0.25);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  }
+
+  .font-ctrls {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .font-ctrl-btn {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #CBD5E1;
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 24px;
-    opacity: 0;
-    transition: opacity .2s, transform .2s;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .font-ctrl-btn:hover { color: #FFFFFF; border-color: var(--primary-cyan); }
+
+  .prompter-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 24px 28px;
+    line-height: 1.7;
+    font-size: 16px;
+    color: #E2E8F0;
+    user-select: text;
   }
 
-  .nav-zone.left .nav-hint-arrow { left: 24px; }
-  .nav-zone.right .nav-hint-arrow { right: 24px; }
-  .nav-zone:hover .nav-hint-arrow { opacity: 1; transform: translateY(-50%) scale(1.1); }
+  .script-headline {
+    font-family: var(--font-display);
+    font-size: 19px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-bottom: 16px;
+    line-height: 1.35;
+  }
+
+  .script-body {
+    white-space: pre-line;
+    margin-bottom: 24px;
+    color: #CBD5E1;
+  }
+
+  .script-cue-box {
+    background: rgba(56, 189, 248, 0.08);
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    border-radius: 12px;
+    padding: 16px 18px;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #BAE6FD;
+    line-height: 1.5;
+  }
+  .script-cue-box strong {
+    color: var(--primary-cyan);
+    display: block;
+    margin-bottom: 4px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .prompter-footer {
+    padding: 16px 28px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(7, 14, 26, 0.9);
+  }
+
+  .prompter-nav-btn {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #F8FAFC;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-family: var(--font-sans);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .prompter-nav-btn:hover {
+    background: rgba(56, 189, 248, 0.2);
+    border-color: var(--primary-cyan);
+  }
+
+  /* Laser Pointer Tool */
+  #laser-pointer {
+    position: fixed;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #FF2E55 20%, rgba(255, 46, 85, 0.6) 50%, transparent 75%);
+    box-shadow: 0 0 16px #FF2E55, 0 0 30px #FF0033;
+    pointer-events: none;
+    z-index: 99999;
+    transform: translate(-50%, -50%);
+    display: none;
+    transition: width 0.1s, height 0.1s;
+  }
+  #laser-pointer.active { display: block; }
+
+  /* Shortcuts Modal */
+  #shortcuts-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.75);
+    backdrop-filter: blur(12px);
+    z-index: 5000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+  }
+  #shortcuts-modal.open { display: flex; }
+
+  .shortcuts-card {
+    background: #0B1728;
+    border: 1px solid var(--border-strong);
+    border-radius: 20px;
+    padding: 36px 40px;
+    width: 100%;
+    max-width: 580px;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.8), 0 0 40px rgba(56, 189, 248, 0.15);
+  }
+
+  .shortcuts-card h3 {
+    font-family: var(--font-display);
+    font-size: 22px;
+    color: #FFFFFF;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .shortcut-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 26px;
+  }
+
+  .shortcut-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    color: #CBD5E1;
+  }
+
+  .shortcut-key {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    color: var(--primary-cyan);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 6px;
+  }
 
   @media print {
     @page { size: 1920px 1080px; margin: 0; }
     html, body { background: #030712; overflow: visible; height: auto; }
     body[data-mode] .overview { display: none !important; }
     #stage { position: static; transform: none !important; box-shadow: none; }
-    .counter-display, .nav-zone, .action-btn-group, .start-btn { display: none !important; }
+    .counter-display, .nav-zone, .action-btn-group, .start-btn, #prompter-drawer, #progress-bar-container { display: none !important; }
     .print-stack { display: block; }
     .print-stack iframe { width: 1920px; height: 1080px; page-break-after: always; display: block; }
   }
@@ -300,11 +676,14 @@
 </head>
 <body data-mode="overview">
 
+<!-- Progress Bar -->
+<div id="progress-bar-container"><div id="progress-bar"></div></div>
+
 <!-- Overview Grid Wall -->
 <div id="ov-grid" class="overview">
   <div class="overview-header-bar">
-    <div class="deck-brand-tag">SDG 14.1, 14.2 & 14.3 · Huashu Cinematic Presentation Deck</div>
-    <div class="overview-instructions">Click any slide to enter Presenter Mode · [ESC] returns to Grid · [F] Fullscreen</div>
+    <div class="deck-brand-tag">SDG 14.1, 14.2 & 14.3 · Huashu Studio Edition</div>
+    <div class="overview-instructions">Click any slide to enter Presenter Mode · [ESC] returns to Grid · [C] Speaker Cue Prompter</div>
   </div>
   <div class="wall" id="wall"></div>
 </div>
@@ -314,15 +693,103 @@
 <!-- Presenter Mode UI -->
 <div id="present-ui">
   <div id="stage"><iframe id="frame" src="about:blank"></iframe></div>
+  
   <div class="action-btn-group">
     <button class="top-btn" id="overviewBtn">⊞ Overview (ESC)</button>
+    <button class="top-btn" id="prompterBtn">🎙 Speaker Cue (C)</button>
+    <button class="top-btn" id="bgmBtn">
+      <div class="eq-visualizer">
+        <span class="eq-bar"></span>
+        <span class="eq-bar"></span>
+        <span class="eq-bar"></span>
+        <span class="eq-bar"></span>
+      </div>
+      <span id="bgmBtnText">Ocean BGM (M)</span>
+    </button>
+    <button class="top-btn" id="laserBtn">🔴 Laser (L)</button>
+    <button class="top-btn" id="shortcutsBtn">⌨ Shortcuts (?)</button>
     <button class="top-btn" id="fsBtn">⛶ Fullscreen (F)</button>
-    <button class="top-btn" id="printBtn">🖶 Export / Print (P)</button>
   </div>
+
   <div class="nav-zone left" id="navL"><div class="nav-hint-arrow">‹</div></div>
   <div class="nav-zone right" id="navR"><div class="nav-hint-arrow">›</div></div>
   <div class="counter-display" id="counter">1 / 15</div>
 </div>
+
+<!-- Speaker Teleprompter Drawer -->
+<div id="prompter-drawer">
+  <div class="prompter-header">
+    <div class="prompter-header-top">
+      <div class="prompter-title">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x2="16" y1="23" x2="8" y2="23"/></svg>
+        SPEAKER TELEPROMPTER
+      </div>
+      <button class="close-prompter-btn" id="closePrompterBtn">✕</button>
+    </div>
+    <div class="speaker-meta-bar">
+      <span class="speaker-id-tag" id="drawerSpeakerTag">SPEAKER 1</span>
+      <div class="stopwatch-container">
+        <span class="stopwatch-time" id="drawerTimer">00:00</span>
+        <button class="stopwatch-btn" id="timerStartBtn">▶</button>
+        <button class="stopwatch-btn" id="timerResetBtn">↺</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="prompter-toolbar">
+    <div class="font-ctrls">
+      <span style="font-size:12px; color:#94A3B8; margin-right:4px;">Size:</span>
+      <button class="font-ctrl-btn" id="fontSizeDec">A-</button>
+      <button class="font-ctrl-btn" id="fontSizeInc">A+</button>
+    </div>
+    <button class="font-ctrl-btn" style="width:auto; padding:0 10px; gap:4px;" id="copyScriptBtn">📋 Copy Script</button>
+  </div>
+
+  <div class="prompter-content" id="prompterContent">
+    <div class="script-headline" id="drawerHeadline">Loading presentation cue...</div>
+    <div class="script-body" id="drawerScript">...</div>
+    <div class="script-cue-box" id="drawerCue">
+      <strong>Stage Cue & Handoff Note</strong>
+      <span>...</span>
+    </div>
+  </div>
+
+  <div class="prompter-footer">
+    <button class="prompter-nav-btn" id="drawerPrevBtn">‹ Prev Card</button>
+    <span style="font-size:12px; color:#64748B; font-family:var(--font-mono);" id="drawerSlideIndicator">Slide 1 / 15</span>
+    <button class="prompter-nav-btn" id="drawerNextBtn">Next Card ›</button>
+  </div>
+</div>
+
+<!-- Laser Pointer Element -->
+<div id="laser-pointer"></div>
+
+<!-- Keyboard Shortcuts Modal -->
+<div id="shortcuts-modal">
+  <div class="shortcuts-card">
+    <h3>
+      Keyboard Shortcuts
+      <button class="close-prompter-btn" id="closeShortcutsBtn">✕</button>
+    </h3>
+    <div class="shortcut-list">
+      <div class="shortcut-row"><span>Next Slide</span><span class="shortcut-key">Right Arrow / Space</span></div>
+      <div class="shortcut-row"><span>Previous Slide</span><span class="shortcut-key">Left Arrow</span></div>
+      <div class="shortcut-row"><span>Speaker Teleprompter Drawer</span><span class="shortcut-key">C</span></div>
+      <div class="shortcut-row"><span>Ocean Background Audio (BGM)</span><span class="shortcut-key">M</span></div>
+      <div class="shortcut-row"><span>Laser Pointer Mode</span><span class="shortcut-key">L</span></div>
+      <div class="shortcut-row"><span>Fullscreen Mode</span><span class="shortcut-key">F</span></div>
+      <div class="shortcut-row"><span>3D Overview Wall</span><span class="shortcut-key">Esc / O</span></div>
+      <div class="shortcut-row"><span>Export / Print PDF</span><span class="shortcut-key">P</span></div>
+    </div>
+    <button class="top-btn" style="width:100%; justify-content:center; background:rgba(56, 189, 248, 0.15); border-color:var(--primary-cyan); color:var(--primary-cyan);" id="dismissShortcutsBtn">Got it</button>
+  </div>
+</div>
+
+<!-- Audio Assets -->
+<audio id="bgmAudio" src="assets/bgm.mp3" loop preload="auto"></audio>
+<audio id="whooshSfx" src="assets/sfx/transition/whoosh.mp3" preload="auto"></audio>
+<audio id="clickSfx" src="assets/sfx/ui/click.mp3" preload="auto"></audio>
+<audio id="achieveSfx" src="assets/sfx/feedback/achievement.mp3" preload="auto"></audio>
 
 <div class="print-stack" id="printStack" style="display:none;"></div>
 
@@ -331,15 +798,175 @@
   const W = window.DECK_WIDTH || 1920;
   const H = window.DECK_HEIGHT || 1080;
   const deck = window.DECK_MANIFEST || [];
+  
   const stage = document.getElementById('stage');
   const frame = document.getElementById('frame');
   const counter = document.getElementById('counter');
   const wall = document.getElementById('wall');
   const printStack = document.getElementById('printStack');
+  const progressBar = document.getElementById('progress-bar');
+  
+  // Audio
+  const bgmAudio = document.getElementById('bgmAudio');
+  const whooshSfx = document.getElementById('whooshSfx');
+  const clickSfx = document.getElementById('clickSfx');
+  const achieveSfx = document.getElementById('achieveSfx');
+  const bgmBtn = document.getElementById('bgmBtn');
+  const bgmBtnText = document.getElementById('bgmBtnText');
+  let isBgmPlaying = false;
+
+  // Prompter Drawer
+  const prompterDrawer = document.getElementById('prompter-drawer');
+  const prompterBtn = document.getElementById('prompterBtn');
+  const closePrompterBtn = document.getElementById('closePrompterBtn');
+  const drawerSpeakerTag = document.getElementById('drawerSpeakerTag');
+  const drawerHeadline = document.getElementById('drawerHeadline');
+  const drawerScript = document.getElementById('drawerScript');
+  const drawerCue = document.getElementById('drawerCue');
+  const drawerSlideIndicator = document.getElementById('drawerSlideIndicator');
+  const drawerPrevBtn = document.getElementById('drawerPrevBtn');
+  const drawerNextBtn = document.getElementById('drawerNextBtn');
+  const copyScriptBtn = document.getElementById('copyScriptBtn');
+  const prompterContent = document.getElementById('prompterContent');
+  const fontSizeDec = document.getElementById('fontSizeDec');
+  const fontSizeInc = document.getElementById('fontSizeInc');
+  
+  // Stopwatch in Prompter
+  const drawerTimer = document.getElementById('drawerTimer');
+  const timerStartBtn = document.getElementById('timerStartBtn');
+  const timerResetBtn = document.getElementById('timerResetBtn');
+  let timerInterval = null;
+  let timerSeconds = 0;
+
+  // Laser Pointer
+  const laserBtn = document.getElementById('laserBtn');
+  const laserPointer = document.getElementById('laser-pointer');
+  let isLaserActive = false;
+
+  // Shortcuts Modal
+  const shortcutsBtn = document.getElementById('shortcutsBtn');
+  const shortcutsModal = document.getElementById('shortcuts-modal');
+  const closeShortcutsBtn = document.getElementById('closeShortcutsBtn');
+  const dismissShortcutsBtn = document.getElementById('dismissShortcutsBtn');
+
   let current = 0;
+  let speakerScripts = {};
+  let currentPrompterIndex = 0;
+  let prompterFontSize = 16;
 
   stage.style.width = W + 'px';
   stage.style.height = H + 'px';
+  bgmAudio.volume = 0.35;
+
+  // Load speaker scripts
+  fetch('assets/speaker-scripts.json')
+    .then(res => res.json())
+    .then(data => {
+      speakerScripts = data;
+      updatePrompter(current + 1);
+    })
+    .catch(err => console.log('Scripts fallback'));
+
+  function playSound(type) {
+    try {
+      if (type === 'whoosh') {
+        whooshSfx.currentTime = 0;
+        whooshSfx.play().catch(() => {});
+      } else if (type === 'click') {
+        clickSfx.currentTime = 0;
+        clickSfx.play().catch(() => {});
+      } else if (type === 'achievement') {
+        achieveSfx.currentTime = 0;
+        achieveSfx.play().catch(() => {});
+      }
+    } catch(e) {}
+  }
+
+  function toggleBgm() {
+    if (isBgmPlaying) {
+      bgmAudio.pause();
+      isBgmPlaying = false;
+      bgmBtn.classList.remove('bgm-playing', 'active');
+      bgmBtnText.textContent = 'Ocean BGM (M)';
+    } else {
+      bgmAudio.play().then(() => {
+        isBgmPlaying = true;
+        bgmBtn.classList.add('bgm-playing', 'active');
+        bgmBtnText.textContent = 'BGM Playing';
+      }).catch(err => console.log('Audio autoplay blocked'));
+    }
+  }
+
+  function togglePrompter() {
+    prompterDrawer.classList.toggle('open');
+    prompterBtn.classList.toggle('active', prompterDrawer.classList.contains('open'));
+    if (prompterDrawer.classList.contains('open')) {
+      updatePrompter(current + 1);
+    }
+    playSound('click');
+  }
+
+  function toggleLaser() {
+    isLaserActive = !isLaserActive;
+    laserBtn.classList.toggle('active', isLaserActive);
+    laserPointer.classList.toggle('active', isLaserActive);
+    playSound('click');
+  }
+
+  // Laser follow
+  window.addEventListener('mousemove', (e) => {
+    if (isLaserActive) {
+      laserPointer.style.left = e.clientX + 'px';
+      laserPointer.style.top = e.clientY + 'px';
+    }
+  });
+
+  // Stopwatch controls
+  function startStopwatch() {
+    if (timerInterval) {
+      clearInterval(timerInterval);
+      timerInterval = null;
+      timerStartBtn.textContent = '▶';
+    } else {
+      timerInterval = setInterval(() => {
+        timerSeconds++;
+        const mins = String(Math.floor(timerSeconds / 60)).padStart(2, '0');
+        const secs = String(timerSeconds % 60).padStart(2, '0');
+        drawerTimer.textContent = mins + ':' + secs;
+      }, 1000);
+      timerStartBtn.textContent = '⏸';
+    }
+    playSound('click');
+  }
+
+  function resetStopwatch() {
+    clearInterval(timerInterval);
+    timerInterval = null;
+    timerSeconds = 0;
+    drawerTimer.textContent = '00:00';
+    timerStartBtn.textContent = '▶';
+    playSound('click');
+  }
+
+  // Update Prompter content
+  function updatePrompter(slideNum) {
+    currentPrompterIndex = slideNum;
+    const item = speakerScripts[slideNum];
+    drawerSlideIndicator.textContent = 'Slide ' + slideNum + ' / ' + deck.length;
+    
+    if (item) {
+      drawerSpeakerTag.textContent = item.speaker + ' · ' + (item.time || '');
+      drawerHeadline.textContent = item.headline;
+      drawerScript.textContent = item.script;
+      drawerCue.innerHTML = '<strong>Stage Cue & Handoff Note</strong>' + item.cue;
+    } else {
+      drawerSpeakerTag.textContent = 'SPEAKER CUE';
+      drawerHeadline.textContent = 'Slide ' + slideNum;
+      drawerScript.textContent = 'Content aligns with official SDG 14 pack.';
+      drawerCue.innerHTML = '<strong>Stage Cue</strong>Keep speaking pace steady and articulate.';
+    }
+    prompterContent.scrollTop = 0;
+  }
 
   function setMode(mode) {
     document.body.setAttribute('data-mode', mode);
@@ -349,6 +976,7 @@
     } else {
       requestAnimationFrame(buildGrid);
     }
+    playSound('click');
   }
 
   function makeCard(idx) {
@@ -407,7 +1035,15 @@
       frame.src = deck[idx].file;
     }
     counter.innerHTML = (idx + 1) + ' / ' + deck.length + ' <span class="label">' + (deck[idx].label || '') + '</span>';
+    progressBar.style.width = (((idx + 1) / deck.length) * 100) + '%';
     history.replaceState(null, '', '#' + (idx + 1));
+    updatePrompter(idx + 1);
+
+    if (idx === deck.length - 1) {
+      playSound('achievement');
+    } else {
+      playSound('whoosh');
+    }
   }
 
   function next() { show(Math.min(current + 1, deck.length - 1)); }
@@ -421,49 +1057,107 @@
     }
   }
 
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      if (document.body.getAttribute('data-mode') === 'present') {
-        e.preventDefault();
-        setMode('overview');
-      }
-      return;
-    }
-    if (e.key === 'f' || e.key === 'F') {
-      e.preventDefault();
-      toggleFullscreen();
-      return;
-    }
-    if (e.key === 'p' || e.key === 'P') {
-      window.print();
-      return;
-    }
-    if (document.body.getAttribute('data-mode') !== 'present') return;
-    switch(e.key) {
+  // Key navigation & Shortcuts
+  function handleKeyAction(key) {
+    switch(key) {
       case 'ArrowRight': case ' ': case 'PageDown':
-        e.preventDefault(); next(); break;
+        next(); break;
       case 'ArrowLeft': case 'PageUp':
-        e.preventDefault(); prev(); break;
-      case 'Home':
-        e.preventDefault(); show(0); break;
-      case 'End':
-        e.preventDefault(); show(deck.length - 1); break;
+        prev(); break;
+      case 'c': case 'C':
+        togglePrompter(); break;
+      case 'm': case 'M':
+        toggleBgm(); break;
+      case 'l': case 'L':
+        toggleLaser(); break;
+      case 'f': case 'F':
+        toggleFullscreen(); break;
+      case '?': case 'h': case 'H':
+        shortcutsModal.classList.toggle('open'); break;
+      case 'Escape':
+        if (shortcutsModal.classList.contains('open')) {
+          shortcutsModal.classList.remove('open');
+        } else if (prompterDrawer.classList.contains('open')) {
+          prompterDrawer.classList.remove('open');
+          prompterBtn.classList.remove('active');
+        } else if (document.body.getAttribute('data-mode') === 'present') {
+          setMode('overview');
+        }
+        break;
+    }
+  }
+
+  document.addEventListener('keydown', (e) => {
+    handleKeyAction(e.key);
+  });
+
+  // Forwarded keys from child iframes
+  window.addEventListener('message', (e) => {
+    if (e.data && e.data.type === 'deck-keydown') {
+      handleKeyAction(e.data.key);
+    } else if (e.data && e.data.type === 'play-sfx') {
+      playSound(e.data.sound);
     }
   });
 
+  // Listeners
   document.getElementById('navL').addEventListener('click', prev);
   document.getElementById('navR').addEventListener('click', next);
   document.getElementById('startBtn').addEventListener('click', () => setMode('present'));
   document.getElementById('overviewBtn').addEventListener('click', () => setMode('overview'));
+  document.getElementById('prompterBtn').addEventListener('click', togglePrompter);
+  document.getElementById('closePrompterBtn').addEventListener('click', togglePrompter);
+  document.getElementById('bgmBtn').addEventListener('click', toggleBgm);
+  document.getElementById('laserBtn').addEventListener('click', toggleLaser);
   document.getElementById('fsBtn').addEventListener('click', toggleFullscreen);
-  document.getElementById('printBtn').addEventListener('click', () => window.print());
+  document.getElementById('shortcutsBtn').addEventListener('click', () => shortcutsModal.classList.add('open'));
+  closeShortcutsBtn.addEventListener('click', () => shortcutsModal.classList.remove('open'));
+  dismissShortcutsBtn.addEventListener('click', () => shortcutsModal.classList.remove('open'));
+  
+  // Prompter Nav
+  drawerPrevBtn.addEventListener('click', () => {
+    if (currentPrompterIndex > 1) updatePrompter(currentPrompterIndex - 1);
+    playSound('click');
+  });
+  drawerNextBtn.addEventListener('click', () => {
+    if (currentPrompterIndex < deck.length) updatePrompter(currentPrompterIndex + 1);
+    playSound('click');
+  });
+
+  // Font resize
+  fontSizeInc.addEventListener('click', () => {
+    if (prompterFontSize < 24) {
+      prompterFontSize += 2;
+      prompterContent.style.fontSize = prompterFontSize + 'px';
+    }
+  });
+  fontSizeDec.addEventListener('click', () => {
+    if (prompterFontSize > 12) {
+      prompterFontSize -= 2;
+      prompterContent.style.fontSize = prompterFontSize + 'px';
+    }
+  });
+
+  // Copy Script
+  copyScriptBtn.addEventListener('click', () => {
+    const textToCopy = drawerHeadline.textContent + '\n\n' + drawerScript.textContent;
+    navigator.clipboard.writeText(textToCopy).then(() => {
+      copyScriptBtn.textContent = '✓ Copied!';
+      setTimeout(() => copyScriptBtn.textContent = '📋 Copy Script', 2000);
+    });
+    playSound('click');
+  });
+
+  // Stopwatch
+  timerStartBtn.addEventListener('click', startStopwatch);
+  timerResetBtn.addEventListener('click', resetStopwatch);
 
   window.addEventListener('resize', () => {
     fit();
     scaleThumbs();
   });
 
-  // Check URL hash
+  // URL Hash
   const hash = location.hash.match(/^#(\d+)$/);
   if (hash) {
     current = Math.min(parseInt(hash[1], 10) - 1, deck.length - 1);
@@ -472,6 +1166,7 @@
     setMode('overview');
   }
 
+  // Print
   window.addEventListener('beforeprint', () => {
     printStack.innerHTML = '';
     deck.forEach(item => {

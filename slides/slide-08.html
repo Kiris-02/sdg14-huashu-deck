@@ -1,148 +1,132 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=1920, height=1080">
-<title>Slide 08 — Indicator 14.2.1 Binary Mechanism</title>
+<title>Slide 08 — Indicator 14.2.1 Governance Logic</title>
 <link rel="stylesheet" href="../shared/deck.css">
 <style>
-  .binary-layout {
+  .logic-grid {
     display: grid;
-    grid-template-columns: 1fr 1.25fr;
+    grid-template-columns: 1fr 1.35fr;
     gap: 40px;
     height: 100%;
-    align-items: center;
+    align-items: stretch;
   }
-  
-  .binary-text-side {
+
+  .distinction-col {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    justify-content: space-between;
   }
-  
-  .binary-badge-card {
+
+  .distinction-box {
     background: var(--bg-card);
     border: 1px solid var(--border-subtle);
-    border-radius: 16px;
+    border-radius: 18px;
     padding: 24px 28px;
+  }
+
+  .distinction-box.negative {
+    border-left: 4px solid var(--rose);
+  }
+  .distinction-box.positive {
     border-left: 4px solid var(--emerald);
   }
-  
-  .binary-badge-card h3 {
+
+  .distinction-box h3 {
     font-family: var(--font-display);
-    font-size: 22px;
+    font-size: 20px;
     color: #FFFFFF;
     margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
   }
-  
-  .binary-badge-card p {
-    font-size: 15px;
+
+  .distinction-box p {
+    font-size: 14px;
     color: var(--text-dim);
-    line-height: 1.55;
+    line-height: 1.5;
   }
-  
-  /* Right: Map & Binary Scoring Visual */
-  .binary-visual-card {
+
+  /* Right Side: Interactive 30x30 Target Progress */
+  .coverage-container {
     background: var(--bg-card);
-    border: 1px solid var(--border-subtle);
+    border: 1px solid var(--border-strong);
     border-radius: 20px;
-    padding: 32px;
-    height: 100%;
+    padding: 28px 32px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    box-shadow: 0 16px 36px rgba(0,0,0,0.4);
   }
-  
-  .scoring-header {
+
+  .coverage-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-bottom: 14px;
   }
-  
-  .scoring-title {
-    font-family: var(--font-mono);
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--emerald);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-  }
-  
-  .binary-meter-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    margin: 20px 0;
-  }
-  
-  .meter-box {
+
+  .gauge-track-box {
     background: rgba(15, 23, 42, 0.7);
-    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
     padding: 24px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
+    gap: 20px;
   }
-  
-  .meter-box.present {
-    border: 1px solid rgba(16, 185, 129, 0.4);
-    background: rgba(16, 185, 129, 0.06);
-  }
-  
-  .meter-box.absent {
-    border: 1px solid rgba(244, 63, 94, 0.4);
-    background: rgba(244, 63, 94, 0.06);
-  }
-  
-  .meter-val {
-    font-family: var(--font-mono);
-    font-size: 64px;
-    font-weight: 800;
-    line-height: 1;
-    margin-bottom: 8px;
-  }
-  
-  .meter-box.present .meter-val { color: var(--emerald); }
-  .meter-box.absent .meter-val { color: var(--rose); }
-  
-  .meter-title {
-    font-family: var(--font-display);
-    font-size: 18px;
-    font-weight: 700;
-    color: #FFFFFF;
-    margin-bottom: 6px;
-  }
-  
-  .meter-expl {
-    font-size: 13px;
-    color: var(--text-dim);
-    line-height: 1.4;
-  }
-  
-  /* Map Overlay Representation */
-  .map-overlay-box {
-    background: rgba(10, 20, 36, 0.8);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 12px;
-    padding: 18px 24px;
+
+  .progress-item-bar {
     display: flex;
     flex-direction: column;
     gap: 8px;
   }
-  
-  .overlay-row {
+
+  .bar-meta {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    font-size: 13px;
+    font-size: 14px;
   }
-  
-  .overlay-tag {
-    font-family: var(--font-mono);
-    font-weight: 600;
-    color: var(--cyan);
+
+  .bar-bg {
+    width: 100%;
+    height: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .bar-fill {
+    height: 100%;
+    border-radius: 6px;
+    transition: width 0.5s ease;
+  }
+
+  .ebm-tools-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 10px;
+  }
+
+  .ebm-tool-card {
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 10px;
+    padding: 12px 14px;
+    font-size: 12px;
+    color: var(--text-dim);
+  }
+  .ebm-tool-card strong {
+    display: block;
+    color: #FFFFFF;
+    font-family: var(--font-display);
+    font-size: 13px;
+    margin-bottom: 2px;
   }
 </style>
 </head>
@@ -152,70 +136,90 @@
     <div class="header-left">
       <div class="badge-row">
         <div class="speaker-pill">Speaker 3</div>
-        <div class="target-badge">Institutional Metric Design</div>
+        <div class="target-badge">Indicator 14.2.1 Focus</div>
       </div>
-      <h2 class="slide-title">Indicator 14.2.1 asks whether integrated management exists</h2>
+      <h2 class="slide-title">Indicator 14.2.1 tracks governance systems, not environmental quality</h2>
     </div>
     <div class="header-right">
       <div class="slide-number-display">08 <span>/ 15</span></div>
-      <div class="track-label">Indicator 14.2.1</div>
+      <div class="track-label">Management Architecture</div>
     </div>
   </div>
 
   <div class="slide-body">
-    <div class="binary-layout">
-      <!-- Left Column: Statistical Definition -->
-      <div class="binary-text-side">
-        <div class="binary-badge-card">
-          <h3>The Formal Statistical Metric</h3>
-          <p>"Number of countries using ecosystem-based approaches to managing marine areas (within national waters and exclusive economic zones)."</p>
+    <div class="logic-grid">
+      <!-- Left Column: Critical Methodological Distinction -->
+      <div class="distinction-col">
+        <div class="distinction-box negative">
+          <h3>
+            <span style="color:var(--rose);">✕</span>
+            What Indicator 14.2.1 Does NOT Measure
+          </h3>
+          <p>It does not measure coral reef coverage, live fish biomass, benthic water clarity, or species extinction rates. A country can score highly on 14.2.1 while its coral reefs suffer catastrophic bleaching.</p>
         </div>
 
-        <div class="binary-badge-card">
-          <h3>Binary State Logic (1 / 0)</h3>
-          <p>Unlike biophysical chemical readings, national reporting evaluates administrative status: coded as <strong>1</strong> when qualifying ecosystem plans exist, and <strong>0</strong> when absent.</p>
+        <div class="distinction-box positive">
+          <h3>
+            <span style="color:var(--emerald);">✓</span>
+            What Indicator 14.2.1 DOES Measure
+          </h3>
+          <p>It measures the <strong>number of countries using ecosystem-based approaches (EBM)</strong> to manage marine areas through legally recognized spatial plans (ICZM, MSP, marine zoning).</p>
         </div>
 
-        <div class="binary-badge-card">
-          <h3>Twin Policy Anchors: ICZM & MSP</h3>
-          <p>Qualifications require either Integrated Coastal Zone Management (ICZM) covering coastal zones, or Marine Spatial Planning (MSP) covering offshore EEZ waters.</p>
+        <div class="distinction-box" style="border-left:4px solid var(--amber);">
+          <h3>
+            <span style="color:var(--amber);">⚡</span>
+            The Practical Governance Rationale
+          </h3>
+          <p>Ecosystem outcomes take decades to manifest. Tracking governance maturity provides immediate multilateral accountability on whether sovereigns are establishing institutional capacity.</p>
         </div>
       </div>
 
-      <!-- Right Column: Binary Meter & Overlay Box -->
-      <div class="binary-visual-card">
-        <div class="scoring-header">
-          <span class="scoring-title">Indicator 14.2.1 National Scoring Rules</span>
-          <span style="font-family:var(--font-mono); font-size:12px; color:var(--text-muted);">UNEP Custodian Methodology</span>
+      <!-- Right Column: Interactive 30x30 Target Progress -->
+      <div class="coverage-container">
+        <div class="coverage-header">
+          <span style="font-family:var(--font-mono); font-size:13px; font-weight:700; color:var(--cyan); text-transform:uppercase;">Global Marine Area Protection Tracker</span>
+          <span class="interactive-chip">Kunming-Montreal 30×30</span>
         </div>
 
-        <div class="binary-meter-grid">
-          <div class="meter-box present">
-            <div class="meter-val">1</div>
-            <div class="meter-title">Score = Present</div>
-            <div class="meter-expl">Country has legally adopted or designated integrated management plans with defined jurisdictional bounds.</div>
+        <div class="gauge-track-box">
+          <div class="progress-item-bar">
+            <div class="bar-meta">
+              <span style="color:#FFFFFF; font-weight:600;">Kunming-Montreal Global Target (by 2030)</span>
+              <span style="font-family:var(--font-mono); color:var(--cyan); font-weight:700;">30.0%</span>
+            </div>
+            <div class="bar-bg"><div class="bar-fill" style="width:100%; background:var(--cyan);"></div></div>
           </div>
 
-          <div class="meter-box absent">
-            <div class="meter-val">0</div>
-            <div class="meter-title">Score = Absent</div>
-            <div class="meter-expl">Sectoral laws remain uncoordinated; no overarching ecosystem-based planning authority is operational.</div>
+          <div class="progress-item-bar">
+            <div class="bar-meta">
+              <span style="color:#CBD5E1;">Current Total Marine Protected Areas (MPAs)</span>
+              <span style="font-family:var(--font-mono); color:var(--amber); font-weight:700;">8.2%</span>
+            </div>
+            <div class="bar-bg"><div class="bar-fill" style="width:27.3%; background:var(--amber);"></div></div>
+          </div>
+
+          <div class="progress-item-bar">
+            <div class="bar-meta">
+              <span style="color:#CBD5E1;">Fully / Highly Protected (No-Take Reserves)</span>
+              <span style="font-family:var(--font-mono); color:var(--rose); font-weight:700;">2.9%</span>
+            </div>
+            <div class="bar-bg"><div class="bar-fill" style="width:9.6%; background:var(--rose);"></div></div>
           </div>
         </div>
 
-        <div class="map-overlay-box">
-          <div style="font-family:var(--font-mono); font-size:12px; color:var(--text-muted); text-transform:uppercase; margin-bottom:4px;">Multi-Layer Spatial Planning Verification:</div>
-          <div class="overlay-row">
-            <span>Coastal Fringe & Estuaries:</span>
-            <span class="overlay-tag">ICZM Protocol Boundary</span>
+        <div class="ebm-tools-grid">
+          <div class="ebm-tool-card">
+            <strong>ICZM</strong>
+            Integrated Coastal Zone Management across land-sea interface.
           </div>
-          <div class="overlay-row">
-            <span>Exclusive Economic Zone (EEZ):</span>
-            <span class="overlay-tag">Marine Spatial Plan (MSP) Zones</span>
+          <div class="ebm-tool-card">
+            <strong>MSP</strong>
+            Marine Spatial Planning allocating conflicting offshore uses.
           </div>
-          <div class="overlay-row">
-            <span>Critical Biodiversity Cores:</span>
-            <span class="overlay-tag">Designated MPA Restorations</span>
+          <div class="ebm-tool-card">
+            <strong>MPAs</strong>
+            Dedicated spatial conservation with active enforcement.
           </div>
         </div>
       </div>
@@ -224,12 +228,13 @@
 
   <div class="slide-footer">
     <div class="footer-source">
-      <strong>Source:</strong> UN Statistics Division Metadata for Indicator 14.2.1 (Updated July 2024) [5].
+      <strong>Source:</strong> UN Statistics Division, Indicator 14.2.1 metadata, updated 29 July 2024; CBD Kunming-Montreal Target 3 [1, 5–6].
     </div>
     <div class="footer-rule">
-      Rule: Note that 14.2.1 is an institutional metric, tracking planning existence rather than water quality.
+      Rule: 14.2.1 tracks governance instruments, not direct ecological condition or fish stock abundance.
     </div>
   </div>
 </div>
+<script src="../shared/deck.js"></script>
 </body>
 </html>

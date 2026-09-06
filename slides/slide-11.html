@@ -1,23 +1,24 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=1920, height=1080">
-<title>Slide 11 — Target 14.3 Ocean Chemistry</title>
+<title>Slide 11 — Target 14.3 Ocean Chemistry Simulator</title>
 <link rel="stylesheet" href="../shared/deck.css">
 <style>
-  .acid-layout {
+  .sim-layout {
     display: grid;
     grid-template-columns: 1fr 1.35fr;
     gap: 40px;
     height: 100%;
-    align-items: center;
+    align-items: stretch;
   }
   
   .policy-panel {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 16px;
+    justify-content: space-between;
   }
   
   .no-deadline-badge {
@@ -39,121 +40,158 @@
     background: var(--bg-card);
     border: 1px solid var(--border-subtle);
     border-radius: 16px;
-    padding: 24px 28px;
+    padding: 20px 24px;
     border-left: 4px solid var(--cyan);
   }
   
   .acid-claim-card h3 {
     font-family: var(--font-display);
-    font-size: 20px;
+    font-size: 18px;
     color: #FFFFFF;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
   }
   
   .acid-claim-card p {
-    font-size: 15px;
+    font-size: 14px;
     color: var(--text-dim);
-    line-height: 1.5;
+    line-height: 1.45;
   }
   
-  /* Right: Carbonate Chemistry Cascade */
-  .chemistry-container {
+  /* Right Column: Chemistry Simulator */
+  .sim-container {
     background: var(--bg-card);
-    border: 1px solid var(--border-subtle);
+    border: 1px solid var(--border-strong);
     border-radius: 20px;
-    padding: 32px;
-    height: 100%;
+    padding: 28px 32px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    box-shadow: 0 16px 36px rgba(0,0,0,0.4);
+    box-shadow: 0 16px 36px rgba(0,0,0,0.5);
   }
   
-  .chem-header {
+  .sim-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
   }
   
-  .chem-title {
+  .sim-title {
     font-family: var(--font-mono);
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 700;
     color: var(--cyan);
     text-transform: uppercase;
     letter-spacing: 0.1em;
   }
-  
-  .cascade-grid {
+
+  .sim-control-box {
+    background: rgba(15, 23, 42, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
     gap: 14px;
   }
-  
-  .cascade-node {
-    background: rgba(15, 23, 42, 0.7);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 12px;
-    padding: 16px 20px;
-    display: grid;
-    grid-template-columns: 140px 1fr;
+
+  .slider-header-row {
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 20px;
   }
-  
-  .node-formula {
+  .slider-label {
+    font-size: 14px;
+    color: #FFFFFF;
+    font-weight: 600;
+  }
+  .slider-val-readout {
     font-family: var(--font-mono);
-    font-size: 16px;
+    font-size: 20px;
     font-weight: 700;
     color: var(--cyan);
-    background: rgba(56, 189, 248, 0.1);
-    border: 1px solid rgba(56, 189, 248, 0.2);
-    padding: 8px 12px;
-    border-radius: 8px;
-    text-align: center;
   }
-  
-  .node-explanation h5 {
-    font-family: var(--font-display);
-    font-size: 16px;
-    font-weight: 700;
-    color: #FFFFFF;
-    margin-bottom: 4px;
-  }
-  
-  .node-explanation p {
-    font-size: 13px;
-    color: var(--text-dim);
-    line-height: 1.4;
-  }
-  
-  .impact-warning {
-    background: rgba(244, 63, 94, 0.08);
-    border: 1px solid rgba(244, 63, 94, 0.25);
-    border-radius: 12px;
-    padding: 16px 20px;
+
+  .preset-row {
     display: flex;
-    align-items: center;
+    gap: 10px;
+  }
+
+  /* Live Gauges Row */
+  .gauges-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 16px;
   }
-  
-  .impact-warning-icon {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background: rgba(244, 63, 94, 0.2);
-    color: var(--rose);
+
+  .gauge-tile {
+    background: rgba(15, 23, 42, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .gauge-label {
+    font-size: 12px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    font-family: var(--font-mono);
+    margin-bottom: 8px;
+  }
+
+  .gauge-number {
+    font-family: var(--font-display);
+    font-size: 38px;
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 6px;
+    transition: color .2s;
+  }
+
+  .gauge-status-sub {
+    font-size: 12px;
+    color: var(--text-dim);
+    font-family: var(--font-mono);
+  }
+
+  /* Shell Dissolution Graphic */
+  .shell-reaction-box {
+    background: rgba(15, 23, 42, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    padding: 16px 20px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .shell-icon-wrapper {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    background: rgba(56, 189, 248, 0.1);
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-shrink: 0;
+    font-size: 32px;
   }
-  
-  .impact-warning-text {
+
+  .shell-reaction-text h5 {
+    font-family: var(--font-display);
+    font-size: 15px;
+    color: #FFFFFF;
+    margin-bottom: 4px;
+  }
+  .shell-reaction-text p {
     font-size: 13px;
-    color: #FECDD3;
-    line-height: 1.45;
+    color: var(--text-dim);
+    line-height: 1.4;
   }
 </style>
 </head>
@@ -174,7 +212,7 @@
   </div>
 
   <div class="slide-body">
-    <div class="acid-layout">
+    <div class="sim-layout">
       <!-- Left Column: Statutory Definition -->
       <div class="policy-panel">
         <div class="no-deadline-badge">
@@ -184,57 +222,67 @@
 
         <div class="acid-claim-card">
           <h3>The Atmospheric Absorption Driver</h3>
-          <p>The global ocean has absorbed approximately 25–30% of anthropogenic CO₂ emissions since the industrial revolution, altering marine carbonate equilibrium on a planetary scale.</p>
+          <p>The global ocean has absorbed approximately 25–30% of anthropogenic CO₂ emissions since the industrial revolution, driving a planetary-scale shift in carbonate equilibrium.</p>
         </div>
 
         <div class="acid-claim-card">
-          <h3>Scientific Cooperation Is the Target</h3>
-          <p>Unlike Targets 14.1 and 14.2, no single coastal sovereign can isolate or fix its chemical regime alone. Scientific observation and data exchange are formally built into the target mandate.</p>
+          <h3>Scientific Cooperation Is the Target Mandate</h3>
+          <p>Unlike Targets 14.1 and 14.2, no single coastal sovereign can isolate or fix its chemical regime alone. Scientific observation and data exchange are formally embedded into the target wording.</p>
         </div>
 
         <div class="acid-claim-card">
           <h3>Accurate Terminology: Becoming Less Alkaline</h3>
-          <p>The ocean is not turning acidic (pH < 7). Rather, mean surface seawater pH has dropped from ~8.2 to ~8.1—representing a ~30% increase in hydrogen ion concentration.</p>
+          <p>The ocean is not chemically acidic (pH remains > 7.0). Rather, mean surface seawater pH has dropped from ~8.25 to ~8.05—representing a ~30% increase in corrosive H⁺ ion concentration.</p>
         </div>
       </div>
 
-      <!-- Right Column: Carbonate Chemistry Cascade -->
-      <div class="chemistry-container">
-        <div class="chem-header">
-          <span class="chem-title">Ocean Carbonate System Cascade</span>
-          <span style="font-family:var(--font-mono); font-size:12px; color:var(--text-muted);">Biogeochemical Chain</span>
+      <!-- Right Column: Interactive Chemistry Simulator -->
+      <div class="sim-container">
+        <div class="sim-header">
+          <span class="sim-title">Interactive Carbonate Chemistry Simulator</span>
+          <span class="interactive-chip" id="simModeBadge">Normal Saturation</span>
         </div>
 
-        <div class="cascade-grid">
-          <div class="cascade-node">
-            <div class="node-formula">CO₂ + H₂O</div>
-            <div class="node-explanation">
-              <h5>1. Gas Dissolution & Acid Formation</h5>
-              <p>Atmospheric carbon dioxide dissolves in surface seawater to form carbonic acid (H₂CO₃).</p>
-            </div>
+        <!-- Slider Box -->
+        <div class="sim-control-box">
+          <div class="slider-header-row">
+            <span class="slider-label">Atmospheric CO₂ Concentration:</span>
+            <span class="slider-val-readout" id="co2Readout">420 ppm</span>
           </div>
-
-          <div class="cascade-node">
-            <div class="node-formula">H₂CO₃ → H⁺ + HCO₃⁻</div>
-            <div class="node-explanation">
-              <h5>2. Hydrogen Ion Release (pH Drop)</h5>
-              <p>Carbonic acid rapidly dissociates into hydrogen ions (H⁺) and bicarbonate (HCO₃⁻), lowering seawater pH.</p>
-            </div>
-          </div>
-
-          <div class="cascade-node">
-            <div class="node-formula">H⁺ + CO₃²⁻ → HCO₃⁻</div>
-            <div class="node-explanation">
-              <h5>3. Carbonate Ion Depletion</h5>
-              <p>Free H⁺ ions bond with ambient carbonate ions (CO₃²⁻), stripping the critical building block needed for shell formation.</p>
-            </div>
+          <input type="range" min="280" max="800" step="5" value="420" class="slider-styled" id="co2Slider">
+          
+          <div class="preset-row">
+            <button class="pill-preset-btn" onclick="setPreset(280)">1850 Pre-Industrial (280 ppm)</button>
+            <button class="pill-preset-btn active" onclick="setPreset(420)">2025 Present (420 ppm)</button>
+            <button class="pill-preset-btn" onclick="setPreset(750)">2100 High-Emission (750 ppm)</button>
           </div>
         </div>
 
-        <div class="impact-warning">
-          <div class="impact-warning-icon">⚠</div>
-          <div class="impact-warning-text">
-            <strong>Biological Calcification Crisis:</strong> Reduced saturation states of aragonite and calcite make it energetically difficult for pteropods, shellfish, and coral reefs to construct and maintain their shells and skeletons.
+        <!-- Real-Time Dynamic Gauges -->
+        <div class="gauges-grid">
+          <div class="gauge-tile">
+            <span class="gauge-label">Surface Ocean pH</span>
+            <div class="gauge-number" id="phGauge" style="color:var(--cyan);">8.05</div>
+            <span class="gauge-status-sub" id="phChangeSub">Δ -0.20 units</span>
+          </div>
+          <div class="gauge-tile">
+            <span class="gauge-label">[H⁺] Hydrogen Ions</span>
+            <div class="gauge-number" id="hGauge" style="color:var(--amber);">+30%</div>
+            <span class="gauge-status-sub">vs. Pre-industrial</span>
+          </div>
+          <div class="gauge-tile">
+            <span class="gauge-label">Aragonite (Ωarag)</span>
+            <div class="gauge-number" id="aragGauge" style="color:var(--emerald);">2.40</div>
+            <span class="gauge-status-sub" id="aragStatusSub">Supersaturated</span>
+          </div>
+        </div>
+
+        <!-- Dynamic Shell Response Graphic -->
+        <div class="shell-reaction-box" id="shellBox">
+          <div class="shell-icon-wrapper" id="shellIcon">🐚</div>
+          <div class="shell-reaction-text">
+            <h5 id="shellTitle">Calcifying Organisms: Moderate Energetic Stress</h5>
+            <p id="shellDesc">Corals, pteropods, and mollusks expend increased metabolic energy to precipitate CaCO₃ shells as carbonate ion saturation declines.</p>
           </div>
         </div>
       </div>
@@ -250,5 +298,87 @@
     </div>
   </div>
 </div>
+<script src="../shared/deck.js"></script>
+<script>
+const slider = document.getElementById('co2Slider');
+const co2Readout = document.getElementById('co2Readout');
+const phGauge = document.getElementById('phGauge');
+const phChangeSub = document.getElementById('phChangeSub');
+const hGauge = document.getElementById('hGauge');
+const aragGauge = document.getElementById('aragGauge');
+const aragStatusSub = document.getElementById('aragStatusSub');
+const simModeBadge = document.getElementById('simModeBadge');
+const shellTitle = document.getElementById('shellTitle');
+const shellDesc = document.getElementById('shellDesc');
+const shellIcon = document.getElementById('shellIcon');
+const shellBox = document.getElementById('shellBox');
+
+function updateSim(co2) {
+  co2Readout.textContent = co2 + ' ppm';
+  
+  // Thermodynamic empirical approximations:
+  // Pre-industrial: 280 ppm -> pH 8.25, Omega 3.8
+  // Present: 420 ppm -> pH 8.05, Omega 2.4
+  // 800 ppm -> pH 7.75, Omega 0.95 (Corrosive threshold breach!)
+  const normalized = (co2 - 280) / (800 - 280);
+  const ph = (8.25 - (normalized * 0.50)).toFixed(2);
+  const hIncrease = Math.round((Math.pow(10, 8.25 - ph) - 1) * 100);
+  const omega = (3.8 - (normalized * 2.85)).toFixed(2);
+
+  phGauge.textContent = ph;
+  phChangeSub.textContent = 'Δ ' + (ph - 8.25).toFixed(2) + ' units';
+  hGauge.textContent = (hIncrease >= 0 ? '+' : '') + hIncrease + '%';
+  aragGauge.textContent = omega;
+
+  if (omega >= 2.0) {
+    aragGauge.style.color = 'var(--emerald)';
+    phGauge.style.color = 'var(--cyan)';
+    aragStatusSub.textContent = 'Supersaturated';
+    simModeBadge.textContent = 'Stable Saturation';
+    simModeBadge.style.color = 'var(--cyan)';
+    shellIcon.textContent = '🐚';
+    shellTitle.textContent = 'Calcifying Organisms: Intact Shells';
+    shellDesc.textContent = 'Corals and pteropods have sufficient carbonate ions to build strong aragonite structures.';
+    shellBox.style.borderColor = 'rgba(255, 255, 255, 0.08)';
+  } else if (omega >= 1.0) {
+    aragGauge.style.color = 'var(--amber)';
+    phGauge.style.color = 'var(--amber)';
+    aragStatusSub.textContent = 'Stressed';
+    simModeBadge.textContent = 'Moderate Stress';
+    simModeBadge.style.color = 'var(--amber)';
+    shellIcon.textContent = '⚠️';
+    shellTitle.textContent = 'Calcifying Organisms: Severe Energetic Deficit';
+    shellDesc.textContent = 'Corals and mollusks spend massive energy repairing thinning shells; larval development falters.';
+    shellBox.style.borderColor = 'rgba(245, 158, 11, 0.3)';
+  } else {
+    // Under-saturation! Corrosive!
+    aragGauge.style.color = 'var(--rose)';
+    phGauge.style.color = 'var(--rose)';
+    aragStatusSub.textContent = 'CORROSIVE (Ω < 1.0)';
+    simModeBadge.textContent = 'CRITICAL CORROSIVE THRESHOLD';
+    simModeBadge.style.color = 'var(--rose)';
+    shellIcon.textContent = '💀';
+    shellTitle.textContent = 'Under-saturated Sea: Shell Dissolution Active';
+    shellDesc.textContent = 'Net chemical dissolution occurs: living pteropod shells dissolve in ambient seawater within 48 hours.';
+    shellBox.style.borderColor = 'rgba(244, 63, 94, 0.6)';
+    shellBox.style.background = 'rgba(244, 63, 94, 0.12)';
+  }
+}
+
+slider.addEventListener('input', (e) => {
+  updateSim(parseInt(e.target.value));
+});
+
+function setPreset(val) {
+  slider.value = val;
+  updateSim(val);
+  document.querySelectorAll('.pill-preset-btn').forEach(b => {
+    b.classList.toggle('active', b.textContent.includes(val.toString()));
+  });
+}
+
+// Initial
+updateSim(420);
+</script>
 </body>
 </html>

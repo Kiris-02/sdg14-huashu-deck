@@ -1,150 +1,135 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=1920, height=1080">
-<title>Slide 12 — Indicator 14.3.1 Station Sampling</title>
+<title>Slide 12 — Indicator 14.3.1 Station ALOHA & Keeling Curve</title>
 <link rel="stylesheet" href="../shared/deck.css">
 <style>
-  .station-layout {
+  .sampling-grid {
     display: grid;
-    grid-template-columns: 1fr 1.3fr;
+    grid-template-columns: 1fr 1.35fr;
     gap: 40px;
     height: 100%;
-    align-items: center;
+    align-items: stretch;
   }
-  
-  .spec-column {
+
+  .rules-panel {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 16px;
+    justify-content: space-between;
   }
-  
-  .spec-card {
+
+  .rule-card {
     background: var(--bg-card);
     border: 1px solid var(--border-subtle);
     border-radius: 16px;
-    padding: 24px 28px;
-    border-left: 4px solid var(--cyan);
+    padding: 22px 26px;
   }
-  
-  .spec-card h3 {
+
+  .rule-card-title {
     font-family: var(--font-display);
-    font-size: 20px;
+    font-size: 18px;
     color: #FFFFFF;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
   }
-  
-  .spec-card p {
-    font-size: 15px;
+
+  .rule-card p {
+    font-size: 14px;
     color: var(--text-dim);
-    line-height: 1.5;
+    line-height: 1.45;
   }
-  
-  /* Right: Time-Series & Multi-Parameter Visual */
-  .station-visual-card {
+
+  /* Right Side: Interactive Time Series Dashboard */
+  .timeseries-container {
     background: var(--bg-card);
-    border: 1px solid var(--border-subtle);
+    border: 1px solid var(--border-strong);
     border-radius: 20px;
-    padding: 32px;
-    height: 100%;
+    padding: 28px 32px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    box-shadow: 0 16px 36px rgba(0,0,0,0.4);
   }
-  
-  .station-header {
+
+  .ts-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-bottom: 14px;
   }
-  
-  .station-title {
+
+  .ts-title {
     font-family: var(--font-mono);
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 700;
     color: var(--cyan);
     text-transform: uppercase;
     letter-spacing: 0.1em;
   }
-  
-  /* Trend Box */
-  .trend-box {
-    background: rgba(15, 23, 42, 0.7);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 14px;
-    padding: 24px;
-    margin-bottom: 20px;
-  }
-  
-  .trend-chart-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 16px;
-  }
-  
-  .chart-name {
-    font-family: var(--font-display);
-    font-size: 17px;
-    font-weight: 700;
-    color: #FFFFFF;
-  }
-  
-  .chart-metric {
-    font-family: var(--font-mono);
-    font-size: 13px;
-    color: var(--cyan);
-  }
-  
-  .svg-chart-container {
+
+  /* Chart Canvas Simulator */
+  .chart-box {
+    position: relative;
+    height: 280px;
     width: 100%;
-    height: 160px;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 14px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
-  
-  /* Four Core Parameters Grid */
-  .params-grid {
+
+  .chart-svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+
+  .timeline-milestones {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 12px;
-    margin-bottom: 20px;
+    margin-top: 16px;
   }
-  
-  .param-chip {
-    background: rgba(10, 20, 36, 0.8);
-    border: 1px solid rgba(56, 189, 248, 0.2);
-    border-radius: 10px;
-    padding: 12px 14px;
-    text-align: center;
+
+  .milestone-btn {
+    background: rgba(15, 23, 42, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 12px;
+    cursor: pointer;
+    transition: all .2s;
+    text-align: left;
   }
-  
-  .param-code {
+
+  .milestone-btn:hover, .milestone-btn.active {
+    border-color: var(--cyan);
+    background: rgba(56, 189, 248, 0.12);
+    transform: translateY(-2px);
+  }
+
+  .m-year {
     font-family: var(--font-mono);
-    font-size: 16px;
+    font-size: 13px;
     font-weight: 700;
     color: var(--cyan);
-    margin-bottom: 4px;
   }
-  
-  .param-name {
-    font-size: 11px;
-    color: var(--text-dim);
-    line-height: 1.3;
-  }
-  
-  .meta-note {
-    background: rgba(56, 189, 248, 0.06);
-    border: 1px solid rgba(56, 189, 248, 0.18);
-    border-radius: 10px;
-    padding: 12px 18px;
+  .m-val {
     font-size: 13px;
-    color: var(--text-dim);
+    color: #FFFFFF;
+    font-weight: 600;
+    margin-top: 2px;
   }
-  
-  .meta-note strong {
-    color: var(--cyan);
+  .m-desc {
+    font-size: 11px;
+    color: var(--text-muted);
   }
 </style>
 </head>
@@ -154,97 +139,106 @@
     <div class="header-left">
       <div class="badge-row">
         <div class="speaker-pill">Speaker 5</div>
-        <div class="target-badge">Observation Methodology</div>
+        <div class="target-badge">Indicator 14.3.1 Rigor</div>
       </div>
-      <h2 class="slide-title">Representative stations track pH through time</h2>
+      <h2 class="slide-title">Indicator 14.3.1: Sampling stations & carbonate parameters</h2>
     </div>
     <div class="header-right">
       <div class="slide-number-display">12 <span>/ 15</span></div>
-      <div class="track-label">Indicator 14.3.1 Parameters</div>
+      <div class="track-label">Station ALOHA · Hawaii</div>
     </div>
   </div>
 
   <div class="slide-body">
-    <div class="station-layout">
-      <!-- Left Column: Statistical Mandate -->
-      <div class="spec-column">
-        <div class="spec-card">
-          <h3>Indicator 14.3.1 Standard</h3>
-          <p>Average marine acidity (pH) measured at an agreed suite of representative sampling stations, reported on the <strong>total scale (pH_T)</strong>.</p>
+    <div class="sampling-grid">
+      <!-- Left Column: Core Rules -->
+      <div class="rules-panel">
+        <div class="rule-card">
+          <div class="rule-card-title">
+            <span style="color:var(--cyan);">01</span>
+            Representative Sampling Stations
+          </div>
+          <p>Stations must observe frequently enough to characterize natural seasonal fluctuations and provide certified metadata allowing integration into the Global Ocean Acidification Observing Network (GOA-ON).</p>
         </div>
 
-        <div class="spec-card">
-          <h3>The Minimum "Two-of-Four" Rule</h3>
-          <p>Because carbonate equilibrium is mathematically constrained, a complete chemical solution requires measuring at least <strong>two of four core parameters</strong>: pH, pCO₂, DIC, or Total Alkalinity.</p>
+        <div class="rule-card">
+          <div class="rule-card-title">
+            <span style="color:var(--emerald);">02</span>
+            Two-Parameter Thermodynamic Rule
+          </div>
+          <p>A single pH reading cannot resolve long-term acidification from diurnal respiration. Protocols mandate measuring at least <strong>two of four</strong> core parameters: pH, pCO₂, Dissolved Inorganic Carbon (DIC), or Total Alkalinity (TA).</p>
         </div>
 
-        <div class="spec-card">
-          <h3>Distinguishing Season from Secular Trend</h3>
-          <p>Coastal pH naturally swings over daily and seasonal cycles due to photosynthesis and respiration. A single annual snapshot is useless; only high-frequency repeated observation detects the multi-decadal shift.</p>
+        <div class="rule-card">
+          <div class="rule-card-title">
+            <span style="color:var(--amber);">03</span>
+            Mandatory Auxiliary Metadata
+          </div>
+          <p>Every pH submission must record water temperature, salinity, and hydrostatic depth. Without temperature and salinity, thermodynamic carbonate equilibrium dissociation constants cannot be computed.</p>
         </div>
       </div>
 
-      <!-- Right Column: Time Series & Parameter Grid -->
-      <div class="station-visual-card">
-        <div class="station-header">
-          <span class="station-title">Station Time-Series Decomposition</span>
-          <span style="font-family:var(--font-mono); font-size:12px; color:var(--text-muted);">High-Frequency Sensor Mooring</span>
+      <!-- Right Column: Empirical Time-Series Chart -->
+      <div class="timeseries-container">
+        <div class="ts-header">
+          <span class="ts-title">Station ALOHA (22°45'N, 158°00'W) 35-Year Time Series</span>
+          <span class="interactive-chip" id="highlightYearChip">Interactive Timeline</span>
         </div>
 
-        <div class="trend-box">
-          <div class="trend-chart-header">
-            <span class="chart-name">Multi-Decadal Decline vs Seasonal Cycles</span>
-            <span class="chart-metric">Total Scale pH (8.15 → 8.05)</span>
-          </div>
+        <!-- SVG Chart -->
+        <div class="chart-box">
+          <svg class="chart-svg" viewBox="0 0 700 220">
+            <!-- Grid Lines -->
+            <line x1="60" y1="30" x2="680" y2="30" stroke="rgba(255,255,255,0.06)" />
+            <line x1="60" y1="80" x2="680" y2="80" stroke="rgba(255,255,255,0.06)" />
+            <line x1="60" y1="130" x2="680" y2="130" stroke="rgba(255,255,255,0.06)" />
+            <line x1="60" y1="180" x2="680" y2="180" stroke="rgba(255,255,255,0.06)" />
 
-          <!-- Conceptual SVG Chart showing seasonal sinusoidal oscillation overlying a declining secular trendline -->
-          <div class="svg-chart-container">
-            <svg viewBox="0 0 700 160" width="100%" height="100%">
-              <!-- Grid lines -->
-              <line x1="50" y1="30" x2="680" y2="30" stroke="rgba(255,255,255,0.06)" stroke-dasharray="4"/>
-              <line x1="50" y1="80" x2="680" y2="80" stroke="rgba(255,255,255,0.06)" stroke-dasharray="4"/>
-              <line x1="50" y1="130" x2="680" y2="130" stroke="rgba(255,255,255,0.06)" stroke-dasharray="4"/>
-              
-              <text x="15" y="35" fill="#64748B" font-family="monospace" font-size="12">8.20</text>
-              <text x="15" y="85" fill="#64748B" font-family="monospace" font-size="12">8.10</text>
-              <text x="15" y="135" fill="#64748B" font-family="monospace" font-size="12">8.00</text>
-              
-              <!-- Secular long-term linear trendline -->
-              <line x1="60" y1="45" x2="660" y2="125" stroke="#F43F5E" stroke-width="2.5" stroke-dasharray="6"/>
-              
-              <!-- Seasonal oscillating sine wave -->
-              <path d="M 60 45 Q 90 25, 120 55 T 180 65 T 240 75 T 300 85 T 360 95 T 420 100 T 480 110 T 540 120 T 600 125 T 660 135" fill="none" stroke="#38BDF8" stroke-width="2.5"/>
-              
-              <!-- Legend labels inside SVG -->
-              <circle cx="480" cy="25" r="5" fill="#38BDF8"/>
-              <text x="495" y="29" fill="#94A3B8" font-family="sans-serif" font-size="12">High-frequency cycle</text>
-              <line x1="590" y1="25" x2="615" y2="25" stroke="#F43F5E" stroke-width="2" stroke-dasharray="4"/>
-              <text x="625" y="29" fill="#F43F5E" font-family="sans-serif" font-size="12">Secular trend</text>
-            </svg>
-          </div>
+            <!-- Y-Axis Labels -->
+            <text x="15" y="35" fill="#38BDF8" font-size="11" font-family="monospace">420 ppm</text>
+            <text x="15" y="105" fill="#38BDF8" font-size="11" font-family="monospace">380 ppm</text>
+            <text x="15" y="175" fill="#38BDF8" font-size="11" font-family="monospace">350 ppm</text>
+
+            <!-- Curve 1: Atmospheric CO2 (Mauna Loa) - Rising Red/Amber -->
+            <path d="M 70 175 Q 220 150 370 115 T 670 45" fill="none" stroke="#F43F5E" stroke-width="3.5" />
+            
+            <!-- Curve 2: Ocean pH (Aloha) - Inversely Falling Cyan -->
+            <path d="M 70 50 Q 220 75 370 110 T 670 175" fill="none" stroke="#38BDF8" stroke-width="3.5" />
+
+            <!-- Legend Overlay -->
+            <circle cx="200" cy="20" r="4" fill="#F43F5E"/>
+            <text x="210" y="24" fill="#E2E8F0" font-size="11" font-family="sans-serif">Mauna Loa Atmospheric CO₂</text>
+            <circle cx="430" cy="20" r="4" fill="#38BDF8"/>
+            <text x="440" y="24" fill="#E2E8F0" font-size="11" font-family="sans-serif">Station ALOHA Seawater pH</text>
+            
+            <!-- Highlight Marker Circle -->
+            <circle id="markerCo2" cx="370" cy="115" r="7" fill="#F43F5E" stroke="#FFF" stroke-width="2" />
+            <circle id="markerPh" cx="370" cy="110" r="7" fill="#38BDF8" stroke="#FFF" stroke-width="2" />
+          </svg>
         </div>
 
-        <div class="params-grid">
-          <div class="param-chip">
-            <div class="param-code">pH_T</div>
-            <div class="param-name">Total Scale Acidity</div>
+        <!-- Milestones Row -->
+        <div class="timeline-milestones">
+          <div class="milestone-btn" onclick="selectYear(1988, 351, 8.12, 70, 50)">
+            <div class="m-year">1988</div>
+            <div class="m-val">pH 8.12 · 351 ppm</div>
+            <div class="m-desc">HOT Baseline set</div>
           </div>
-          <div class="param-chip">
-            <div class="param-code">pCO₂</div>
-            <div class="param-name">Partial Pressure CO₂</div>
+          <div class="milestone-btn" onclick="selectYear(2000, 369, 8.09, 230, 80)">
+            <div class="m-year">2000</div>
+            <div class="m-val">pH 8.09 · 369 ppm</div>
+            <div class="m-desc">Accelerating trend</div>
           </div>
-          <div class="param-chip">
-            <div class="param-code">DIC</div>
-            <div class="param-name">Dissolved Inorganic Carbon</div>
+          <div class="milestone-btn active" onclick="selectYear(2015, 401, 8.07, 470, 135)">
+            <div class="m-year">2015</div>
+            <div class="m-val">pH 8.07 · 401 ppm</div>
+            <div class="m-desc">SDG 14 Adopted</div>
           </div>
-          <div class="param-chip">
-            <div class="param-code">TA</div>
-            <div class="param-name">Total Alkalinity</div>
+          <div class="milestone-btn" onclick="selectYear(2025, 424, 8.05, 670, 175)">
+            <div class="m-year">2025</div>
+            <div class="m-val">pH 8.05 · 424 ppm</div>
+            <div class="m-desc">Present record low</div>
           </div>
-        </div>
-
-        <div class="meta-note">
-          <strong>Key Mandatory Metadata:</strong> Temperature, Salinity, and Exact Water Depth must accompany every sample to calculate carbonate saturation states (Ω_aragonite).
         </div>
       </div>
     </div>
@@ -252,12 +246,26 @@
 
   <div class="slide-footer">
     <div class="footer-source">
-      <strong>Source:</strong> UNSD Metadata for Indicator 14.3.1 (Updated December 2023) [9].
+      <strong>Source:</strong> Hawaii Ocean Time-series (HOT); Scripps Institution of Oceanography; IOC-UNESCO [9–10].
     </div>
     <div class="footer-rule">
-      Rule: Clarify why single pH readings are insufficient and why two of four parameters are required.
+      Rule: 14.3.1 requires at least 2 of 4 carbonate parameters plus temperature, salinity, and depth.
     </div>
   </div>
 </div>
+<script src="../shared/deck.js"></script>
+<script>
+function selectYear(yr, co2, ph, cx, cy) {
+  document.getElementById('highlightYearChip').textContent = yr + ' Data: ' + co2 + ' ppm | pH ' + ph;
+  document.getElementById('markerCo2').setAttribute('cx', cx);
+  document.getElementById('markerCo2').setAttribute('cy', (220 - (co2 - 340) * 1.6));
+  document.getElementById('markerPh').setAttribute('cx', cx);
+  document.getElementById('markerPh').setAttribute('cy', cy);
+
+  document.querySelectorAll('.milestone-btn').forEach(b => {
+    b.classList.toggle('active', b.textContent.includes(yr.toString()));
+  });
+}
+</script>
 </body>
 </html>

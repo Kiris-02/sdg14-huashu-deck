@@ -1,0 +1,122 @@
+{
+  "1": {
+    "speaker": "Speaker 1",
+    "role": "Target 14.1 + Indicator 14.1.1",
+    "time": "2:10 (Slides 1-4)",
+    "headline": "Opening & Overview of SDG 14.1, 14.2 & 14.3",
+    "script": "Good morning. Our presentation examines three connected targets under Sustainable Development Goal 14, Life Below Water. Together, Targets 14.1, 14.2 and 14.3 ask three different questions: How can we reduce the pressures entering the ocean? How can we manage ecosystems so they remain resilient? And how can we monitor a global chemical change such as ocean acidification? For each target, we will explain its aim, indicator, measurement method and governance system.",
+    "cue": "Setting the stage: emphasize that these three targets form a unified chain from land-based pressure to chemical transformation."
+  },
+  "2": {
+    "speaker": "Speaker 1",
+    "role": "Target 14.1 + Indicator 14.1.1",
+    "time": "Slide 2 of 4",
+    "headline": "The Causal Chain of Ocean Risk",
+    "script": "Across these three targets, we are not looking at isolated problems. Target 14.1 reduces the pressure of pollution coming from land. Target 14.2 manages the health and resilience of coastal ecosystems to withstand those pressures. And Target 14.3 tracks how global atmospheric emissions are fundamentally altering the chemistry of seawater itself. If we fail at 14.1, 14.2 becomes harder, and 14.3 compounds the crisis.",
+    "cue": "Highlight the causal continuity across all three targets before diving into Target 14.1."
+  },
+  "3": {
+    "speaker": "Speaker 1",
+    "role": "Target 14.1 + Indicator 14.1.1",
+    "time": "Slide 3 of 4",
+    "headline": "Target 14.1: Land-to-Sea Pollution Pressures",
+    "script": "We begin with Target 14.1. It called for countries, by 2025, to prevent and significantly reduce marine pollution of all kinds, especially pollution from land-based activities. The target specifically highlights marine debris and nutrient pollution. Nutrients from fertilizers and wastewater can stimulate excessive algal growth, while plastic waste persists in beaches, surface waters, the water column and the seabed. Although the 2025 deadline has passed, the monitoring question remains urgent: are these pollution pressures actually declining?",
+    "cue": "Note that 80% of marine pollution originates on land. Emphasize the expired 2025 deadline and ongoing monitoring urgency."
+  },
+  "4": {
+    "speaker": "Speaker 1",
+    "role": "Target 14.1 + Indicator 14.1.1",
+    "time": "Slide 4 of 4",
+    "headline": "Indicator 14.1.1: Eutrophication and Plastic Debris",
+    "script": "The official measure is Indicator 14.1.1, which has two parts. Part A is the Index of Coastal Eutrophication, and Part B is plastic debris density. This design is important because there is no single universal measure of marine pollution. The first part tracks nutrient-related pressure and abnormal biological productivity, while the second tracks the amount and distribution of plastic litter. Together, they connect land-based human activity with observable conditions in coastal and marine environments. The indicator therefore tells us what must be monitored. Speaker 2 will now explain how these two very different forms of pollution are measured, validated and governed.",
+    "cue": "HANDOFF TO SPEAKER 2: Introduce Speaker 2 who will explain measurement and governance systems."
+  },
+  "5": {
+    "speaker": "Speaker 2",
+    "role": "Measurement 14.1.1 + Governance 14.1",
+    "time": "2:30 (Slides 5-6)",
+    "headline": "Measuring Indicator 14.1.1: Dual-Level Observation",
+    "script": "Indicator 14.1.1 uses a two-level measurement system. Level 1 relies on globally available satellite observations and models. Level 2 uses national monitoring data to add detail and verify the global products. For eutrophication, one method estimates the loads and ratios of nitrogen, phosphorus and silica delivered by rivers to coastal waters. Excess nitrogen or phosphorus relative to silica produces a positive coastal eutrophication potential and signals a risk of harmful algal growth. Satellite data also track chlorophyll-a, a proxy for phytoplankton biomass. Monthly values within a country’s territorial sea and exclusive economic zone are compared with a 2000-to-2004 baseline to identify unusually elevated conditions. Countries can strengthen this assessment with in-situ measurements of chlorophyll-a, nutrients and dissolved silica. Plastic pollution requires several observation methods: beach surveys count items per 100 square metres; floating plastics are recorded visually or via manta trawls; while trawls, divers, cameras and ROVs assess the seabed.",
+    "cue": "Explain the distinction between global remote sensing (Level 1) and ground-truth national data (Level 2)."
+  },
+  "6": {
+    "speaker": "Speaker 2",
+    "role": "Measurement 14.1.1 + Governance 14.1",
+    "time": "Slide 2 of 2",
+    "headline": "Governance Framework & Source-to-Sea Regulation",
+    "script": "Governance operates across several levels. UNEP is the official custodian agency: it compiles data and coordinates quality assurance. National governments provide or validate data, commonly through UNEP’s Regional Seas Conventions and Action Plans. Implementation depends on national controls over wastewater, agricultural nutrient runoff and solid waste, supported internationally by the Global Programme of Action for land-based pollution. The central lesson is that monitoring identifies pollution patterns, but governments still need enforceable source-control policies to change them. Reducing pollution is only one layer of ocean protection. Speaker 3 will now turn to the management and resilience of marine ecosystems under Target 14.2.",
+    "cue": "HANDOFF TO SPEAKER 3: Conclude that monitoring alone does not fix the sea—source-control policies are required."
+  },
+  "7": {
+    "speaker": "Speaker 3",
+    "role": "Target 14.2 + Indicator 14.2.1",
+    "time": "2:20 (Slides 7-8)",
+    "headline": "Target 14.2: Ecosystem-Based Management",
+    "script": "Target 14.2 moves from reducing individual pressures to managing the ecosystem as a whole. It called for countries, by 2020, to sustainably manage and protect marine and coastal ecosystems, avoid significant adverse impacts, strengthen ecological resilience and take action for restoration. The foundation of this target is the Ecosystem Approach—managing human activities within ecological limits rather than managing species or economic sectors in isolation. Like Target 14.1, the target year was 2020, but the requirement for ecosystem-based management remains central to global ocean policy.",
+    "cue": "Define the Ecosystem Approach: shifting away from fragmented single-sector silos toward cross-boundary resilience."
+  },
+  "8": {
+    "speaker": "Speaker 3",
+    "role": "Target 14.2 + Indicator 14.2.1",
+    "time": "Slide 2 of 2",
+    "headline": "Indicator 14.2.1: Management Architecture vs Environmental Health",
+    "script": "The official measure is Indicator 14.2.1: the number of countries using ecosystem-based approaches to manage marine areas. It is crucial to understand what this indicator does and does not do. It does not measure ecological condition directly, such as coral reef cover, fish abundance or water quality. Instead, it asks whether a country has created integrated planning and management arrangements capable of addressing competing uses and cumulative pressures. That makes it practical for global reporting, but it also creates an important limitation: adopting a plan is not the same as implementing it successfully. Speaker 4 will explain how countries are assessed and which institutions turn these plans into action.",
+    "cue": "HANDOFF TO SPEAKER 4: Stress the crucial distinction between governance capacity (having a plan) vs ecological outcome."
+  },
+  "9": {
+    "speaker": "Speaker 4",
+    "role": "Measurement 14.2.1 + Governance 14.2",
+    "time": "2:35 (Slides 9-10)",
+    "headline": "The 4-Stage Maturity Assessment Rubric",
+    "script": "Measurement of Indicator 14.2.1 begins with national reporting rather than a single environmental sensor. First, a country identifies the authorities responsible for coastal and marine planning. Second, it maps the boundaries of relevant plans at national, sub-national and local levels—including Integrated Coastal Zone Management, Marine Spatial Planning, marine protected areas, and marine zoning. Third, the responsible authorities complete a questionnaire and classify each plan by its stage of development. The official methodology recognizes four stages: initial plan preparation; plan development; formal adoption or designation; and implementation with adaptive management. UNEP and the Regional Seas programmes validate submissions through automated checks, manual review and comparison with national sources. For global reporting, countries with qualifying ecosystem-based arrangements are counted. Missing national values are not imputed.",
+    "cue": "Walk through the 4-stage progression: Preparation -> Development -> Formal Adoption -> Adaptive Implementation."
+  },
+  "10": {
+    "speaker": "Speaker 4",
+    "role": "Measurement 14.2.1 + Governance 14.2",
+    "time": "Slide 2 of 2",
+    "headline": "Governance Capacity vs Policy Performance (Paper Parks)",
+    "script": "Governance is necessarily cross-sectoral. UNEP is the custodian agency and compiles the indicator with the Regional Seas Programme. National governments supply the data, while environment, fisheries, transport, tourism and spatial-planning authorities all participate. At regional level, Regional Seas Conventions provide legal platforms for shared basins. At national level, tools include ICZM, MSP, protected-area regulation, and restoration programs, reinforced by UNCLOS and the Kunming-Montreal Global Biodiversity Framework. However, the official metadata is explicit: Indicator 14.2.1 measures policy formulation, not policy performance. A country may receive recognition for having a plan even if enforcement, finance or ecological outcomes remain weak—creating what conservationists call paper parks. Even strong ecosystem management cannot remove every global pressure. Speaker 5 will now examine ocean acidification under Target 14.3.",
+    "cue": "HANDOFF TO SPEAKER 5: Emphasize the Paper Park risk before transitioning to ocean acidification."
+  },
+  "11": {
+    "speaker": "Speaker 5",
+    "role": "Target 14.3 + Indicator 14.3.1",
+    "time": "2:20 (Slides 11-12)",
+    "headline": "Target 14.3: The Global Shift in Ocean Chemistry",
+    "script": "Target 14.3 addresses a less visible but global threat: ocean acidification. It aims to minimize and address its impacts, including through stronger scientific cooperation at every level. Ocean acidification means a long-term decline in seawater pH, caused mainly when the ocean absorbs carbon dioxide from the atmosphere. The ocean does not become chemically acidic; rather, it becomes less alkaline. This shift changes carbonate chemistry and can reduce the availability of carbonate minerals used by corals, shellfish and other organisms to build skeletons and shells. Unlike Targets 14.1 and 14.2, Target 14.3 does not specify a deadline. Its wording recognizes that no country can monitor or solve the problem alone. The root cause is global carbon dioxide emissions, while the biological impacts vary according to local conditions such as temperature, freshwater input, nutrients and upwelling. Scientific cooperation is therefore part of the target itself.",
+    "cue": "Correct the common misconception: ocean is becoming less alkaline (pH drops from 8.2 to 8.1, +30% H+ ions), not acidic."
+  },
+  "12": {
+    "speaker": "Speaker 5",
+    "role": "Target 14.3 + Indicator 14.3.1",
+    "time": "Slide 2 of 2",
+    "headline": "Indicator 14.3.1: Marine Acidity & Carbonate Parameters",
+    "script": "The official measure is Indicator 14.3.1: average marine acidity, expressed as pH, measured at an agreed suite of representative sampling stations. A representative station must collect data frequently enough to describe natural variability and long-term trends, use adequate quality controls and provide metadata that allow its results to be combined with other sites. The headline value is pH on the total scale, but a reliable assessment of the seawater carbonate system requires at least two of four core parameters: pH, partial pressure of carbon dioxide, dissolved inorganic carbon and total alkalinity. This matters because a single pH reading cannot distinguish a long-term trend from daily or seasonal variation. Speaker 6 will explain how observations become a comparable annual indicator and how the international reporting system is governed.",
+    "cue": "HANDOFF TO SPEAKER 6: Emphasize why measuring at least 2 of 4 carbonate parameters is essential for thermodynamic calculations."
+  },
+  "13": {
+    "speaker": "Speaker 6",
+    "role": "Measurement 14.3.1 + Governance 14.3 + Synthesis",
+    "time": "2:45 (Slides 13-15)",
+    "headline": "Measurement Pipeline & Data Quality Flags for 14.3.1",
+    "script": "Indicator 14.3.1 is built from repeated observations rather than one-off samples. pH may be measured directly using calibrated instruments, or calculated from two other carbonate-system parameters such as total alkalinity, dissolved inorganic carbon and partial pressure of CO₂. Every submitted dataset must also include temperature, salinity and sampling depth, because these conditions affect carbonate chemistry. Metadata record the equipment, procedures, location and measurement uncertainty. Sampling frequency must be sufficient to characterize the seasonal cycle at each station. The reported pH value is an equally weighted annual mean, accompanied by its standard deviation and its minimum-to-maximum range. Data providers perform primary quality control, while IOC-UNESCO and expert reviewers harmonize the data and assess metadata completeness.",
+    "cue": "Explain why temperature, salinity, and depth are mandatory auxiliary variables for carbonate equilibrium calculation."
+  },
+  "14": {
+    "speaker": "Speaker 6",
+    "role": "Measurement 14.3.1 + Governance 14.3 + Synthesis",
+    "time": "Slide 2 of 3",
+    "headline": "Institutional Architecture: IOC-UNESCO & GOA-ON",
+    "script": "The Intergovernmental Oceanographic Commission of UNESCO is the custodian agency. It requests annual submissions from Member States through national statistical offices, IOC focal points and National Oceanographic Data Centres. Researchers and observing programmes can submit data through the SDG 14.3.1 Data Portal. The Global Ocean Acidification Observing Network supports scientific coordination, while IOC’s International Oceanographic Data and Information Exchange supports data management and sharing. National climate and marine policies address mitigation and adaptation, while international climate cooperation is necessary to reduce the carbon dioxide emissions driving the problem.",
+    "cue": "Highlight the global data harmonization pipeline coordinated by IOC-UNESCO and GOA-ON across national focal points."
+  },
+  "15": {
+    "speaker": "Speaker 6",
+    "role": "Measurement 14.3.1 + Governance 14.3 + Synthesis",
+    "time": "Slide 3 of 3",
+    "headline": "Final Synthesis: The Integrated Ocean Governance Chain",
+    "script": "Across the three targets, we can now see one governance chain. Target 14.1 measures pollution pressures entering marine environments. Target 14.2 asks whether countries have integrated systems to protect and restore ecosystems. Target 14.3 uses standardized scientific observation to track a global chemical threat. The indicators are different because the problems are different: one combines physical pollution data, one counts governance arrangements, and one relies on carbonate chemistry. Effective ocean protection requires all four elements we examined: clear targets, meaningful indicators, credible measurement, and institutions capable of acting on the evidence. Thank you for your attention.",
+    "cue": "GRAND CONCLUSION: Deliver the unified takeaway: Clear Targets -> Meaningful Indicators -> Credible Science -> Enforceable Institutions."
+  }
+}

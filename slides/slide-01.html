@@ -1,155 +1,246 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=1920, height=1080">
-<title>Slide 01 — SDG 14.1–14.3 Overview</title>
+<title>Slide 01 — Executive Overview</title>
 <link rel="stylesheet" href="../shared/deck.css">
 <style>
-  .hero-wrapper {
+  .title-wrapper {
+    display: grid;
+    grid-template-columns: 1.35fr 1fr;
+    gap: 60px;
+    height: 100%;
+    align-items: center;
+  }
+  
+  .title-content {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    height: 100%;
-    padding-left: 40px;
-    max-width: 1440px;
+    gap: 24px;
   }
   
-  .super-tag {
-    font-family: var(--font-mono);
-    font-size: 16px;
-    font-weight: 600;
-    color: var(--cyan);
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    margin-bottom: 24px;
-    display: flex;
+  .sdg-tag {
+    display: inline-flex;
     align-items: center;
     gap: 12px;
+    padding: 8px 18px;
+    border-radius: 999px;
+    background: rgba(56, 189, 248, 0.12);
+    border: 1px solid var(--border-strong);
+    color: var(--cyan);
+    font-family: var(--font-mono);
+    font-size: 14px;
+    font-weight: 700;
+    width: fit-content;
+    letter-spacing: 0.08em;
   }
   
-  .super-tag::before {
-    content: '';
-    display: inline-block;
-    width: 28px;
-    height: 2px;
-    background: var(--cyan);
-  }
-  
-  .main-hero-title {
+  .main-heading {
     font-family: var(--font-display);
-    font-size: 76px;
+    font-size: 64px;
     font-weight: 800;
     line-height: 1.08;
-    letter-spacing: -0.04em;
-    margin-bottom: 28px;
-    background: linear-gradient(135deg, #FFFFFF 30%, #BAE6FD 100%);
+    letter-spacing: -0.035em;
+    background: linear-gradient(135deg, #FFFFFF 40%, #94A3B8 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
   
-  .hero-subclaim {
-    font-size: 26px;
-    line-height: 1.5;
+  .sub-heading {
+    font-size: 24px;
     color: var(--text-dim);
-    max-width: 980px;
-    margin-bottom: 48px;
+    line-height: 1.45;
+    max-width: 820px;
   }
   
-  .pillars-grid {
+  .roster-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
-    width: 100%;
-  }
-  
-  .pillar-card {
-    background: rgba(15, 23, 42, 0.7);
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    background: var(--bg-card);
     border: 1px solid var(--border-subtle);
-    border-radius: 14px;
+    border-radius: 20px;
     padding: 24px;
-    position: relative;
-    overflow: hidden;
+    backdrop-filter: blur(12px);
   }
   
-  .pillar-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--cyan), transparent);
+  .roster-card {
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
+    padding: 16px;
+    transition: all .2s;
+    cursor: pointer;
+  }
+  .roster-card:hover {
+    border-color: var(--cyan);
+    transform: translateY(-2px);
+    background: rgba(56, 189, 248, 0.08);
   }
   
-  .pillar-num {
+  .roster-spk {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--cyan);
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .roster-name {
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-bottom: 2px;
+  }
+  .roster-topic {
+    font-size: 12px;
+    color: var(--text-dim);
+  }
+
+  /* Right Side: Telemetry Globe & Metric Console */
+  .telemetry-console {
+    background: var(--bg-card);
+    border: 1px solid var(--border-strong);
+    border-radius: 24px;
+    padding: 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+  }
+  
+  .console-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-bottom: 16px;
+  }
+  
+  .console-title {
     font-family: var(--font-mono);
     font-size: 13px;
     font-weight: 700;
     color: var(--cyan);
-    margin-bottom: 8px;
     letter-spacing: 0.1em;
+    text-transform: uppercase;
   }
   
-  .pillar-name {
-    font-family: var(--font-display);
-    font-size: 22px;
+  .telemetry-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .telemetry-label {
+    font-size: 14px;
+    color: var(--text-dim);
+  }
+  .telemetry-val {
+    font-family: var(--font-mono);
+    font-size: 16px;
     font-weight: 700;
     color: #FFFFFF;
-    margin-bottom: 6px;
   }
   
-  .pillar-desc {
-    font-size: 14px;
-    color: var(--text-muted);
-    line-height: 1.45;
+  .big-metric-callout {
+    background: rgba(56, 189, 248, 0.06);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .metric-large {
+    font-family: var(--font-display);
+    font-size: 40px;
+    font-weight: 800;
+    color: var(--cyan);
+    line-height: 1;
+  }
+  .metric-desc {
+    font-size: 13px;
+    color: var(--text-dim);
+    line-height: 1.4;
   }
 </style>
 </head>
 <body>
 <div class="slide-stage">
-  <div class="slide-header">
-    <div class="header-left">
-      <div class="badge-row">
-        <div class="speaker-pill">Speaker 1</div>
-        <div class="target-badge">UN SDG 14 · Life Below Water</div>
-      </div>
-    </div>
-    <div class="header-right">
-      <div class="slide-number-display">01 <span>/ 15</span></div>
-      <div class="track-label">Executive Opening</div>
-    </div>
-  </div>
-
   <div class="slide-body">
-    <div class="hero-wrapper">
-      <div class="super-tag">Global Ocean Governance Framework</div>
-      <h1 class="main-hero-title">SDG 14.1–14.3: How Ocean Progress Is Governed and Measured</h1>
-      <p class="hero-subclaim">
-        Examining the continuum between international political ambition, quantitative empirical evidence, and cross-border institutional compliance across three interconnected marine crises.
-      </p>
+    <div class="title-wrapper">
+      <div class="title-content">
+        <div class="sdg-tag">
+          <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:var(--cyan); box-shadow:0 0 10px var(--cyan);"></span>
+          UNITED NATIONS SDG 14 · LIFE BELOW WATER
+        </div>
+        <h1 class="main-heading">How Ocean Progress Is Governed and Measured</h1>
+        <p class="sub-heading">A 15-minute multi-speaker investigation into Targets 14.1, 14.2, and 14.3: moving from land-based pressure reduction to holistic ecosystem resilience and ocean acidification chemistry.</p>
+        
+        <div class="roster-grid">
+          <div class="roster-card">
+            <div class="roster-spk">Speaker 1</div>
+            <div class="roster-name">Targets & Indicators</div>
+            <div class="roster-topic">14.1 Pollution Pressures</div>
+          </div>
+          <div class="roster-card">
+            <div class="roster-spk">Speaker 2</div>
+            <div class="roster-name">Measurement & Regs</div>
+            <div class="roster-topic">14.1 Remote Sensing</div>
+          </div>
+          <div class="roster-card">
+            <div class="roster-spk">Speaker 3</div>
+            <div class="roster-name">Ecosystem Paradigm</div>
+            <div class="roster-topic">14.2 Ecosystem Approach</div>
+          </div>
+          <div class="roster-card">
+            <div class="roster-spk">Speaker 4</div>
+            <div class="roster-name">Maturity & Governance</div>
+            <div class="roster-topic">14.2 4-Stage Rubric</div>
+          </div>
+          <div class="roster-card">
+            <div class="roster-spk">Speaker 5</div>
+            <div class="roster-name">Seawater Chemistry</div>
+            <div class="roster-topic">14.3 Acidification Shift</div>
+          </div>
+          <div class="roster-card">
+            <div class="roster-spk">Speaker 6</div>
+            <div class="roster-name">Harmonization & Close</div>
+            <div class="roster-topic">14.3 Global Synthesis</div>
+          </div>
+        </div>
+      </div>
 
-      <div class="pillars-grid">
-        <div class="pillar-card">
-          <div class="pillar-num">DIMENSION 01</div>
-          <div class="pillar-name">Targets</div>
-          <div class="pillar-desc">Agreed international policy mandates and timelines established by UN member states.</div>
+      <!-- Right Column Telemetry -->
+      <div class="telemetry-console">
+        <div class="console-header">
+          <span class="console-title">Presentation Telemetry</span>
+          <span class="interactive-chip">Live Session</span>
         </div>
-        <div class="pillar-card">
-          <div class="pillar-num">DIMENSION 02</div>
-          <div class="pillar-name">Indicators</div>
-          <div class="pillar-desc">Standardized statistical variables (14.1.1, 14.2.1, 14.3.1) designed for uniform tracking.</div>
+
+        <div class="telemetry-item">
+          <span class="telemetry-label">Presentation Horizon</span>
+          <span class="telemetry-val">15 Minutes (6 Speakers)</span>
         </div>
-        <div class="pillar-card">
-          <div class="pillar-num">DIMENSION 03</div>
-          <div class="pillar-name">Measurement</div>
-          <div class="pillar-desc">Earth observation satellites, oceanic buoys, in-situ water sampling, and national reporting.</div>
+        <div class="telemetry-item">
+          <span class="telemetry-label">Mandate Scope</span>
+          <span class="telemetry-val">Targets 14.1 · 14.2 · 14.3</span>
         </div>
-        <div class="pillar-card">
-          <div class="pillar-num">DIMENSION 04</div>
-          <div class="pillar-name">Governance</div>
-          <div class="pillar-desc">Custodian agencies (UNEP, IOC-UNESCO), Regional Seas, and sovereign enforceable laws.</div>
+        <div class="telemetry-item">
+          <span class="telemetry-label">Primary Custodians</span>
+          <span class="telemetry-val">UNEP · IOC-UNESCO</span>
+        </div>
+
+        <div class="big-metric-callout">
+          <div class="metric-large">71%</div>
+          <div class="metric-desc">Of the Earth's surface governed by ocean chemical & biological equilibrium—now under coordinated multilateral measurement.</div>
+        </div>
+
+        <div class="telemetry-item" style="border-top:1px solid rgba(255,255,255,0.06); padding-top:14px;">
+          <span class="telemetry-label">Presentation Controls</span>
+          <span style="font-family:var(--font-mono); font-size:12px; color:var(--cyan);">Press [C] for Cue Cards · [M] for BGM</span>
         </div>
       </div>
     </div>
@@ -157,12 +248,13 @@
 
   <div class="slide-footer">
     <div class="footer-source">
-      <strong>Source:</strong> UN Statistics Division, Goal 14 Global Indicator Framework [1]
+      <strong>Source:</strong> UN Statistics Division; UNEP; IOC-UNESCO Ocean Acidification Framework [1–2].
     </div>
     <div class="footer-rule">
-      Rule: Deliver clear visual claim; verbal script unpacks context and methodology.
+      Rule: 15-minute presentation · 6 speakers · 2 content units per speaker.
     </div>
   </div>
 </div>
+<script src="../shared/deck.js"></script>
 </body>
 </html>

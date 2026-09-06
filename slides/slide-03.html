@@ -1,170 +1,142 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=1920, height=1080">
-<title>Slide 03 — Target 14.1 Source-to-Sea</title>
+<title>Slide 03 — Target 14.1 Land-to-Sea Pressures</title>
 <link rel="stylesheet" href="../shared/deck.css">
 <style>
-  .layout-grid {
+  .s2s-layout {
     display: grid;
     grid-template-columns: 1fr 1.35fr;
-    gap: 48px;
+    gap: 40px;
     height: 100%;
-    align-items: center;
+    align-items: stretch;
   }
-  
-  .points-panel {
+
+  .policy-col {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 16px;
+    justify-content: space-between;
   }
-  
-  .deadline-alert {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    padding: 8px 16px;
-    border-radius: 8px;
-    background: rgba(244, 63, 94, 0.12);
-    border: 1px solid rgba(244, 63, 94, 0.35);
-    color: var(--rose);
-    font-family: var(--font-mono);
-    font-size: 13px;
-    font-weight: 600;
-    width: fit-content;
-  }
-  
-  .key-claim-card {
+
+  .target-statement-box {
     background: var(--bg-card);
     border: 1px solid var(--border-subtle);
     border-radius: 16px;
     padding: 24px 28px;
-    border-left: 4px solid var(--amber);
+    border-left: 4px solid var(--cyan);
   }
-  
-  .key-claim-card h3 {
+
+  .target-statement-box h3 {
     font-family: var(--font-display);
     font-size: 22px;
     color: #FFFFFF;
     margin-bottom: 8px;
   }
-  
-  .key-claim-card p {
+
+  .target-statement-box p {
     font-size: 15px;
     color: var(--text-dim);
-    line-height: 1.5;
+    line-height: 1.55;
   }
-  
-  /* Diagram: Source-to-Sea Landscape Flow */
-  .diagram-container {
+
+  .expired-deadline-alert {
+    background: rgba(245, 158, 11, 0.08);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+    border-radius: 12px;
+    padding: 16px 20px;
+    display: flex;
+    gap: 14px;
+    align-items: center;
+  }
+
+  .expired-deadline-alert strong {
+    color: var(--amber);
+    font-family: var(--font-mono);
+    font-size: 13px;
+    text-transform: uppercase;
+  }
+
+  /* Right Side: Interactive Source-to-Sea Watershed */
+  .catchment-container {
     background: var(--bg-card);
-    border: 1px solid var(--border-subtle);
+    border: 1px solid var(--border-strong);
     border-radius: 20px;
-    padding: 32px;
-    height: 100%;
+    padding: 28px 32px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
   }
-  
-  .diagram-title {
-    font-family: var(--font-mono);
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--cyan);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-bottom: 24px;
+
+  .catchment-header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-bottom: 14px;
   }
-  
-  .source-flow-graphic {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
-    margin-bottom: 24px;
+
+  .catchment-stages {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin: 16px 0;
   }
-  
-  .flow-column {
-    background: rgba(15, 23, 42, 0.6);
+
+  .s2s-stage-card {
+    background: rgba(15, 23, 42, 0.7);
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 12px;
-    padding: 20px 16px;
-    display: flex;
-    flex-direction: column;
+    padding: 16px 20px;
+    display: grid;
+    grid-template-columns: 130px 1fr auto;
     align-items: center;
-    text-align: center;
-    position: relative;
+    gap: 18px;
+    transition: all .2s;
   }
-  
-  .flow-column::after {
-    content: '→';
-    position: absolute;
-    right: -12px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--cyan);
-    font-size: 20px;
-    font-weight: 700;
+  .s2s-stage-card:hover {
+    border-color: var(--cyan);
+    background: rgba(56, 189, 248, 0.06);
   }
-  
-  .flow-column:last-child::after {
-    display: none;
-  }
-  
-  .flow-icon {
-    width: 48px;
-    height: 48px;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 14px;
-  }
-  
-  .flow-1 .flow-icon { background: rgba(245, 158, 11, 0.15); color: var(--amber); }
-  .flow-2 .flow-icon { background: rgba(56, 189, 248, 0.15); color: var(--cyan); }
-  .flow-3 .flow-icon { background: rgba(16, 185, 129, 0.15); color: var(--emerald); }
-  .flow-4 .flow-icon { background: rgba(244, 63, 94, 0.15); color: var(--rose); }
-  
-  .flow-step-label {
+
+  .stage-badge {
     font-family: var(--font-mono);
-    font-size: 11px;
-    color: var(--text-muted);
-    margin-bottom: 4px;
-    letter-spacing: 0.06em;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 6px 10px;
+    border-radius: 6px;
+    text-align: center;
   }
-  
-  .flow-step-name {
+
+  .stage-info h5 {
     font-family: var(--font-display);
     font-size: 16px;
-    font-weight: 700;
     color: #FFFFFF;
-    margin-bottom: 8px;
+    margin-bottom: 2px;
   }
-  
-  .flow-step-detail {
+  .stage-info p {
     font-size: 13px;
     color: var(--text-dim);
-    line-height: 1.4;
   }
-  
-  .summary-banner {
-    background: rgba(56, 189, 248, 0.06);
-    border: 1px solid rgba(56, 189, 248, 0.18);
-    border-radius: 10px;
+
+  .stage-metric {
+    font-family: var(--font-mono);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--cyan);
+  }
+
+  /* Interactive Toggle Bar */
+  .control-bar {
+    background: rgba(15, 23, 42, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
     padding: 14px 20px;
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    font-size: 14px;
-  }
-  
-  .summary-banner strong {
-    color: var(--cyan);
+    align-items: center;
   }
 </style>
 </head>
@@ -176,87 +148,80 @@
         <div class="speaker-pill">Speaker 1</div>
         <div class="target-badge">Target 14.1 Focus</div>
       </div>
-      <h2 class="slide-title">Target 14.1 tackles pollution before it accumulates at sea</h2>
+      <h2 class="slide-title">Target 14.1 targets land-to-sea pollution pressures</h2>
     </div>
     <div class="header-right">
       <div class="slide-number-display">03 <span>/ 15</span></div>
-      <div class="track-label">Marine Pollution</div>
+      <div class="track-label">Source-to-Sea Dynamics</div>
     </div>
   </div>
 
   <div class="slide-body">
-    <div class="layout-grid">
-      <!-- Left Column: Core Policy Claims -->
-      <div class="points-panel">
-        <div class="deadline-alert">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          CRITICAL TIMELINE: ORIGINAL DEADLINE 2025 (ELAPSED)
+    <div class="s2s-layout">
+      <!-- Left Column -->
+      <div class="policy-col">
+        <div class="target-statement-box">
+          <h3>The 2025 Mandate</h3>
+          <p>By 2025, prevent and significantly reduce marine pollution of all kinds, in particular from land-based activities, including marine debris and nutrient pollution.</p>
         </div>
 
-        <div class="key-claim-card">
-          <h3>Land-Based Upstream Priority</h3>
-          <p>Over 80% of marine litter and nearly all coastal eutrophication originate from inland agricultural fertilizer runoff and untreated municipal waste.</p>
+        <div class="expired-deadline-alert">
+          <span style="font-size:24px;">⏳</span>
+          <div>
+            <strong>Expired 2025 Target Horizon:</strong>
+            <p style="font-size:13px; color:#FDE68A; margin-top:2px;">Although the 2025 deadline has formally passed, global monitoring remains critical to determine whether agricultural runoff and plastic discharge are peaking.</p>
+          </div>
         </div>
 
-        <div class="key-claim-card">
-          <h3>Dual Chemical & Physical Targets</h3>
-          <p>Target 14.1 mandates significant prevention across two distinct pollutant classes: biologically disruptive nutrients (N & P) and durable solid debris (plastics).</p>
-        </div>
-
-        <div class="key-claim-card">
-          <h3>The Urgent Evaluation Question</h3>
-          <p>With the 2025 milestone passed, the governance burden shifts from setting ambitious reduction goals to verifying if actual environmental influx is diminishing.</p>
+        <div class="target-statement-box" style="border-left-color: var(--emerald);">
+          <h3>The 80% Land-Origin Rule</h3>
+          <p>Over 80% of marine pollution originates hundreds of kilometers inland via river catchments, municipal storm drains, wastewater plants, and agricultural fertilizer runoff.</p>
         </div>
       </div>
 
-      <!-- Right Column: Source-to-Sea Spatial Model -->
-      <div class="diagram-container">
-        <div class="diagram-title">
-          <span>Source-To-Sea Hydrological Transport Model</span>
-          <span style="color:var(--text-muted);">UNEP GPA Framework</span>
+      <!-- Right Column: Interactive Watershed Pathway -->
+      <div class="catchment-container">
+        <div class="catchment-header">
+          <span style="font-family:var(--font-mono); font-size:13px; font-weight:700; color:var(--cyan); text-transform:uppercase;">Hydrological Catchment Pathway</span>
+          <span class="interactive-chip" id="scenarioChip">Current Unregulated Runoff</span>
         </div>
 
-        <div class="source-flow-graphic">
-          <div class="flow-column flow-1">
-            <div class="flow-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11"/></svg>
+        <div class="catchment-stages">
+          <div class="s2s-stage-card">
+            <div class="stage-badge" style="background:rgba(244,63,94,0.15); color:var(--rose); border:1px solid rgba(244,63,94,0.3);">UPSTREAM</div>
+            <div class="stage-info">
+              <h5>1. Agricultural & Municipal Sources</h5>
+              <p>Synthetic N/P fertilizers and mismanaged solid plastics wash into tributaries.</p>
             </div>
-            <div class="flow-step-label">STAGE 01</div>
-            <div class="flow-step-name">Inland Sources</div>
-            <div class="flow-step-detail">Fertilizer overapplication & unmanaged urban plastic waste.</div>
+            <div class="stage-metric" id="upstreamMetric">100% Load</div>
           </div>
 
-          <div class="flow-column flow-2">
-            <div class="flow-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          <div class="s2s-stage-card">
+            <div class="stage-badge" style="background:rgba(245,158,11,0.15); color:var(--amber); border:1px solid rgba(245,158,11,0.3);">MID-RIVER</div>
+            <div class="stage-info">
+              <h5>2. Fluvial Transport & Nutrient Imbalance</h5>
+              <p>N:P:Si ratios skew positive (ICEP > 0), creating hyper-eutrophication risk.</p>
             </div>
-            <div class="flow-step-label">STAGE 02</div>
-            <div class="flow-step-name">River Corridors</div>
-            <div class="flow-step-detail">Riparian basins channel concentrated N, P, and debris downstream.</div>
+            <div class="stage-metric" id="midriverMetric">High Flux</div>
           </div>
 
-          <div class="flow-column flow-3">
-            <div class="flow-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12h20M2 17h20M2 7h20"/></svg>
+          <div class="s2s-stage-card">
+            <div class="stage-badge" style="background:rgba(56,189,248,0.15); color:var(--cyan); border:1px solid var(--border-subtle);">COASTAL</div>
+            <div class="stage-info">
+              <h5>3. Marine Plume & Hypoxic Dead Zone</h5>
+              <p>Massive phytoplankton algal blooms collapse, depleting dissolved O₂ (&lt; 2 mg/L).</p>
             </div>
-            <div class="flow-step-label">STAGE 03</div>
-            <div class="flow-step-name">Coastal Boundary</div>
-            <div class="flow-step-detail">Estuaries experience acute algal blooms, hypoxia & shoreline litter.</div>
-          </div>
-
-          <div class="flow-column flow-4">
-            <div class="flow-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/></svg>
-            </div>
-            <div class="flow-step-label">STAGE 04</div>
-            <div class="flow-step-name">Open Sea & Benthic</div>
-            <div class="flow-step-detail">Microplastics distribute across water column, gyres & ocean seabed.</div>
+            <div class="stage-metric" id="coastalMetric" style="color:var(--rose);">Hypoxia Alert</div>
           </div>
         </div>
 
-        <div class="summary-banner">
-          <div><strong>Key Mechanism:</strong> Upstream watershed intervention is exponentially cheaper than marine cleanup.</div>
-          <div style="font-family:var(--font-mono); color:var(--cyan); font-size:12px;">SDG 14.1 Mandate</div>
+        <!-- Simulation Toggle -->
+        <div class="control-bar">
+          <span style="font-size:13px; color:#E2E8F0;">Simulate Source-Control Intervention:</span>
+          <div style="display:flex; gap:10px;">
+            <button class="pill-preset-btn active" id="btnBaseline" onclick="setRunoff(false)">Unregulated Runoff</button>
+            <button class="pill-preset-btn" id="btnIntervention" onclick="setRunoff(true)">Riparian Buffers & Wastewater QC</button>
+          </div>
         </div>
       </div>
     </div>
@@ -264,12 +229,37 @@
 
   <div class="slide-footer">
     <div class="footer-source">
-      <strong>Source:</strong> UN Statistics Division, Target 14.1 Statutory Text & UNEP GPA [1].
+      <strong>Source:</strong> UN Statistics Division, Indicator 14.1.1 metadata, updated 28 March 2025; UNEP GPA [1–2].
     </div>
     <div class="footer-rule">
-      Rule: Clarify why 14.1 focuses upstream rather than merely reporting open-ocean symptoms.
+      Rule: Explicitly separate nutrient pollution from marine plastic debris throughout Target 14.1.
     </div>
   </div>
 </div>
+<script src="../shared/deck.js"></script>
+<script>
+function setRunoff(hasIntervention) {
+  document.getElementById('btnBaseline').classList.toggle('active', !hasIntervention);
+  document.getElementById('btnIntervention').classList.toggle('active', hasIntervention);
+  
+  if (hasIntervention) {
+    document.getElementById('scenarioChip').textContent = 'Source-Control Active (-68% Nutrient Load)';
+    document.getElementById('scenarioChip').style.color = 'var(--emerald)';
+    document.getElementById('upstreamMetric').textContent = '32% Load';
+    document.getElementById('upstreamMetric').style.color = 'var(--emerald)';
+    document.getElementById('midriverMetric').textContent = 'Balanced N:Si';
+    document.getElementById('coastalMetric').textContent = 'O₂ > 6.0 mg/L';
+    document.getElementById('coastalMetric').style.color = 'var(--emerald)';
+  } else {
+    document.getElementById('scenarioChip').textContent = 'Current Unregulated Runoff';
+    document.getElementById('scenarioChip').style.color = 'var(--cyan)';
+    document.getElementById('upstreamMetric').textContent = '100% Load';
+    document.getElementById('upstreamMetric').style.color = 'var(--cyan)';
+    document.getElementById('midriverMetric').textContent = 'High Flux';
+    document.getElementById('coastalMetric').textContent = 'Hypoxia Alert';
+    document.getElementById('coastalMetric').style.color = 'var(--rose)';
+  }
+}
+</script>
 </body>
 </html>

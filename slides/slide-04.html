@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -6,129 +6,81 @@
 <title>Slide 04 — Indicator 14.1.1 Dual Pathways</title>
 <link rel="stylesheet" href="../shared/deck.css">
 <style>
-  .split-layout {
+  .dual-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 36px;
     height: 100%;
     align-items: stretch;
   }
-  
-  .pathway-card {
+
+  .sub-indicator-card {
     background: var(--bg-card);
     border: 1px solid var(--border-subtle);
     border-radius: 20px;
-    padding: 36px;
+    padding: 32px 36px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    box-shadow: 0 16px 36px rgba(0,0,0,0.4);
-    position: relative;
-    overflow: hidden;
+    transition: all .25s ease;
   }
-  
-  .card-eutro {
-    border-top: 5px solid var(--emerald);
+
+  .sub-indicator-card:hover {
+    border-color: var(--cyan);
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.6);
   }
-  
-  .card-plastic {
-    border-top: 5px solid var(--cyan);
-  }
-  
-  .sub-indicator-badge {
-    font-family: var(--font-mono);
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    margin-bottom: 12px;
-  }
-  
-  .card-eutro .sub-indicator-badge { color: var(--emerald); }
-  .card-plastic .sub-indicator-badge { color: var(--cyan); }
-  
-  .pathway-title {
-    font-family: var(--font-display);
-    font-size: 32px;
-    font-weight: 700;
-    color: #FFFFFF;
-    margin-bottom: 16px;
-    line-height: 1.2;
-  }
-  
-  .pathway-summary {
-    font-size: 16px;
-    color: var(--text-dim);
-    line-height: 1.55;
-    margin-bottom: 28px;
-  }
-  
-  .mechanics-box {
-    background: rgba(15, 23, 42, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 14px;
-    padding: 20px 24px;
-    margin-bottom: 24px;
-  }
-  
-  .mechanic-row {
+
+  .card-top {
     display: flex;
-    justify-content: space-between;
-    padding: 10px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-    font-size: 14px;
-  }
-  
-  .mechanic-row:last-child {
-    border-bottom: none;
-  }
-  
-  .mech-label {
-    color: var(--text-muted);
-    font-weight: 500;
-  }
-  
-  .mech-val {
-    color: var(--text-main);
-    font-family: var(--font-mono);
-    font-weight: 600;
-  }
-  
-  .visual-preview-strip {
-    border-radius: 12px;
-    padding: 16px 20px;
-    display: flex;
-    align-items: center;
+    flex-direction: column;
     gap: 16px;
   }
-  
-  .card-eutro .visual-preview-strip {
-    background: rgba(16, 185, 129, 0.08);
-    border: 1px dashed rgba(16, 185, 129, 0.3);
-  }
-  
-  .card-plastic .visual-preview-strip {
-    background: rgba(56, 189, 248, 0.08);
-    border: 1px dashed rgba(56, 189, 248, 0.3);
-  }
-  
-  .strip-icon {
-    width: 40px;
-    height: 40px;
-    border-radius: 10px;
-    display: flex;
+
+  .part-pill {
+    display: inline-flex;
     align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-  }
-  
-  .card-eutro .strip-icon { background: var(--emerald); color: #04100C; }
-  .card-plastic .strip-icon { background: var(--cyan); color: #04121A; }
-  
-  .strip-desc {
+    gap: 8px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-family: var(--font-mono);
     font-size: 13px;
-    color: var(--text-dim);
-    line-height: 1.45;
+    font-weight: 700;
+    width: fit-content;
   }
+
+  .part-title {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 700;
+    color: #FFFFFF;
+    line-height: 1.2;
+  }
+
+  .part-desc {
+    font-size: 15px;
+    color: var(--text-dim);
+    line-height: 1.55;
+  }
+
+  .sub-metric-matrix {
+    background: rgba(15, 23, 42, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .matrix-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+  }
+  .matrix-label { color: var(--text-muted); }
+  .matrix-val { font-family: var(--font-mono); font-weight: 600; color: #FFFFFF; }
 </style>
 </head>
 <body>
@@ -137,92 +89,74 @@
     <div class="header-left">
       <div class="badge-row">
         <div class="speaker-pill">Speaker 1</div>
-        <div class="target-badge">Dual Statistical Architecture</div>
+        <div class="target-badge">Official Measurement Framework</div>
       </div>
-      <h2 class="slide-title">One indicator tracks two different pollution pathways</h2>
+      <h2 class="slide-title">Indicator 14.1.1 is split into two distinct operational sub-indicators</h2>
     </div>
     <div class="header-right">
       <div class="slide-number-display">04 <span>/ 15</span></div>
-      <div class="track-label">Indicator 14.1.1 (a & b)</div>
+      <div class="track-label">Indicator 14.1.1 Structure</div>
     </div>
   </div>
 
   <div class="slide-body">
-    <div class="split-layout">
-      <!-- Left: 14.1.1(a) Eutrophication -->
-      <div class="pathway-card card-eutro">
-        <div>
-          <div class="sub-indicator-badge">SUB-INDICATOR 14.1.1 (a)</div>
-          <h3 class="pathway-title">Index of Coastal Eutrophication (ICEP)</h3>
-          <p class="pathway-summary">
-            Measures biogeochemical stress driven by excessive nitrogen (N) and phosphorus (P) delivery relative to silica (Si), triggering toxic algal blooms and hypoxic "dead zones".
-          </p>
-
-          <div class="mechanics-box">
-            <div class="mechanic-row">
-              <span class="mech-label">Primary Proxy:</span>
-              <span class="mech-val">Chlorophyll-a Anomaly Index</span>
-            </div>
-            <div class="mechanic-row">
-              <span class="mech-label">Driver Compound:</span>
-              <span class="mech-val">N:P:Si Nutrient Imbalance</span>
-            </div>
-            <div class="mechanic-row">
-              <span class="mech-label">Impact Spectrum:</span>
-              <span class="mech-val">Hypoxia & Ecosystem Suffocation</span>
-            </div>
-            <div class="mechanic-row">
-              <span class="mech-label">Spatial Scope:</span>
-              <span class="mech-val">EEZ & Coastal Territorial Waters</span>
-            </div>
+    <div class="dual-grid">
+      <!-- Sub-Indicator (a) -->
+      <div class="sub-indicator-card">
+        <div class="card-top">
+          <div class="part-pill" style="background:rgba(16,185,129,0.15); border:1px solid rgba(16,185,129,0.3); color:var(--emerald);">
+            SUB-INDICATOR 14.1.1 (a)
           </div>
+          <h3 class="part-title">Index of Coastal Eutrophication (ICEP)</h3>
+          <p class="part-desc">Monitors abnormal biological productivity and phytoplankton biomass stimulated by dissolved nitrogen and phosphorus surplus relative to silica.</p>
         </div>
 
-        <div class="visual-preview-strip">
-          <div class="strip-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="9"/><path d="M8 12a4 4 0 0 1 8 0"/></svg>
+        <div class="sub-metric-matrix">
+          <div class="matrix-row">
+            <span class="matrix-label">Primary Proxy:</span>
+            <span class="matrix-val" style="color:var(--emerald);">Chlorophyll-a Anomalies</span>
           </div>
-          <div class="strip-desc">
-            <strong>Biological Productivity Shift:</strong> Satellite-derived chlor-a anomaly tracking compared against the 2000–2004 historical seasonal baseline.
+          <div class="matrix-row">
+            <span class="matrix-label">Baseline Comparison:</span>
+            <span class="matrix-val">2000–2004 Monthly Mean</span>
+          </div>
+          <div class="matrix-row">
+            <span class="matrix-label">Observation Method:</span>
+            <span class="matrix-val">Satellite Ocean Color (MODIS/Sentinel)</span>
+          </div>
+          <div class="matrix-row">
+            <span class="matrix-label">Biological Danger:</span>
+            <span class="matrix-val" style="color:var(--rose);">Harmful Algal Blooms (HABs) & Anoxia</span>
           </div>
         </div>
       </div>
 
-      <!-- Right: 14.1.1(b) Plastic Debris -->
-      <div class="pathway-card card-plastic">
-        <div>
-          <div class="sub-indicator-badge">SUB-INDICATOR 14.1.1 (b)</div>
-          <h3 class="pathway-title">Plastic Debris Density</h3>
-          <p class="pathway-summary">
-            Measures the physical distribution and mass concentration of persistent synthetic polymers across shorelines, the ocean surface layer, the water column, and the benthos.
-          </p>
-
-          <div class="mechanics-box">
-            <div class="mechanic-row">
-              <span class="mech-label">Beach Metric:</span>
-              <span class="mech-val">Items / 100m Shoreline Transect</span>
-            </div>
-            <div class="mechanic-row">
-              <span class="mech-label">Floating Metric:</span>
-              <span class="mech-val">Items / km² (Manta Trawl)</span>
-            </div>
-            <div class="mechanic-row">
-              <span class="mech-label">Deep Water:</span>
-              <span class="mech-val">ROV & Seabed Video Sampling</span>
-            </div>
-            <div class="mechanic-row">
-              <span class="mech-label">Persistence:</span>
-              <span class="mech-val">Centuries / Fragmentation to Micro</span>
-            </div>
+      <!-- Sub-Indicator (b) -->
+      <div class="sub-indicator-card">
+        <div class="card-top">
+          <div class="part-pill" style="background:rgba(56,189,248,0.15); border:1px solid var(--border-subtle); color:var(--cyan);">
+            SUB-INDICATOR 14.1.1 (b)
           </div>
+          <h3 class="part-title">Plastic Debris Density</h3>
+          <p class="part-desc">Tracks the physical accumulation and dispersion of macro- and micro-plastics across coastal shorelines, surface pelagic gyres, and benthic seafloors.</p>
         </div>
 
-        <div class="visual-preview-strip">
-          <div class="strip-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+        <div class="sub-metric-matrix">
+          <div class="matrix-row">
+            <span class="matrix-label">Shoreline Standard:</span>
+            <span class="matrix-val" style="color:var(--cyan);">Items / 100 m² Beach Transect</span>
           </div>
-          <div class="strip-desc">
-            <strong>Physical Contamination Matrix:</strong> Multi-environment survey data capturing both macroscopic waste items and microscopic particles in ocean gyres.
+          <div class="matrix-row">
+            <span class="matrix-label">Surface Trawl Standard:</span>
+            <span class="matrix-val">Items / km² Surface Waters</span>
+          </div>
+          <div class="matrix-row">
+            <span class="matrix-label">Seafloor / Column:</span>
+            <span class="matrix-val">ROV & Diver Visual Transects</span>
+          </div>
+          <div class="matrix-row">
+            <span class="matrix-label">Environmental Danger:</span>
+            <span class="matrix-val" style="color:var(--amber);">Trophic Entanglement & Microplastic Ingestion</span>
           </div>
         </div>
       </div>
@@ -231,12 +165,13 @@
 
   <div class="slide-footer">
     <div class="footer-source">
-      <strong>Source:</strong> UNSD Metadata for Indicator 14.1.1 (Updated March 2025) [2].
+      <strong>Source:</strong> UN Statistics Division, Indicator 14.1.1 metadata; UNEP Global Environment Monitoring System (GEMS/Ocean) [1–2].
     </div>
     <div class="footer-rule">
-      Rule: Clarify that nutrient imbalance and solid plastic debris require separate monitoring systems.
+      Rule: Distinguish Level 1 global remote sensing from Level 2 in-situ national validation.
     </div>
   </div>
 </div>
+<script src="../shared/deck.js"></script>
 </body>
 </html>
