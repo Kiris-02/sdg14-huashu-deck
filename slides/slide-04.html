@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=1920, height=1080">
-<title>Slide 04 — Indicator 14.1.1 Dual Pathways</title>
+<title>Slide 04 — Indicator 14.1.1 Dual Operational Pathways</title>
 <link rel="stylesheet" href="../shared/deck.css">
 <style>
   .dual-grid {
@@ -13,74 +13,65 @@
     height: 100%;
     align-items: stretch;
   }
-
-  .sub-indicator-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border-subtle);
-    border-radius: 20px;
-    padding: 32px 36px;
+  .pathway-card-full {
+    background: #FFFFFF;
+    border: 2px solid #CBD5E1;
+    border-radius: 22px;
+    padding: 36px 40px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
     transition: all .25s ease;
   }
-
-  .sub-indicator-card:hover {
-    border-color: var(--cyan);
-    transform: translateY(-4px);
-    box-shadow: 0 16px 40px rgba(0,0,0,0.6);
+  .pathway-card-full:hover {
+    border-color: #0284C7;
+    transform: translateY(-6px);
+    box-shadow: 0 20px 45px rgba(2, 132, 199, 0.12);
   }
-
-  .card-top {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  .part-pill {
+  .pathway-badge {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 6px 14px;
+    padding: 8px 18px;
     border-radius: 999px;
     font-family: var(--font-mono);
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 700;
     width: fit-content;
+    margin-bottom: 16px;
   }
-
-  .part-title {
+  .pathway-title {
     font-family: var(--font-display);
-    font-size: 28px;
-    font-weight: 700;
-    color: #FFFFFF;
+    font-size: 32px;
+    font-weight: 800;
+    color: #0F172A;
     line-height: 1.2;
+    margin-bottom: 12px;
   }
-
-  .part-desc {
-    font-size: 15px;
-    color: var(--text-dim);
-    line-height: 1.55;
+  .pathway-desc {
+    font-size: 19px;
+    color: #334155;
+    line-height: 1.6;
+    margin-bottom: 28px;
   }
-
-  .sub-metric-matrix {
-    background: rgba(15, 23, 42, 0.7);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 14px;
-    padding: 20px;
+  .metrics-table {
+    background: #F8FAFC;
+    border: 1.5px solid #E2E8F0;
+    border-radius: 16px;
+    padding: 22px;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 14px;
   }
-
-  .matrix-row {
+  .table-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 14px;
+    font-size: 17px;
   }
-  .matrix-label { color: var(--text-muted); }
-  .matrix-val { font-family: var(--font-mono); font-weight: 600; color: #FFFFFF; }
+  .table-label { color: #64748B; font-weight: 600; }
+  .table-val { font-family: var(--font-mono); font-weight: 700; color: #0F172A; }
 </style>
 </head>
 <body>
@@ -89,74 +80,74 @@
     <div class="header-left">
       <div class="badge-row">
         <div class="speaker-pill">Speaker 1</div>
-        <div class="target-badge">Official Measurement Framework</div>
+        <div class="target-badge">Indicator 14.1.1 Architecture</div>
       </div>
       <h2 class="slide-title">Indicator 14.1.1 is split into two distinct operational sub-indicators</h2>
     </div>
     <div class="header-right">
       <div class="slide-number-display">04 <span>/ 15</span></div>
-      <div class="track-label">Indicator 14.1.1 Structure</div>
+      <div class="track-label">Sub-Indicator Structure</div>
     </div>
   </div>
 
   <div class="slide-body">
     <div class="dual-grid">
-      <!-- Sub-Indicator (a) -->
-      <div class="sub-indicator-card">
-        <div class="card-top">
-          <div class="part-pill" style="background:rgba(16,185,129,0.15); border:1px solid rgba(16,185,129,0.3); color:var(--emerald);">
+      <!-- Sub-indicator (a) -->
+      <div class="pathway-card-full">
+        <div>
+          <div class="pathway-badge" style="background:#D1FAE5; color:#047857; border:1px solid #A7F3D0;">
             SUB-INDICATOR 14.1.1 (a)
           </div>
-          <h3 class="part-title">Index of Coastal Eutrophication (ICEP)</h3>
-          <p class="part-desc">Monitors abnormal biological productivity and phytoplankton biomass stimulated by dissolved nitrogen and phosphorus surplus relative to silica.</p>
+          <h3 class="pathway-title">Index of Coastal Eutrophication (ICEP)</h3>
+          <p class="pathway-desc">Measures abnormal biological productivity and phytoplankton biomass stimulated by nitrogen and phosphorus surplus relative to silica, signaling coastal hypoxia.</p>
         </div>
 
-        <div class="sub-metric-matrix">
-          <div class="matrix-row">
-            <span class="matrix-label">Primary Proxy:</span>
-            <span class="matrix-val" style="color:var(--emerald);">Chlorophyll-a Anomalies</span>
+        <div class="metrics-table">
+          <div class="table-row">
+            <span class="table-label">Primary Satellite Proxy:</span>
+            <span class="table-val" style="color:#059669;">Chlorophyll-a Anomalies</span>
           </div>
-          <div class="matrix-row">
-            <span class="matrix-label">Baseline Comparison:</span>
-            <span class="matrix-val">2000–2004 Monthly Mean</span>
+          <div class="table-row">
+            <span class="table-label">Reference Baseline:</span>
+            <span class="table-val">2000–2004 Monthly Climatology</span>
           </div>
-          <div class="matrix-row">
-            <span class="matrix-label">Observation Method:</span>
-            <span class="matrix-val">Satellite Ocean Color (MODIS/Sentinel)</span>
+          <div class="table-row">
+            <span class="table-label">Observation Method:</span>
+            <span class="table-val">Ocean Color Satellites (MODIS / Sentinel-3)</span>
           </div>
-          <div class="matrix-row">
-            <span class="matrix-label">Biological Danger:</span>
-            <span class="matrix-val" style="color:var(--rose);">Harmful Algal Blooms (HABs) & Anoxia</span>
+          <div class="table-row">
+            <span class="table-label">Ecological Risk:</span>
+            <span class="table-val" style="color:#DC2626;">Harmful Algal Blooms (HABs) & Dead Zones</span>
           </div>
         </div>
       </div>
 
-      <!-- Sub-Indicator (b) -->
-      <div class="sub-indicator-card">
-        <div class="card-top">
-          <div class="part-pill" style="background:rgba(56,189,248,0.15); border:1px solid var(--border-subtle); color:var(--cyan);">
+      <!-- Sub-indicator (b) -->
+      <div class="pathway-card-full">
+        <div>
+          <div class="pathway-badge" style="background:#E0F2FE; color:#0369A1; border:1px solid #BAE6FD;">
             SUB-INDICATOR 14.1.1 (b)
           </div>
-          <h3 class="part-title">Plastic Debris Density</h3>
-          <p class="part-desc">Tracks the physical accumulation and dispersion of macro- and micro-plastics across coastal shorelines, surface pelagic gyres, and benthic seafloors.</p>
+          <h3 class="pathway-title">Plastic Debris Density</h3>
+          <p class="pathway-desc">Quantifies the physical accumulation and dispersion of macro- and micro-plastics across coastal shorelines, surface pelagic waters, and deep benthic seabeds.</p>
         </div>
 
-        <div class="sub-metric-matrix">
-          <div class="matrix-row">
-            <span class="matrix-label">Shoreline Standard:</span>
-            <span class="matrix-val" style="color:var(--cyan);">Items / 100 m² Beach Transect</span>
+        <div class="metrics-table">
+          <div class="table-row">
+            <span class="table-label">Shoreline Beach Standard:</span>
+            <span class="table-val" style="color:#0284C7;">Items / 100 m² Beach Transect</span>
           </div>
-          <div class="matrix-row">
-            <span class="matrix-label">Surface Trawl Standard:</span>
-            <span class="matrix-val">Items / km² Surface Waters</span>
+          <div class="table-row">
+            <span class="table-label">Surface Trawl Standard:</span>
+            <span class="table-val">Items / km² Surface Waters</span>
           </div>
-          <div class="matrix-row">
-            <span class="matrix-label">Seafloor / Column:</span>
-            <span class="matrix-val">ROV & Diver Visual Transects</span>
+          <div class="table-row">
+            <span class="table-label">Water Column & Benthic:</span>
+            <span class="table-val">ROV, Trawl, & Diver Transects</span>
           </div>
-          <div class="matrix-row">
-            <span class="matrix-label">Environmental Danger:</span>
-            <span class="matrix-val" style="color:var(--amber);">Trophic Entanglement & Microplastic Ingestion</span>
+          <div class="table-row">
+            <span class="table-label">Ecological Risk:</span>
+            <span class="table-val" style="color:#D97706;">Trophic Entanglement & Microplastic Toxicity</span>
           </div>
         </div>
       </div>
@@ -165,10 +156,10 @@
 
   <div class="slide-footer">
     <div class="footer-source">
-      <strong>Source:</strong> UN Statistics Division, Indicator 14.1.1 metadata; UNEP Global Environment Monitoring System (GEMS/Ocean) [1–2].
+      <strong>Source:</strong> UN Statistics Division, Indicator 14.1.1 metadata; UNEP GEMS/Ocean [1–2].
     </div>
     <div class="footer-rule">
-      Rule: Distinguish Level 1 global remote sensing from Level 2 in-situ national validation.
+      Rule: Explicitly separate nutrient pollution from marine plastic debris throughout Target 14.1.
     </div>
   </div>
 </div>

@@ -3,135 +3,118 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=1920, height=1080">
-<title>Slide 03 — Target 14.1 Land-to-Sea Pressures</title>
+<title>Slide 03 — Target 14.1 Source-to-Sea Dynamics</title>
 <link rel="stylesheet" href="../shared/deck.css">
 <style>
-  .s2s-layout {
+  .s2s-grid {
     display: grid;
     grid-template-columns: 1fr 1.35fr;
     gap: 40px;
     height: 100%;
     align-items: stretch;
   }
-
-  .policy-col {
+  .left-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: space-between;
+  }
+  .claim-box {
+    background: #FFFFFF;
+    border: 1.5px solid #CBD5E1;
+    border-radius: 18px;
+    padding: 24px 28px;
+    border-left: 5px solid #0284C7;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.04);
+  }
+  .claim-box h3 {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 800;
+    color: #0F172A;
+    margin-bottom: 8px;
+  }
+  .claim-box p {
+    font-size: 19px;
+    color: #334155;
+    line-height: 1.6;
+  }
+  .alert-deadline {
+    background: #FFFBEB;
+    border: 1.5px solid #FDE68A;
+    border-radius: 16px;
+    padding: 20px 24px;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+  .alert-deadline strong {
+    color: #B45309;
+    font-family: var(--font-mono);
+    font-size: 15px;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .right-catchment {
+    background: #FFFFFF;
+    border: 2px solid #CBD5E1;
+    border-radius: 22px;
+    padding: 32px;
+    box-shadow: 0 12px 36px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .pathway-list {
     display: flex;
     flex-direction: column;
     gap: 16px;
-    justify-content: space-between;
+    margin: 20px 0;
   }
-
-  .target-statement-box {
-    background: var(--bg-card);
-    border: 1px solid var(--border-subtle);
-    border-radius: 16px;
-    padding: 24px 28px;
-    border-left: 4px solid var(--cyan);
-  }
-
-  .target-statement-box h3 {
-    font-family: var(--font-display);
-    font-size: 22px;
-    color: #FFFFFF;
-    margin-bottom: 8px;
-  }
-
-  .target-statement-box p {
-    font-size: 15px;
-    color: var(--text-dim);
-    line-height: 1.55;
-  }
-
-  .expired-deadline-alert {
-    background: rgba(245, 158, 11, 0.08);
-    border: 1px solid rgba(245, 158, 11, 0.3);
-    border-radius: 12px;
-    padding: 16px 20px;
-    display: flex;
-    gap: 14px;
-    align-items: center;
-  }
-
-  .expired-deadline-alert strong {
-    color: var(--amber);
-    font-family: var(--font-mono);
-    font-size: 13px;
-    text-transform: uppercase;
-  }
-
-  /* Right Side: Interactive Source-to-Sea Watershed */
-  .catchment-container {
-    background: var(--bg-card);
-    border: 1px solid var(--border-strong);
-    border-radius: 20px;
-    padding: 28px 32px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-
-  .catchment-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    padding-bottom: 14px;
-  }
-
-  .catchment-stages {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    margin: 16px 0;
-  }
-
-  .s2s-stage-card {
-    background: rgba(15, 23, 42, 0.7);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 12px;
-    padding: 16px 20px;
+  .pathway-card {
+    background: #F8FAFC;
+    border: 1.5px solid #E2E8F0;
+    border-radius: 14px;
+    padding: 18px 24px;
     display: grid;
-    grid-template-columns: 130px 1fr auto;
+    grid-template-columns: 140px 1fr auto;
     align-items: center;
-    gap: 18px;
+    gap: 20px;
     transition: all .2s;
   }
-  .s2s-stage-card:hover {
-    border-color: var(--cyan);
-    background: rgba(56, 189, 248, 0.06);
+  .pathway-card:hover {
+    border-color: #0284C7;
+    background: #F0F9FF;
   }
-
-  .stage-badge {
+  .step-pill {
     font-family: var(--font-mono);
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 700;
-    padding: 6px 10px;
+    padding: 6px 12px;
     border-radius: 6px;
     text-align: center;
   }
-
-  .stage-info h5 {
+  .step-text h5 {
     font-family: var(--font-display);
-    font-size: 16px;
-    color: #FFFFFF;
+    font-size: 18px;
+    font-weight: 700;
+    color: #0F172A;
     margin-bottom: 2px;
   }
-  .stage-info p {
-    font-size: 13px;
-    color: var(--text-dim);
-  }
-
-  .stage-metric {
-    font-family: var(--font-mono);
+  .step-text p {
     font-size: 15px;
-    font-weight: 700;
-    color: var(--cyan);
+    color: #475569;
   }
-
-  /* Interactive Toggle Bar */
-  .control-bar {
-    background: rgba(15, 23, 42, 0.85);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+  .step-val {
+    font-family: var(--font-mono);
+    font-size: 18px;
+    font-weight: 700;
+    color: #0284C7;
+  }
+  .sim-toggle-bar {
+    background: #F1F5F9;
+    border: 1.5px solid #CBD5E1;
     border-radius: 14px;
     padding: 14px 20px;
     display: flex;
@@ -146,7 +129,7 @@
     <div class="header-left">
       <div class="badge-row">
         <div class="speaker-pill">Speaker 1</div>
-        <div class="target-badge">Target 14.1 Focus</div>
+        <div class="target-badge">Target 14.1 Mandate</div>
       </div>
       <h2 class="slide-title">Target 14.1 targets land-to-sea pollution pressures</h2>
     </div>
@@ -157,70 +140,67 @@
   </div>
 
   <div class="slide-body">
-    <div class="s2s-layout">
-      <!-- Left Column -->
-      <div class="policy-col">
-        <div class="target-statement-box">
-          <h3>The 2025 Mandate</h3>
+    <div class="s2s-grid">
+      <div class="left-stack">
+        <div class="claim-box">
+          <h3>The 2025 Statutory Mandate</h3>
           <p>By 2025, prevent and significantly reduce marine pollution of all kinds, in particular from land-based activities, including marine debris and nutrient pollution.</p>
         </div>
 
-        <div class="expired-deadline-alert">
-          <span style="font-size:24px;">⏳</span>
+        <div class="alert-deadline">
+          <span style="font-size:32px;">⏳</span>
           <div>
             <strong>Expired 2025 Target Horizon:</strong>
-            <p style="font-size:13px; color:#FDE68A; margin-top:2px;">Although the 2025 deadline has formally passed, global monitoring remains critical to determine whether agricultural runoff and plastic discharge are peaking.</p>
+            <p style="font-size:15px; color:#92400E;">Although the 2025 deadline has formally passed, global monitoring remains critical to determine whether agricultural runoff and plastic leakage have peaked.</p>
           </div>
         </div>
 
-        <div class="target-statement-box" style="border-left-color: var(--emerald);">
-          <h3>The 80% Land-Origin Rule</h3>
-          <p>Over 80% of marine pollution originates hundreds of kilometers inland via river catchments, municipal storm drains, wastewater plants, and agricultural fertilizer runoff.</p>
+        <div class="claim-box" style="border-left-color:#059669;">
+          <h3>The 80% Land-Origin Reality</h3>
+          <p>Over 80% of marine pollution originates hundreds of kilometers inland via river catchments, untreated wastewater outfalls, and agricultural fertilizer runoff.</p>
         </div>
       </div>
 
-      <!-- Right Column: Interactive Watershed Pathway -->
-      <div class="catchment-container">
-        <div class="catchment-header">
-          <span style="font-family:var(--font-mono); font-size:13px; font-weight:700; color:var(--cyan); text-transform:uppercase;">Hydrological Catchment Pathway</span>
-          <span class="interactive-chip" id="scenarioChip">Current Unregulated Runoff</span>
+      <div class="right-catchment">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <span style="font-family:var(--font-mono); font-size:14px; font-weight:700; color:#0284C7; text-transform:uppercase;">Hydrological Runoff Continuum</span>
+          <span class="interactive-chip" id="runoffChip">Unregulated Runoff</span>
         </div>
 
-        <div class="catchment-stages">
-          <div class="s2s-stage-card">
-            <div class="stage-badge" style="background:rgba(244,63,94,0.15); color:var(--rose); border:1px solid rgba(244,63,94,0.3);">UPSTREAM</div>
-            <div class="stage-info">
+        <div class="pathway-list">
+          <div class="pathway-card">
+            <div class="step-pill" style="background:#FEE2E2; color:#DC2626; border:1px solid #FECACA;">UPSTREAM</div>
+            <div class="step-text">
               <h5>1. Agricultural & Municipal Sources</h5>
-              <p>Synthetic N/P fertilizers and mismanaged solid plastics wash into tributaries.</p>
+              <p>Synthetic N/P fertilizers and solid plastic leakage wash into river tributaries.</p>
             </div>
-            <div class="stage-metric" id="upstreamMetric">100% Load</div>
+            <div class="step-val" id="upstreamVal">100% Load</div>
           </div>
 
-          <div class="s2s-stage-card">
-            <div class="stage-badge" style="background:rgba(245,158,11,0.15); color:var(--amber); border:1px solid rgba(245,158,11,0.3);">MID-RIVER</div>
-            <div class="stage-info">
+          <div class="pathway-card">
+            <div class="step-pill" style="background:#FEF3C7; color:#D97706; border:1px solid #FDE68A;">MID-BASIN</div>
+            <div class="step-text">
               <h5>2. Fluvial Transport & Nutrient Imbalance</h5>
-              <p>N:P:Si ratios skew positive (ICEP > 0), creating hyper-eutrophication risk.</p>
+              <p>N:P:Si ratios skew positive (ICEP > 0), producing severe eutrophication potential.</p>
             </div>
-            <div class="stage-metric" id="midriverMetric">High Flux</div>
+            <div class="step-val" id="midbasinVal">High Flux</div>
           </div>
 
-          <div class="s2s-stage-card">
-            <div class="stage-badge" style="background:rgba(56,189,248,0.15); color:var(--cyan); border:1px solid var(--border-subtle);">COASTAL</div>
-            <div class="stage-info">
+          <div class="pathway-card">
+            <div class="step-pill" style="background:#E0F2FE; color:#0284C7; border:1px solid #BAE6FD;">COASTAL PLUME</div>
+            <div class="step-text">
               <h5>3. Marine Plume & Hypoxic Dead Zone</h5>
-              <p>Massive phytoplankton algal blooms collapse, depleting dissolved O₂ (&lt; 2 mg/L).</p>
+              <p>Massive algal blooms collapse and decompose, consuming dissolved oxygen (O₂ &lt; 2 mg/L).</p>
             </div>
-            <div class="stage-metric" id="coastalMetric" style="color:var(--rose);">Hypoxia Alert</div>
+            <div class="step-val" id="coastalVal" style="color:#DC2626;">Hypoxia Alert</div>
           </div>
         </div>
 
-        <!-- Simulation Toggle -->
-        <div class="control-bar">
-          <span style="font-size:13px; color:#E2E8F0;">Simulate Source-Control Intervention:</span>
+        <div class="sim-toggle-bar">
+          <span style="font-size:15px; font-weight:600; color:#1E293B;">Simulate Watershed Management:</span>
           <div style="display:flex; gap:10px;">
-            <button class="pill-preset-btn active" id="btnBaseline" onclick="setRunoff(false)">Unregulated Runoff</button>
-            <button class="pill-preset-btn" id="btnIntervention" onclick="setRunoff(true)">Riparian Buffers & Wastewater QC</button>
+            <button class="pill-preset-btn active" id="btnBase" onclick="toggleRunoff(false)">Unregulated Runoff</button>
+            <button class="pill-preset-btn" id="btnMitigate" onclick="toggleRunoff(true)">Riparian Buffers & Wastewater QC</button>
           </div>
         </div>
       </div>
@@ -229,7 +209,7 @@
 
   <div class="slide-footer">
     <div class="footer-source">
-      <strong>Source:</strong> UN Statistics Division, Indicator 14.1.1 metadata, updated 28 March 2025; UNEP GPA [1–2].
+      <strong>Source:</strong> UN Statistics Division, Indicator 14.1.1 metadata; UNEP Global Programme of Action [1–2].
     </div>
     <div class="footer-rule">
       Rule: Explicitly separate nutrient pollution from marine plastic debris throughout Target 14.1.
@@ -238,26 +218,31 @@
 </div>
 <script src="../shared/deck.js"></script>
 <script>
-function setRunoff(hasIntervention) {
-  document.getElementById('btnBaseline').classList.toggle('active', !hasIntervention);
-  document.getElementById('btnIntervention').classList.toggle('active', hasIntervention);
-  
-  if (hasIntervention) {
-    document.getElementById('scenarioChip').textContent = 'Source-Control Active (-68% Nutrient Load)';
-    document.getElementById('scenarioChip').style.color = 'var(--emerald)';
-    document.getElementById('upstreamMetric').textContent = '32% Load';
-    document.getElementById('upstreamMetric').style.color = 'var(--emerald)';
-    document.getElementById('midriverMetric').textContent = 'Balanced N:Si';
-    document.getElementById('coastalMetric').textContent = 'O₂ > 6.0 mg/L';
-    document.getElementById('coastalMetric').style.color = 'var(--emerald)';
+function toggleRunoff(active) {
+  document.getElementById('btnBase').classList.toggle('active', !active);
+  document.getElementById('btnMitigate').classList.toggle('active', active);
+
+  const chip = document.getElementById('runoffChip');
+  const up = document.getElementById('upstreamVal');
+  const mid = document.getElementById('midbasinVal');
+  const coast = document.getElementById('coastalVal');
+
+  if (active) {
+    chip.textContent = 'Intervention Active (-68% Runoff)';
+    chip.style.color = '#059669';
+    up.textContent = '32% Load';
+    up.style.color = '#059669';
+    mid.textContent = 'Balanced N:Si';
+    coast.textContent = 'O₂ > 6.0 mg/L';
+    coast.style.color = '#059669';
   } else {
-    document.getElementById('scenarioChip').textContent = 'Current Unregulated Runoff';
-    document.getElementById('scenarioChip').style.color = 'var(--cyan)';
-    document.getElementById('upstreamMetric').textContent = '100% Load';
-    document.getElementById('upstreamMetric').style.color = 'var(--cyan)';
-    document.getElementById('midriverMetric').textContent = 'High Flux';
-    document.getElementById('coastalMetric').textContent = 'Hypoxia Alert';
-    document.getElementById('coastalMetric').style.color = 'var(--rose)';
+    chip.textContent = 'Unregulated Runoff';
+    chip.style.color = '#0369A1';
+    up.textContent = '100% Load';
+    up.style.color = '#0284C7';
+    mid.textContent = 'High Flux';
+    coast.textContent = 'Hypoxia Alert';
+    coast.style.color = '#DC2626';
   }
 }
 </script>

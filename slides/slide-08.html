@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=1920, height=1080">
-<title>Slide 08 — Indicator 14.2.1 Governance Logic</title>
+<title>Slide 08 — Indicator 14.2.1 Logic</title>
 <link rel="stylesheet" href="../shared/deck.css">
 <style>
   .logic-grid {
@@ -13,120 +13,99 @@
     height: 100%;
     align-items: stretch;
   }
-
-  .distinction-col {
+  .distinction-stack {
     display: flex;
     flex-direction: column;
     gap: 20px;
     justify-content: space-between;
   }
-
-  .distinction-box {
-    background: var(--bg-card);
-    border: 1px solid var(--border-subtle);
+  .dist-box {
+    background: #FFFFFF;
+    border: 1.5px solid #CBD5E1;
     border-radius: 18px;
     padding: 24px 28px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.04);
   }
-
-  .distinction-box.negative {
-    border-left: 4px solid var(--rose);
-  }
-  .distinction-box.positive {
-    border-left: 4px solid var(--emerald);
-  }
-
-  .distinction-box h3 {
+  .dist-box.negative { border-left: 5px solid #DC2626; }
+  .dist-box.positive { border-left: 5px solid #059669; }
+  .dist-box h3 {
     font-family: var(--font-display);
-    font-size: 20px;
-    color: #FFFFFF;
+    font-size: 22px;
+    font-weight: 800;
+    color: #0F172A;
     margin-bottom: 8px;
     display: flex;
     align-items: center;
     gap: 10px;
   }
-
-  .distinction-box p {
-    font-size: 14px;
-    color: var(--text-dim);
-    line-height: 1.5;
+  .dist-box p {
+    font-size: 18px;
+    color: #334155;
+    line-height: 1.55;
   }
-
-  /* Right Side: Interactive 30x30 Target Progress */
-  .coverage-container {
-    background: var(--bg-card);
-    border: 1px solid var(--border-strong);
-    border-radius: 20px;
-    padding: 28px 32px;
+  .right-tracker {
+    background: #FFFFFF;
+    border: 2px solid #CBD5E1;
+    border-radius: 22px;
+    padding: 32px 36px;
+    box-shadow: 0 12px 36px rgba(0,0,0,0.05);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
   }
-
-  .coverage-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    padding-bottom: 14px;
-  }
-
-  .gauge-track-box {
-    background: rgba(15, 23, 42, 0.7);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 16px;
+  .gauge-box {
+    background: #F8FAFC;
+    border: 1.5px solid #E2E8F0;
+    border-radius: 18px;
     padding: 24px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 22px;
   }
-
-  .progress-item-bar {
+  .bar-wrapper {
     display: flex;
     flex-direction: column;
     gap: 8px;
   }
-
   .bar-meta {
     display: flex;
     justify-content: space-between;
-    font-size: 14px;
+    font-size: 16px;
+    font-weight: 700;
   }
-
-  .bar-bg {
+  .bar-track {
     width: 100%;
-    height: 12px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 6px;
+    height: 14px;
+    background: #E2E8F0;
+    border-radius: 7px;
     overflow: hidden;
   }
-
   .bar-fill {
     height: 100%;
-    border-radius: 6px;
+    border-radius: 7px;
     transition: width 0.5s ease;
   }
-
-  .ebm-tools-grid {
+  .ebm-tools {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
+    gap: 14px;
     margin-top: 10px;
   }
-
-  .ebm-tool-card {
-    background: rgba(15, 23, 42, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    border-radius: 10px;
-    padding: 12px 14px;
-    font-size: 12px;
-    color: var(--text-dim);
+  .ebm-card {
+    background: #FFFFFF;
+    border: 1.5px solid #E2E8F0;
+    border-radius: 12px;
+    padding: 14px;
+    font-size: 14px;
+    color: #475569;
   }
-  .ebm-tool-card strong {
+  .ebm-card strong {
     display: block;
-    color: #FFFFFF;
+    color: #0F172A;
     font-family: var(--font-display);
-    font-size: 13px;
-    margin-bottom: 2px;
+    font-size: 16px;
+    font-weight: 800;
+    margin-bottom: 4px;
   }
 </style>
 </head>
@@ -148,78 +127,67 @@
 
   <div class="slide-body">
     <div class="logic-grid">
-      <!-- Left Column: Critical Methodological Distinction -->
-      <div class="distinction-col">
-        <div class="distinction-box negative">
-          <h3>
-            <span style="color:var(--rose);">✕</span>
-            What Indicator 14.2.1 Does NOT Measure
-          </h3>
+      <div class="distinction-stack">
+        <div class="dist-box negative">
+          <h3><span style="color:#DC2626;">✕</span> What Indicator 14.2.1 Does NOT Measure</h3>
           <p>It does not measure coral reef coverage, live fish biomass, benthic water clarity, or species extinction rates. A country can score highly on 14.2.1 while its coral reefs suffer catastrophic bleaching.</p>
         </div>
 
-        <div class="distinction-box positive">
-          <h3>
-            <span style="color:var(--emerald);">✓</span>
-            What Indicator 14.2.1 DOES Measure
-          </h3>
+        <div class="dist-box positive">
+          <h3><span style="color:#059669;">✓</span> What Indicator 14.2.1 DOES Measure</h3>
           <p>It measures the <strong>number of countries using ecosystem-based approaches (EBM)</strong> to manage marine areas through legally recognized spatial plans (ICZM, MSP, marine zoning).</p>
         </div>
 
-        <div class="distinction-box" style="border-left:4px solid var(--amber);">
-          <h3>
-            <span style="color:var(--amber);">⚡</span>
-            The Practical Governance Rationale
-          </h3>
-          <p>Ecosystem outcomes take decades to manifest. Tracking governance maturity provides immediate multilateral accountability on whether sovereigns are establishing institutional capacity.</p>
+        <div class="dist-box" style="border-left: 5px solid #D97706;">
+          <h3><span style="color:#D97706;">⚡</span> The Practical Governance Rationale</h3>
+          <p>Ecosystem recovery takes decades to register. Tracking governance maturity provides immediate multilateral accountability on whether sovereigns are establishing institutional capacity.</p>
         </div>
       </div>
 
-      <!-- Right Column: Interactive 30x30 Target Progress -->
-      <div class="coverage-container">
-        <div class="coverage-header">
-          <span style="font-family:var(--font-mono); font-size:13px; font-weight:700; color:var(--cyan); text-transform:uppercase;">Global Marine Area Protection Tracker</span>
+      <div class="right-tracker">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <span style="font-family:var(--font-mono); font-size:14px; font-weight:700; color:#0284C7; text-transform:uppercase;">Global Marine Area Protection Tracker</span>
           <span class="interactive-chip">Kunming-Montreal 30×30</span>
         </div>
 
-        <div class="gauge-track-box">
-          <div class="progress-item-bar">
+        <div class="gauge-box">
+          <div class="bar-wrapper">
             <div class="bar-meta">
-              <span style="color:#FFFFFF; font-weight:600;">Kunming-Montreal Global Target (by 2030)</span>
-              <span style="font-family:var(--font-mono); color:var(--cyan); font-weight:700;">30.0%</span>
+              <span style="color:#0F172A;">Kunming-Montreal Global Target (by 2030)</span>
+              <span style="font-family:var(--font-mono); color:#0284C7;">30.0%</span>
             </div>
-            <div class="bar-bg"><div class="bar-fill" style="width:100%; background:var(--cyan);"></div></div>
+            <div class="bar-track"><div class="bar-fill" style="width:100%; background:#0284C7;"></div></div>
           </div>
 
-          <div class="progress-item-bar">
+          <div class="bar-wrapper">
             <div class="bar-meta">
-              <span style="color:#CBD5E1;">Current Total Marine Protected Areas (MPAs)</span>
-              <span style="font-family:var(--font-mono); color:var(--amber); font-weight:700;">8.2%</span>
+              <span style="color:#334155;">Current Total Marine Protected Areas (MPAs)</span>
+              <span style="font-family:var(--font-mono); color:#D97706;">8.2%</span>
             </div>
-            <div class="bar-bg"><div class="bar-fill" style="width:27.3%; background:var(--amber);"></div></div>
+            <div class="bar-track"><div class="bar-fill" style="width:27.3%; background:#D97706;"></div></div>
           </div>
 
-          <div class="progress-item-bar">
+          <div class="bar-wrapper">
             <div class="bar-meta">
-              <span style="color:#CBD5E1;">Fully / Highly Protected (No-Take Reserves)</span>
-              <span style="font-family:var(--font-mono); color:var(--rose); font-weight:700;">2.9%</span>
+              <span style="color:#334155;">Fully / Highly Protected (No-Take Reserves)</span>
+              <span style="font-family:var(--font-mono); color:#DC2626;">2.9%</span>
             </div>
-            <div class="bar-bg"><div class="bar-fill" style="width:9.6%; background:var(--rose);"></div></div>
+            <div class="bar-track"><div class="bar-fill" style="width:9.6%; background:#DC2626;"></div></div>
           </div>
         </div>
 
-        <div class="ebm-tools-grid">
-          <div class="ebm-tool-card">
+        <div class="ebm-tools">
+          <div class="ebm-card">
             <strong>ICZM</strong>
-            Integrated Coastal Zone Management across land-sea interface.
+            Integrated Coastal Zone Management across land-sea boundaries.
           </div>
-          <div class="ebm-tool-card">
+          <div class="ebm-card">
             <strong>MSP</strong>
             Marine Spatial Planning allocating conflicting offshore uses.
           </div>
-          <div class="ebm-tool-card">
+          <div class="ebm-card">
             <strong>MPAs</strong>
-            Dedicated spatial conservation with active enforcement.
+            Dedicated spatial conservation with active patrol enforcement.
           </div>
         </div>
       </div>

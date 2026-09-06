@@ -1,145 +1,83 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=1920, height=1080">
-<title>Slide 05 — Multi-Level Measurement Hierarchy</title>
+<title>Slide 05 — Indicator 14.1.1 Measurement Systems</title>
 <link rel="stylesheet" href="../shared/deck.css">
 <style>
-  .content-stack {
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-    height: 100%;
-    justify-content: center;
-  }
-  
-  /* 4-Step Pipeline */
-  .pipeline-grid {
+  .meas-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-    position: relative;
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+    height: 100%;
+    align-items: stretch;
   }
-  
-  .pipeline-step {
-    background: var(--bg-card);
-    border: 1px solid var(--border-subtle);
-    border-radius: 16px;
-    padding: 28px 24px;
+  .meas-card {
+    background: #FFFFFF;
+    border: 2px solid #CBD5E1;
+    border-radius: 22px;
+    padding: 36px 40px;
     display: flex;
     flex-direction: column;
-    position: relative;
-    box-shadow: 0 12px 28px rgba(0,0,0,0.35);
+    justify-content: space-between;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: all .25s ease;
   }
-  
-  .pipeline-step::after {
-    content: '→';
-    position: absolute;
-    right: -16px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--cyan);
-    font-size: 24px;
-    font-weight: 700;
-    z-index: 10;
+  .meas-card:hover {
+    border-color: #0284C7;
+    transform: translateY(-6px);
+    box-shadow: 0 20px 45px rgba(2, 132, 199, 0.12);
   }
-  
-  .pipeline-step:last-child::after {
-    display: none;
-  }
-  
-  .step-num-badge {
+  .level-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 18px;
+    border-radius: 999px;
     font-family: var(--font-mono);
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 700;
-    color: var(--cyan);
-    background: rgba(56, 189, 248, 0.1);
-    border: 1px solid rgba(56, 189, 248, 0.2);
-    padding: 4px 10px;
-    border-radius: 6px;
     width: fit-content;
     margin-bottom: 16px;
   }
-  
-  .step-heading {
+  .meas-title {
     font-family: var(--font-display);
-    font-size: 22px;
-    font-weight: 700;
-    color: #FFFFFF;
-    margin-bottom: 10px;
+    font-size: 32px;
+    font-weight: 800;
+    color: #0F172A;
+    line-height: 1.2;
+    margin-bottom: 12px;
   }
-  
-  .step-desc {
-    font-size: 14px;
-    color: var(--text-dim);
-    line-height: 1.5;
-    margin-bottom: 16px;
+  .meas-desc {
+    font-size: 19px;
+    color: #334155;
+    line-height: 1.6;
+    margin-bottom: 24px;
   }
-  
-  .step-pills {
-    margin-top: auto;
+  .meas-bullets {
+    background: #F8FAFC;
+    border: 1.5px solid #E2E8F0;
+    border-radius: 16px;
+    padding: 22px;
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 14px;
   }
-  
-  .tech-pill {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    background: rgba(255,255,255,0.04);
-    border-radius: 4px;
-    padding: 4px 8px;
-    color: var(--text-muted);
-  }
-  
-  /* Two-Level Tier Box */
-  .tier-comparison {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-  }
-  
-  .tier-box {
-    border-radius: 14px;
-    padding: 22px 28px;
+  .bullet-row {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    align-items: flex-start;
+    gap: 14px;
+    font-size: 17px;
+    color: #334155;
+    line-height: 1.5;
   }
-  
-  .tier-1 {
-    background: rgba(56, 189, 248, 0.08);
-    border: 1px solid rgba(56, 189, 248, 0.25);
-  }
-  
-  .tier-2 {
-    background: rgba(16, 185, 129, 0.08);
-    border: 1px solid rgba(16, 185, 129, 0.25);
-  }
-  
-  .tier-info h4 {
-    font-family: var(--font-display);
-    font-size: 18px;
-    color: #FFFFFF;
-    margin-bottom: 4px;
-  }
-  
-  .tier-info p {
-    font-size: 13px;
-    color: var(--text-dim);
-  }
-  
-  .tier-badge {
+  .bullet-icon {
     font-family: var(--font-mono);
-    font-size: 12px;
-    font-weight: 700;
-    padding: 6px 12px;
-    border-radius: 8px;
+    font-weight: 800;
+    color: #0284C7;
+    margin-top: 2px;
   }
-  
-  .tier-1 .tier-badge { background: var(--cyan); color: #02121E; }
-  .tier-2 .tier-badge { background: var(--emerald); color: #02140F; }
 </style>
 </head>
 <body>
@@ -148,77 +86,67 @@
     <div class="header-left">
       <div class="badge-row">
         <div class="speaker-pill">Speaker 2</div>
-        <div class="target-badge">Measurement Architecture</div>
+        <div class="target-badge">14.1.1 Measurement Architecture</div>
       </div>
-      <h2 class="slide-title">Global observations are strengthened by national field data</h2>
+      <h2 class="slide-title">Indicator 14.1.1 combines satellite observations with in-situ data</h2>
     </div>
     <div class="header-right">
       <div class="slide-number-display">05 <span>/ 15</span></div>
-      <div class="track-label">Data Harmonization</div>
+      <div class="track-label">Two-Tier Observation System</div>
     </div>
   </div>
 
   <div class="slide-body">
-    <div class="content-stack">
-      <!-- 4-Step Operational Flow -->
-      <div class="pipeline-grid">
-        <div class="pipeline-step">
-          <div class="step-num-badge">STEP 01</div>
-          <div class="step-heading">Observe</div>
-          <div class="step-desc">Continuous orbital ocean color sensing combined with beach quadrat counts and ship-based net tows.</div>
-          <div class="step-pills">
-            <span class="tech-pill">• Sentinel-3 / MODIS Chlor-a</span>
-            <span class="tech-pill">• Manta trawls & beach transects</span>
+    <div class="meas-grid">
+      <!-- Level 1 -->
+      <div class="meas-card">
+        <div>
+          <div class="level-badge" style="background:#E0F2FE; color:#0369A1; border:1px solid #BAE6FD;">
+            LEVEL 1: GLOBALLY COMPARABLE REMOTE SENSING
           </div>
+          <h3 class="meas-title">Satellite Observations & River Models</h3>
+          <p class="meas-desc">Provides universally available baseline metrics for all maritime nations, ensuring no state is left unmonitored regardless of local sensor infrastructure.</p>
         </div>
 
-        <div class="pipeline-step">
-          <div class="step-num-badge">STEP 02</div>
-          <div class="step-heading">Model & Measure</div>
-          <div class="step-desc">Estimating riverine nutrient loads (N-P-Si ratios) and plastic drift models to generate global gridded baselines.</div>
-          <div class="step-pills">
-            <span class="tech-pill">• Global NEWS river model</span>
-            <span class="tech-pill">• Hydrodynamic transport grids</span>
+        <div class="meas-bullets">
+          <div class="bullet-row">
+            <span class="bullet-icon">✦</span>
+            <div><strong>Chlorophyll-a Remote Sensing:</strong> High-frequency satellite ocean color data identifies monthly anomalies against 2000–2004 baselines in national EEZs.</div>
           </div>
-        </div>
-
-        <div class="pipeline-step">
-          <div class="step-num-badge">STEP 03</div>
-          <div class="step-heading">Validate Nationally</div>
-          <div class="step-desc">Member states conduct in-situ water sampling to calibrate satellite anomalies against local water quality.</div>
-          <div class="step-pills">
-            <span class="tech-pill">• In-situ nutrient profiling</span>
-            <span class="tech-pill">• National focal point audit</span>
+          <div class="bullet-row">
+            <span class="bullet-icon">✦</span>
+            <div><strong>Global NEWS River Modeling:</strong> Estimates dissolved nitrogen, phosphorus, and silica discharges delivered to river mouths worldwide.</div>
           </div>
-        </div>
-
-        <div class="pipeline-step">
-          <div class="step-num-badge">STEP 04</div>
-          <div class="step-heading">Report Indicator</div>
-          <div class="step-desc">Synthesizing validated time-series into official UN SDG 14.1.1 reporting tiers published for multilateral review.</div>
-          <div class="step-pills">
-            <span class="tech-pill">• UNSD Global Database</span>
-            <span class="tech-pill">• Regional Seas quality checks</span>
+          <div class="bullet-row">
+            <span class="bullet-icon">✦</span>
+            <div><strong>Uniform Methodology:</strong> Enables impartial cross-country benchmarking coordinated directly by UNEP.</div>
           </div>
         </div>
       </div>
 
-      <!-- Tier 1 vs Tier 2 Architecture -->
-      <div class="tier-comparison">
-        <div class="tier-box tier-1">
-          <div class="tier-info">
-            <h4>Level 1: Global Satellite & Modeling Layer</h4>
-            <p>Globally complete, uniform earth observation providing universal coverage even for low-capacity nations.</p>
+      <!-- Level 2 -->
+      <div class="meas-card">
+        <div>
+          <div class="level-badge" style="background:#D1FAE5; color:#047857; border:1px solid #A7F3D0;">
+            LEVEL 2: NATIONAL GROUND-TRUTH MONITORING
           </div>
-          <div class="tier-badge">SATELLITE BASELINE</div>
+          <h3 class="meas-title">In-Situ Sampling & Beach Surveys</h3>
+          <p class="meas-desc">National authorities gather localized empirical data to ground-truth satellite readings and capture physical marine debris across diverse ocean compartments.</p>
         </div>
 
-        <div class="tier-box tier-2">
-          <div class="tier-info">
-            <h4>Level 2: National In-Situ Field Data Layer</h4>
-            <p>Ground-truth physical and chemical measurements providing depth profile validation and regulatory weight.</p>
+        <div class="meas-bullets">
+          <div class="bullet-row">
+            <span class="bullet-icon">✦</span>
+            <div><strong>Standardized Shoreline Transects:</strong> Field teams classify and count litter items per 100 m² of beach during seasonal tidal runs.</div>
           </div>
-          <div class="tier-badge">GROUND-TRUTH VALIDATION</div>
+          <div class="bullet-row">
+            <span class="bullet-icon">✦</span>
+            <div><strong>Pelagic Manta Trawls:</strong> Surface nets quantify floating microplastic concentrations per square kilometer.</div>
+          </div>
+          <div class="bullet-row">
+            <span class="bullet-icon">✦</span>
+            <div><strong>Water Column CTD Rosettes:</strong> Oceanographic vessels record dissolved silica, nutrient ratios, and true in-situ dissolved oxygen.</div>
+          </div>
         </div>
       </div>
     </div>
@@ -226,10 +154,10 @@
 
   <div class="slide-footer">
     <div class="footer-source">
-      <strong>Source:</strong> UNSD Metadata for Indicator 14.1.1 (Level 1 & Level 2 Methodological Design) [2].
+      <strong>Source:</strong> UN Statistics Division, Indicator 14.1.1 metadata; UNEP Global Environment Monitoring System [1–2].
     </div>
     <div class="footer-rule">
-      Rule: Clarify the two-tier structure: satellites see the whole surface, but national sensors prove the cause.
+      Rule: Distinguish Level 1 global remote sensing from Level 2 in-situ national validation.
     </div>
   </div>
 </div>

@@ -9,110 +9,97 @@
   .synthesis-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 28px;
+    gap: 32px;
     height: 100%;
     align-items: stretch;
   }
-
-  .synth-col {
-    background: var(--bg-card);
-    border: 1px solid var(--border-subtle);
+  .synth-card {
+    background: #FFFFFF;
+    border: 2px solid #CBD5E1;
     border-radius: 20px;
-    padding: 32px 28px;
+    padding: 34px 30px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
     transition: all .25s ease;
   }
-
-  .synth-col:hover {
-    border-color: var(--cyan);
+  .synth-card:hover {
+    border-color: #0284C7;
     transform: translateY(-6px);
-    box-shadow: 0 16px 40px rgba(0,0,0,0.6);
+    box-shadow: 0 20px 45px rgba(2, 132, 199, 0.12);
   }
-
-  .synth-col-header {
+  .synth-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
-    padding-bottom: 12px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1.5px solid #F1F5F9;
+    padding-bottom: 14px;
+    margin-bottom: 18px;
   }
-
-  .synth-target-id {
+  .target-title-tag {
     font-family: var(--font-mono);
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--cyan);
+    font-size: 15px;
+    font-weight: 800;
+    color: #0284C7;
   }
-
-  .synth-heading {
+  .synth-h3 {
     font-family: var(--font-display);
-    font-size: 24px;
-    font-weight: 700;
-    color: #FFFFFF;
+    font-size: 26px;
+    font-weight: 800;
+    color: #0F172A;
     margin-bottom: 14px;
     line-height: 1.25;
   }
-
-  .synth-list {
+  .bullet-list {
     display: flex;
     flex-direction: column;
     gap: 14px;
-    font-size: 14px;
-    color: var(--text-dim);
-    line-height: 1.5;
+    font-size: 17px;
+    color: #334155;
+    line-height: 1.55;
   }
-
-  .synth-list li {
+  .bullet-list li {
     list-style: none;
     position: relative;
-    padding-left: 22px;
+    padding-left: 24px;
   }
-  .synth-list li::before {
+  .bullet-list li::before {
     content: '→';
     position: absolute;
     left: 0;
-    color: var(--cyan);
-    font-weight: bold;
+    color: #0284C7;
+    font-weight: 800;
   }
-
-  .synth-col-footer {
-    background: rgba(15, 23, 42, 0.7);
-    border: 1px solid rgba(255, 255, 255, 0.06);
+  .takeaway-footer {
+    background: #F8FAFC;
+    border: 1.5px solid #E2E8F0;
     border-radius: 12px;
-    padding: 14px 16px;
+    padding: 16px 18px;
     font-family: var(--font-mono);
-    font-size: 12px;
-    color: var(--text-muted);
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
+    font-size: 14px;
+    color: #475569;
   }
-  .synth-col-footer strong { color: #FFFFFF; }
-
-  /* Master Climax Bar */
-  .climax-bar {
+  .takeaway-footer strong { color: #0F172A; }
+  .grand-climax-box {
     margin-top: 24px;
-    background: linear-gradient(90deg, rgba(2, 132, 199, 0.2), rgba(16, 185, 129, 0.15));
-    border: 1px solid var(--border-strong);
-    border-radius: 16px;
-    padding: 20px 32px;
+    background: #F0F9FF;
+    border: 2px solid #BAE6FD;
+    border-radius: 18px;
+    padding: 22px 36px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    box-shadow: 0 8px 25px rgba(2, 132, 199, 0.08);
   }
-
-  .climax-text {
-    font-size: 17px;
-    color: #F8FAFC;
+  .grand-text {
+    font-size: 20px;
+    color: #0369A1;
     max-width: 1350px;
-    line-height: 1.4;
+    line-height: 1.45;
   }
-  .climax-text strong {
-    color: var(--cyan);
+  .grand-text strong {
+    color: #0284C7;
   }
 </style>
 </head>
@@ -135,69 +122,68 @@
   <div class="slide-body">
     <div class="synthesis-grid">
       <!-- Target 14.1 -->
-      <div class="synth-col">
+      <div class="synth-card">
         <div>
-          <div class="synth-col-header">
-            <span class="synth-target-id">TARGET 14.1</span>
+          <div class="synth-header">
+            <span class="target-title-tag">TARGET 14.1</span>
             <span class="interactive-chip">Pollution Pressures</span>
           </div>
-          <h3 class="synth-heading">Land-Based Pressure Reduction</h3>
-          <ul class="synth-list">
-            <li>Tracks physical inputs from rivers, wastewater, and coastal settlements.</li>
-            <li>Combines satellite chlorophyll anomalies (Level 1) with beach/ocean plastic counts (Level 2).</li>
-            <li>UNEP coordinates; implementation requires municipal solid waste and agricultural runoff regulation.</li>
+          <h3 class="synth-h3">Land-Based Pressure Reduction</h3>
+          <ul class="bullet-list">
+            <li>Tracks physical contaminant loads delivered by river basins and coastal settlements.</li>
+            <li>Combines global satellite chlorophyll anomalies (Level 1) with national beach and sea plastic surveys (Level 2).</li>
+            <li>UNEP coordinates data; real progress requires municipal solid waste regulation and agricultural runoff controls.</li>
           </ul>
         </div>
-        <div class="synth-col-footer">
-          <div><strong>Core Lesson:</strong> Monitoring identifies trends, but only source-control policies halt pollution.</div>
+        <div class="takeaway-footer">
+          <strong>Core Lesson:</strong> Monitoring identifies trends, but only enforceable source-control policies halt pollution.
         </div>
       </div>
 
       <!-- Target 14.2 -->
-      <div class="synth-col">
+      <div class="synth-card">
         <div>
-          <div class="synth-col-header">
-            <span class="synth-target-id">TARGET 14.2</span>
+          <div class="synth-header">
+            <span class="target-title-tag">TARGET 14.2</span>
             <span class="interactive-chip">Spatial Resilience</span>
           </div>
-          <h3 class="synth-heading">Ecosystem-Based Governance</h3>
-          <ul class="synth-list">
-            <li>Replaces single-sector exploitation with cross-boundary spatial protection.</li>
+          <h3 class="synth-h3">Ecosystem-Based Governance</h3>
+          <ul class="bullet-list">
+            <li>Replaces single-sector exploitation with cross-boundary spatial protection (ICZM & Marine Spatial Planning).</li>
             <li>Indicator 14.2.1 evaluates governance capacity across 4 maturity stages (Preparation to Adaptive Management).</li>
-            <li>Distinguishes legal plan formulation from real ecological performance (avoiding 'paper parks').</li>
+            <li>Distinguishes legal plan adoption from real ecological performance, guarding against unpoliced "paper parks".</li>
           </ul>
         </div>
-        <div class="synth-col-footer">
-          <div><strong>Core Lesson:</strong> Having an adopted plan does not guarantee biodiversity protection without enforcement.</div>
+        <div class="takeaway-footer">
+          <strong>Core Lesson:</strong> Having a gazetted plan does not guarantee biodiversity recovery without patrol enforcement.
         </div>
       </div>
 
       <!-- Target 14.3 -->
-      <div class="synth-col">
+      <div class="synth-card">
         <div>
-          <div class="synth-col-header">
-            <span class="synth-target-id">TARGET 14.3</span>
+          <div class="synth-header">
+            <span class="target-title-tag">TARGET 14.3</span>
             <span class="interactive-chip">Chemical Shift</span>
           </div>
-          <h3 class="synth-heading">Planetary Acidification Observation</h3>
-          <ul class="synth-list">
-            <li>Tracks long-term decline in seawater pH and aragonite calcification saturation state.</li>
-            <li>Requires at least 2 of 4 carbonate parameters plus temperature, salinity, and depth metadata.</li>
-            <li>IOC-UNESCO & GOA-ON harmonize data; solutions demand global carbon emission reductions.</li>
+          <h3 class="synth-h3">Planetary Acidification Science</h3>
+          <ul class="bullet-list">
+            <li>Tracks long-term decline in seawater pH and aragonite calcification saturation states.</li>
+            <li>Requires at least 2 of 4 carbonate parameters plus temperature, salinity, and hydrostatic depth metadata.</li>
+            <li>IOC-UNESCO & GOA-ON harmonize global data; true mitigation demands planetary carbon emissions cuts.</li>
           </ul>
         </div>
-        <div class="synth-col-footer">
-          <div><strong>Core Lesson:</strong> No single coastal state can solve acidification alone; scientific cooperation is integral.</div>
+        <div class="takeaway-footer">
+          <strong>Core Lesson:</strong> No single nation can solve acidification alone; scientific data cooperation is integral.
         </div>
       </div>
     </div>
 
-    <!-- Master Climax Callout -->
-    <div class="climax-bar">
-      <div class="climax-text">
+    <div class="grand-climax-box">
+      <div class="grand-text">
         <strong>The Four Pillars of Ocean Defense:</strong> Effective marine stewardship requires <strong>clear targets</strong> to focus political will, <strong>meaningful indicators</strong> tailored to distinct challenges, <strong>credible measurement</strong> grounded in scientific rigor, and <strong>institutions capable of acting on the evidence</strong>.
       </div>
-      <button class="pill-preset-btn active" style="font-size:13px; padding:10px 20px;" onclick="window.parent.postMessage({type:'play-sfx', sound:'achievement'}, '*')">
+      <button class="pill-preset-btn active" style="font-size:15px; padding:12px 24px;" onclick="window.parent.postMessage({type:'play-sfx', sound:'achievement'}, '*')">
         ★ Deck Complete
       </button>
     </div>
@@ -205,7 +191,7 @@
 
   <div class="slide-footer">
     <div class="footer-source">
-      <strong>Source:</strong> UN Statistics Division, Goal 14 global framework; UNEP; IOC-UNESCO [1–2, 5–6, 9–10].
+      <strong>Source:</strong> UN Statistics Division, Goal 14 framework; UNEP; IOC-UNESCO [1–2, 5–6, 9–10].
     </div>
     <div class="footer-rule">
       Rule: Effective ocean protection requires clear targets, meaningful indicators, credible data, and strong institutions.

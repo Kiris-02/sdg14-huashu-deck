@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=1920, height=1080">
-<title>Slide 12 — Indicator 14.3.1 Station ALOHA & Keeling Curve</title>
+<title>Slide 12 — Indicator 14.3.1 Station ALOHA & Carbonate Parameters</title>
 <link rel="stylesheet" href="../shared/deck.css">
 <style>
   .sampling-grid {
@@ -13,123 +13,96 @@
     height: 100%;
     align-items: stretch;
   }
-
-  .rules-panel {
+  .rules-col {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 18px;
     justify-content: space-between;
   }
-
   .rule-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border-subtle);
-    border-radius: 16px;
-    padding: 22px 26px;
+    background: #FFFFFF;
+    border: 1.5px solid #CBD5E1;
+    border-radius: 18px;
+    padding: 24px 28px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.04);
   }
-
-  .rule-card-title {
+  .rule-title {
     font-family: var(--font-display);
-    font-size: 18px;
-    color: #FFFFFF;
+    font-size: 22px;
+    font-weight: 800;
+    color: #0F172A;
     margin-bottom: 6px;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
   }
-
   .rule-card p {
-    font-size: 14px;
-    color: var(--text-dim);
-    line-height: 1.45;
+    font-size: 18px;
+    color: #334155;
+    line-height: 1.55;
   }
-
-  /* Right Side: Interactive Time Series Dashboard */
-  .timeseries-container {
-    background: var(--bg-card);
-    border: 1px solid var(--border-strong);
-    border-radius: 20px;
-    padding: 28px 32px;
+  .ts-panel {
+    background: #FFFFFF;
+    border: 2px solid #CBD5E1;
+    border-radius: 22px;
+    padding: 30px 36px;
+    box-shadow: 0 12px 36px rgba(0,0,0,0.05);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
   }
-
-  .ts-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    padding-bottom: 14px;
-  }
-
-  .ts-title {
-    font-family: var(--font-mono);
-    font-size: 13px;
-    font-weight: 700;
-    color: var(--cyan);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-  }
-
-  /* Chart Canvas Simulator */
   .chart-box {
     position: relative;
-    height: 280px;
+    height: 290px;
     width: 100%;
-    background: rgba(15, 23, 42, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    border-radius: 14px;
+    background: #F8FAFC;
+    border: 1.5px solid #E2E8F0;
+    border-radius: 16px;
     padding: 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
   }
-
   .chart-svg {
     width: 100%;
     height: 100%;
     overflow: visible;
   }
-
-  .timeline-milestones {
+  .milestones-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
-    margin-top: 16px;
+    gap: 14px;
+    margin-top: 18px;
   }
-
-  .milestone-btn {
-    background: rgba(15, 23, 42, 0.8);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 12px;
-    padding: 12px;
+  .milestone-card {
+    background: #FFFFFF;
+    border: 2px solid #E2E8F0;
+    border-radius: 14px;
+    padding: 14px 16px;
     cursor: pointer;
     transition: all .2s;
     text-align: left;
   }
-
-  .milestone-btn:hover, .milestone-btn.active {
-    border-color: var(--cyan);
-    background: rgba(56, 189, 248, 0.12);
+  .milestone-card:hover, .milestone-card.active {
+    border-color: #0284C7;
+    background: #F0F9FF;
     transform: translateY(-2px);
   }
-
-  .m-year {
+  .m-yr {
     font-family: var(--font-mono);
-    font-size: 13px;
-    font-weight: 700;
-    color: var(--cyan);
+    font-size: 16px;
+    font-weight: 800;
+    color: #0284C7;
   }
-  .m-val {
-    font-size: 13px;
-    color: #FFFFFF;
-    font-weight: 600;
+  .m-data {
+    font-size: 14px;
+    font-weight: 700;
+    color: #0F172A;
     margin-top: 2px;
   }
-  .m-desc {
-    font-size: 11px;
-    color: var(--text-muted);
+  .m-label {
+    font-size: 12px;
+    color: #64748B;
   }
 </style>
 </head>
@@ -139,7 +112,7 @@
     <div class="header-left">
       <div class="badge-row">
         <div class="speaker-pill">Speaker 5</div>
-        <div class="target-badge">Indicator 14.3.1 Rigor</div>
+        <div class="target-badge">Indicator 14.3.1 Measurement</div>
       </div>
       <h2 class="slide-title">Indicator 14.3.1: Sampling stations & carbonate parameters</h2>
     </div>
@@ -151,93 +124,89 @@
 
   <div class="slide-body">
     <div class="sampling-grid">
-      <!-- Left Column: Core Rules -->
-      <div class="rules-panel">
+      <div class="rules-col">
         <div class="rule-card">
-          <div class="rule-card-title">
-            <span style="color:var(--cyan);">01</span>
+          <div class="rule-title">
+            <span style="color:#0284C7;">01</span>
             Representative Sampling Stations
           </div>
           <p>Stations must observe frequently enough to characterize natural seasonal fluctuations and provide certified metadata allowing integration into the Global Ocean Acidification Observing Network (GOA-ON).</p>
         </div>
 
         <div class="rule-card">
-          <div class="rule-card-title">
-            <span style="color:var(--emerald);">02</span>
+          <div class="rule-title">
+            <span style="color:#059669;">02</span>
             Two-Parameter Thermodynamic Rule
           </div>
           <p>A single pH reading cannot resolve long-term acidification from diurnal respiration. Protocols mandate measuring at least <strong>two of four</strong> core parameters: pH, pCO₂, Dissolved Inorganic Carbon (DIC), or Total Alkalinity (TA).</p>
         </div>
 
         <div class="rule-card">
-          <div class="rule-card-title">
-            <span style="color:var(--amber);">03</span>
+          <div class="rule-title">
+            <span style="color:#D97706;">03</span>
             Mandatory Auxiliary Metadata
           </div>
-          <p>Every pH submission must record water temperature, salinity, and hydrostatic depth. Without temperature and salinity, thermodynamic carbonate equilibrium dissociation constants cannot be computed.</p>
+          <p>Every pH submission must record water temperature, salinity, and hydrostatic depth. Without temperature and salinity, thermodynamic carbonate equilibrium dissociation constants cannot be calculated.</p>
         </div>
       </div>
 
-      <!-- Right Column: Empirical Time-Series Chart -->
-      <div class="timeseries-container">
-        <div class="ts-header">
-          <span class="ts-title">Station ALOHA (22°45'N, 158°00'W) 35-Year Time Series</span>
-          <span class="interactive-chip" id="highlightYearChip">Interactive Timeline</span>
+      <div class="ts-panel">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <span style="font-family:var(--font-mono); font-size:14px; font-weight:700; color:#0284C7; text-transform:uppercase;">Station ALOHA (Hawaii) 35-Year Time Series</span>
+          <span class="interactive-chip" id="tsChip">Interactive Timeline</span>
         </div>
 
-        <!-- SVG Chart -->
         <div class="chart-box">
           <svg class="chart-svg" viewBox="0 0 700 220">
             <!-- Grid Lines -->
-            <line x1="60" y1="30" x2="680" y2="30" stroke="rgba(255,255,255,0.06)" />
-            <line x1="60" y1="80" x2="680" y2="80" stroke="rgba(255,255,255,0.06)" />
-            <line x1="60" y1="130" x2="680" y2="130" stroke="rgba(255,255,255,0.06)" />
-            <line x1="60" y1="180" x2="680" y2="180" stroke="rgba(255,255,255,0.06)" />
+            <line x1="60" y1="30" x2="680" y2="30" stroke="#E2E8F0" stroke-width="1.5" />
+            <line x1="60" y1="80" x2="680" y2="80" stroke="#E2E8F0" stroke-width="1.5" />
+            <line x1="60" y1="130" x2="680" y2="130" stroke="#E2E8F0" stroke-width="1.5" />
+            <line x1="60" y1="180" x2="680" y2="180" stroke="#E2E8F0" stroke-width="1.5" />
 
-            <!-- Y-Axis Labels -->
-            <text x="15" y="35" fill="#38BDF8" font-size="11" font-family="monospace">420 ppm</text>
-            <text x="15" y="105" fill="#38BDF8" font-size="11" font-family="monospace">380 ppm</text>
-            <text x="15" y="175" fill="#38BDF8" font-size="11" font-family="monospace">350 ppm</text>
+            <!-- Labels -->
+            <text x="10" y="35" fill="#DC2626" font-size="12" font-family="monospace" font-weight="bold">420 ppm</text>
+            <text x="10" y="105" fill="#DC2626" font-size="12" font-family="monospace" font-weight="bold">380 ppm</text>
+            <text x="10" y="175" fill="#DC2626" font-size="12" font-family="monospace" font-weight="bold">350 ppm</text>
 
-            <!-- Curve 1: Atmospheric CO2 (Mauna Loa) - Rising Red/Amber -->
-            <path d="M 70 175 Q 220 150 370 115 T 670 45" fill="none" stroke="#F43F5E" stroke-width="3.5" />
+            <!-- Curve 1: Atmospheric CO2 Rising (Red) -->
+            <path d="M 70 175 Q 220 150 370 115 T 670 45" fill="none" stroke="#DC2626" stroke-width="4" />
             
-            <!-- Curve 2: Ocean pH (Aloha) - Inversely Falling Cyan -->
-            <path d="M 70 50 Q 220 75 370 110 T 670 175" fill="none" stroke="#38BDF8" stroke-width="3.5" />
+            <!-- Curve 2: Seawater pH Falling (Blue) -->
+            <path d="M 70 50 Q 220 75 370 110 T 670 175" fill="none" stroke="#0284C7" stroke-width="4" />
 
-            <!-- Legend Overlay -->
-            <circle cx="200" cy="20" r="4" fill="#F43F5E"/>
-            <text x="210" y="24" fill="#E2E8F0" font-size="11" font-family="sans-serif">Mauna Loa Atmospheric CO₂</text>
-            <circle cx="430" cy="20" r="4" fill="#38BDF8"/>
-            <text x="440" y="24" fill="#E2E8F0" font-size="11" font-family="sans-serif">Station ALOHA Seawater pH</text>
+            <!-- Legend -->
+            <circle cx="180" cy="20" r="5" fill="#DC2626"/>
+            <text x="192" y="24" fill="#0F172A" font-size="13" font-family="sans-serif" font-weight="bold">Mauna Loa Atmospheric CO₂</text>
+            <circle cx="430" cy="20" r="5" fill="#0284C7"/>
+            <text x="442" y="24" fill="#0F172A" font-size="13" font-family="sans-serif" font-weight="bold">Station ALOHA Seawater pH</text>
             
-            <!-- Highlight Marker Circle -->
-            <circle id="markerCo2" cx="370" cy="115" r="7" fill="#F43F5E" stroke="#FFF" stroke-width="2" />
-            <circle id="markerPh" cx="370" cy="110" r="7" fill="#38BDF8" stroke="#FFF" stroke-width="2" />
+            <!-- Markers -->
+            <circle id="dotCo2" cx="370" cy="115" r="8" fill="#DC2626" stroke="#FFFFFF" stroke-width="3" />
+            <circle id="dotPh" cx="370" cy="110" r="8" fill="#0284C7" stroke="#FFFFFF" stroke-width="3" />
           </svg>
         </div>
 
-        <!-- Milestones Row -->
-        <div class="timeline-milestones">
-          <div class="milestone-btn" onclick="selectYear(1988, 351, 8.12, 70, 50)">
-            <div class="m-year">1988</div>
-            <div class="m-val">pH 8.12 · 351 ppm</div>
-            <div class="m-desc">HOT Baseline set</div>
+        <div class="milestones-grid">
+          <div class="milestone-card" onclick="pickYear(1988, 351, 8.12, 70, 50)">
+            <div class="m-yr">1988</div>
+            <div class="m-data">pH 8.12 · 351 ppm</div>
+            <div class="m-label">HOT Baseline Established</div>
           </div>
-          <div class="milestone-btn" onclick="selectYear(2000, 369, 8.09, 230, 80)">
-            <div class="m-year">2000</div>
-            <div class="m-val">pH 8.09 · 369 ppm</div>
-            <div class="m-desc">Accelerating trend</div>
+          <div class="milestone-card" onclick="pickYear(2000, 369, 8.09, 230, 80)">
+            <div class="m-yr">2000</div>
+            <div class="m-data">pH 8.09 · 369 ppm</div>
+            <div class="m-label">Accelerating Trend</div>
           </div>
-          <div class="milestone-btn active" onclick="selectYear(2015, 401, 8.07, 470, 135)">
-            <div class="m-year">2015</div>
-            <div class="m-val">pH 8.07 · 401 ppm</div>
-            <div class="m-desc">SDG 14 Adopted</div>
+          <div class="milestone-card active" onclick="pickYear(2015, 401, 8.07, 470, 135)">
+            <div class="m-yr">2015</div>
+            <div class="m-data">pH 8.07 · 401 ppm</div>
+            <div class="m-label">UN SDG 14 Adopted</div>
           </div>
-          <div class="milestone-btn" onclick="selectYear(2025, 424, 8.05, 670, 175)">
-            <div class="m-year">2025</div>
-            <div class="m-val">pH 8.05 · 424 ppm</div>
-            <div class="m-desc">Present record low</div>
+          <div class="milestone-card" onclick="pickYear(2025, 424, 8.05, 670, 175)">
+            <div class="m-yr">2025</div>
+            <div class="m-data">pH 8.05 · 424 ppm</div>
+            <div class="m-label">Present Record Low</div>
           </div>
         </div>
       </div>
@@ -255,15 +224,15 @@
 </div>
 <script src="../shared/deck.js"></script>
 <script>
-function selectYear(yr, co2, ph, cx, cy) {
-  document.getElementById('highlightYearChip').textContent = yr + ' Data: ' + co2 + ' ppm | pH ' + ph;
-  document.getElementById('markerCo2').setAttribute('cx', cx);
-  document.getElementById('markerCo2').setAttribute('cy', (220 - (co2 - 340) * 1.6));
-  document.getElementById('markerPh').setAttribute('cx', cx);
-  document.getElementById('markerPh').setAttribute('cy', cy);
+function pickYear(yr, co2, ph, cx, cy) {
+  document.getElementById('tsChip').textContent = yr + ' Data: ' + co2 + ' ppm | pH ' + ph;
+  document.getElementById('dotCo2').setAttribute('cx', cx);
+  document.getElementById('dotCo2').setAttribute('cy', (220 - (co2 - 340) * 1.6));
+  document.getElementById('dotPh').setAttribute('cx', cx);
+  document.getElementById('dotPh').setAttribute('cy', cy);
 
-  document.querySelectorAll('.milestone-btn').forEach(b => {
-    b.classList.toggle('active', b.textContent.includes(yr.toString()));
+  document.querySelectorAll('.milestone-card').forEach(c => {
+    c.classList.toggle('active', c.textContent.includes(yr.toString()));
   });
 }
 </script>

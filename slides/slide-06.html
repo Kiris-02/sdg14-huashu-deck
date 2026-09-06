@@ -1,147 +1,69 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=1920, height=1080">
-<title>Slide 06 — Governance Architecture & Policy Levers</title>
+<title>Slide 06 — Target 14.1 Governance Levers</title>
 <link rel="stylesheet" href="../shared/deck.css">
 <style>
-  .gov-layout {
+  .gov-grid {
     display: grid;
-    grid-template-columns: 1.15fr 1fr;
-    gap: 40px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
     height: 100%;
-    align-items: center;
+    align-items: stretch;
   }
-  
-  /* Left: 3-Tier Governance Stack */
-  .gov-stack {
+  .gov-card {
+    background: #FFFFFF;
+    border: 2px solid #CBD5E1;
+    border-radius: 22px;
+    padding: 36px 32px;
     display: flex;
     flex-direction: column;
-    gap: 16px;
-  }
-  
-  .stack-tier {
-    background: var(--bg-card);
-    border: 1px solid var(--border-subtle);
-    border-radius: 16px;
-    padding: 24px 28px;
-    position: relative;
-    box-shadow: 0 10px 24px rgba(0,0,0,0.3);
-  }
-  
-  .tier-header {
-    display: flex;
     justify-content: space-between;
-    align-items: center;
-    margin-bottom: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: all .25s ease;
   }
-  
-  .tier-level-tag {
+  .gov-card:hover {
+    border-color: #0284C7;
+    transform: translateY(-6px);
+    box-shadow: 0 20px 45px rgba(2, 132, 199, 0.12);
+  }
+  .gov-level-tag {
     font-family: var(--font-mono);
-    font-size: 11px;
+    font-size: 14px;
     font-weight: 700;
-    letter-spacing: 0.1em;
+    color: #0284C7;
     text-transform: uppercase;
+    margin-bottom: 14px;
   }
-  
-  .tier-org {
+  .gov-title {
     font-family: var(--font-display);
-    font-size: 22px;
-    font-weight: 700;
-    color: #FFFFFF;
+    font-size: 30px;
+    font-weight: 800;
+    color: #0F172A;
+    line-height: 1.25;
+    margin-bottom: 14px;
   }
-  
-  .tier-mandate {
-    font-size: 14px;
-    color: var(--text-dim);
-    line-height: 1.5;
-  }
-  
-  .tier-global { border-left: 4px solid var(--cyan); }
-  .tier-global .tier-level-tag { color: var(--cyan); }
-  
-  .tier-regional { border-left: 4px solid var(--indigo); }
-  .tier-regional .tier-level-tag { color: var(--indigo); }
-  
-  .tier-national { border-left: 4px solid var(--emerald); }
-  .tier-national .tier-level-tag { color: var(--emerald); }
-  
-  .tier-connector {
-    display: flex;
-    justify-content: center;
-    color: var(--text-muted);
+  .gov-body {
     font-size: 18px;
-    line-height: 1;
-  }
-  
-  /* Right: Policy Levers Panel */
-  .policy-panel {
-    background: var(--bg-card);
-    border: 1px solid var(--border-subtle);
-    border-radius: 20px;
-    padding: 32px;
-    box-shadow: 0 16px 36px rgba(0,0,0,0.4);
-  }
-  
-  .panel-title {
-    font-family: var(--font-display);
-    font-size: 20px;
-    font-weight: 700;
-    color: #FFFFFF;
-    margin-bottom: 8px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  
-  .panel-subtitle {
-    font-size: 14px;
-    color: var(--text-dim);
+    color: #334155;
+    line-height: 1.6;
     margin-bottom: 24px;
   }
-  
-  .levers-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin-bottom: 24px;
-  }
-  
-  .lever-item {
-    background: rgba(15, 23, 42, 0.7);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 12px;
+  .gov-bullet-box {
+    background: #F8FAFC;
+    border: 1.5px solid #E2E8F0;
+    border-radius: 14px;
     padding: 18px;
-  }
-  
-  .lever-name {
-    font-family: var(--font-display);
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--cyan);
-    margin-bottom: 6px;
-  }
-  
-  .lever-desc {
-    font-size: 13px;
-    color: var(--text-dim);
-    line-height: 1.45;
-  }
-  
-  .takeaway-card {
-    background: rgba(245, 158, 11, 0.08);
-    border: 1px solid rgba(245, 158, 11, 0.25);
-    border-radius: 10px;
-    padding: 14px 18px;
+    font-family: var(--font-mono);
     font-size: 14px;
-    color: #FEF3C7;
-    line-height: 1.5;
+    color: #475569;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
   }
-  
-  .takeaway-card strong {
-    color: var(--amber);
-  }
+  .gov-bullet-box strong { color: #0F172A; }
 </style>
 </head>
 <body>
@@ -152,79 +74,52 @@
         <div class="speaker-pill">Speaker 2</div>
         <div class="target-badge">Institutional Architecture</div>
       </div>
-      <h2 class="slide-title">Monitoring informs policy, but source control creates change</h2>
+      <h2 class="slide-title">Governance for Target 14.1 operates from global custodians to national source control</h2>
     </div>
     <div class="header-right">
       <div class="slide-number-display">06 <span>/ 15</span></div>
-      <div class="track-label">Target 14.1 Governance</div>
+      <div class="track-label">Governance Continuum</div>
     </div>
   </div>
 
   <div class="slide-body">
-    <div class="gov-layout">
-      <!-- 3 Governance Levels -->
-      <div class="gov-stack">
-        <div class="stack-tier tier-global">
-          <div class="tier-header">
-            <span class="tier-level-tag">Global Level</span>
-            <span style="font-family:var(--font-mono); font-size:12px; color:var(--text-muted);">UN Custodian</span>
-          </div>
-          <div class="tier-org">UNEP (UN Environment Programme)</div>
-          <p class="tier-mandate">Defines statistical methodologies, hosts global data repositories, coordinates international harmonization, and leads the Global Plastics Treaty negotiations.</p>
+    <div class="gov-grid">
+      <!-- Global Custodian -->
+      <div class="gov-card">
+        <div>
+          <div class="gov-level-tag">GLOBAL CUSTODIAN LEVEL</div>
+          <h3 class="gov-title">UNEP & Global Programme of Action (GPA)</h3>
+          <p class="gov-body">UNEP compiles global statistical indicators, manages quality assurance, and harmonizes national reporting across international ocean observing frameworks.</p>
         </div>
-
-        <div class="tier-connector">▼ Intergovernmental Alignment</div>
-
-        <div class="stack-tier tier-regional">
-          <div class="tier-header">
-            <span class="tier-level-tag">Regional Level</span>
-            <span style="font-family:var(--font-mono); font-size:12px; color:var(--text-muted);">Transboundary Coordination</span>
-          </div>
-          <div class="tier-org">Regional Seas Conventions & Action Plans</div>
-          <p class="tier-mandate">Harmonizes cross-border marine baselines (e.g., OSPAR, HELCOM, Barcelona Convention, COBSEA), running regional quality control and shared ecosystem audits.</p>
-        </div>
-
-        <div class="tier-connector">▼ Sovereign Enforcement</div>
-
-        <div class="stack-tier tier-national">
-          <div class="tier-header">
-            <span class="tier-level-tag">National & Subnational Level</span>
-            <span style="font-family:var(--font-mono); font-size:12px; color:var(--text-muted);">Implementation Anchor</span>
-          </div>
-          <div class="tier-org">National Ministries & Enforcement Authorities</div>
-          <p class="tier-mandate">Validates raw data submissions, legislates waste standards, funds municipal sanitation infrastructure, and enforces statutory discharge penalties.</p>
+        <div class="gov-bullet-box">
+          <div><strong>Core Mandate:</strong> Methodological custodian for Indicator 14.1.1.</div>
+          <div><strong>Platform:</strong> GPA for protection from land-based activities.</div>
         </div>
       </div>
 
-      <!-- Actionable Policy Levers -->
-      <div class="policy-panel">
-        <div class="panel-title">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M15 3v18M3 9h18M3 15h18"/></svg>
-          Sovereign Source-Control Levers
+      <!-- Regional Platforms -->
+      <div class="gov-card">
+        <div>
+          <div class="gov-level-tag">REGIONAL BASIN LEVEL</div>
+          <h3 class="gov-title">Regional Seas Conventions & Action Plans</h3>
+          <p class="gov-body">Shared marine basins (Mediterranean, Baltic, Caribbean, East Asian Seas) coordinate legally binding protocols to combat transboundary marine debris and river plumes.</p>
         </div>
-        <p class="panel-subtitle">Where physical intervention must occur to alter marine indicator trajectories:</p>
-
-        <div class="levers-grid">
-          <div class="lever-item">
-            <div class="lever-name">Wastewater Treatment</div>
-            <div class="lever-desc">Upgrading secondary and tertiary municipal sewage to strip bioavailable nitrogen and phosphorus before discharge.</div>
-          </div>
-          <div class="lever-item">
-            <div class="lever-name">Agricultural Runoff</div>
-            <div class="lever-desc">Precision fertilizer subsidies, riparian buffer zones, and wetland restoration along major farming corridors.</div>
-          </div>
-          <div class="lever-item">
-            <div class="lever-name">Municipal Solid Waste</div>
-            <div class="lever-desc">Mandatory closed-loop collection, leak-proof landfill management, and riverine trash boom interceptors.</div>
-          </div>
-          <div class="lever-item">
-            <div class="lever-name">Plastics Regulation</div>
-            <div class="lever-desc">Extended Producer Responsibility (EPR), bans on problematic single-use items, and virgin polymer tax schemes.</div>
-          </div>
+        <div class="gov-bullet-box">
+          <div><strong>Key Mechanism:</strong> 18 Regional Seas Programmes.</div>
+          <div><strong>Role:</strong> Harmonizes localized sampling protocols across neighboring states.</div>
         </div>
+      </div>
 
-        <div class="takeaway-card">
-          <strong>The Governance Paradox:</strong> Marine observation only detects where pollution travels; sovereign land-based regulation is the only force capable of stopping it at the tap.
+      <!-- National Source Control -->
+      <div class="gov-card">
+        <div>
+          <div class="gov-level-tag">NATIONAL REGULATORY LEVEL</div>
+          <h3 class="gov-title">Source-Control Policy Instruments</h3>
+          <p class="gov-body">Monitoring reveals pollution patterns, but actual marine recovery requires domestic enforcement: bans on single-use plastics, wastewater treatment standards, and fertilizer limits.</p>
+        </div>
+        <div class="gov-bullet-box">
+          <div><strong>Key Mechanism:</strong> Extended Producer Responsibility (EPR).</div>
+          <div><strong>Domestic Levers:</strong> Agricultural discharge caps & municipal waste infrastructure.</div>
         </div>
       </div>
     </div>
@@ -232,10 +127,10 @@
 
   <div class="slide-footer">
     <div class="footer-source">
-      <strong>Source:</strong> UNSD Metadata; UNEP Regional Seas Programme & Global Programme of Action (GPA) [2–4].
+      <strong>Source:</strong> UNEP Regional Seas Programme; UNEP GPA for the Protection of the Marine Environment from Land-based Activities [1–4].
     </div>
     <div class="footer-rule">
-      Rule: Clarify that custodian agencies coordinate metrics, while domestic ministries hold statutory levers.
+      Rule: Note that monitoring alone does not fix the sea—governments require enforceable source control.
     </div>
   </div>
 </div>

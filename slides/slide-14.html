@@ -1,161 +1,69 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=1920, height=1080">
-<title>Slide 14 — Global Scientific Network Architecture</title>
+<title>Slide 14 — Target 14.3 Scientific Cooperation</title>
 <link rel="stylesheet" href="../shared/deck.css">
 <style>
-  .network-layout {
+  .coop-grid {
     display: grid;
-    grid-template-columns: 1fr 1.35fr;
-    gap: 40px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
     height: 100%;
-    align-items: center;
+    align-items: stretch;
   }
-  
-  .network-text-side {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-  
-  .inst-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border-subtle);
-    border-radius: 16px;
-    padding: 24px 28px;
-    border-left: 4px solid var(--cyan);
-  }
-  
-  .inst-card h3 {
-    font-family: var(--font-display);
-    font-size: 20px;
-    color: #FFFFFF;
-    margin-bottom: 6px;
-  }
-  
-  .inst-card p {
-    font-size: 15px;
-    color: var(--text-dim);
-    line-height: 1.5;
-  }
-  
-  /* Right: Network Hub Diagram */
-  .diagram-wrapper {
-    background: var(--bg-card);
-    border: 1px solid var(--border-subtle);
-    border-radius: 20px;
-    padding: 32px;
-    height: 100%;
+  .coop-card {
+    background: #FFFFFF;
+    border: 2px solid #CBD5E1;
+    border-radius: 22px;
+    padding: 36px 32px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    box-shadow: 0 16px 36px rgba(0,0,0,0.4);
-    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: all .2s ease;
   }
-  
-  .diagram-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  .coop-card:hover {
+    border-color: #0284C7;
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(2, 132, 199, 0.12);
   }
-  
-  .diagram-title-text {
+  .coop-tag {
     font-family: var(--font-mono);
     font-size: 14px;
     font-weight: 700;
-    color: var(--cyan);
+    color: #0284C7;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    margin-bottom: 14px;
   }
-  
-  /* Centralized Star Graph representation */
-  .network-grid-display {
-    display: grid;
-    grid-template-areas: 
-      "node1 hub node2"
-      "node3 hub node4";
-    gap: 20px;
-    align-items: center;
-    margin: 20px 0;
+  .coop-title {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 800;
+    color: #0F172A;
+    line-height: 1.25;
+    margin-bottom: 14px;
   }
-  
-  .hub-node {
-    grid-area: hub;
-    background: radial-gradient(circle, rgba(56, 189, 248, 0.2) 0%, rgba(14, 27, 45, 0.9) 70%);
-    border: 2px solid var(--cyan);
-    box-shadow: 0 0 30px rgba(56, 189, 248, 0.25);
-    border-radius: 50%;
-    width: 220px;
-    height: 220px;
-    margin: 0 auto;
+  .coop-desc {
+    font-size: 18px;
+    color: #334155;
+    line-height: 1.6;
+    margin-bottom: 24px;
+  }
+  .coop-box {
+    background: #F8FAFC;
+    border: 1.5px solid #E2E8F0;
+    border-radius: 14px;
+    padding: 18px;
+    font-family: var(--font-mono);
+    font-size: 14px;
+    color: #475569;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 20px;
+    gap: 8px;
   }
-  
-  .hub-node h4 {
-    font-family: var(--font-display);
-    font-size: 20px;
-    font-weight: 800;
-    color: #FFFFFF;
-    line-height: 1.1;
-    margin-bottom: 4px;
-  }
-  
-  .hub-node span {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    color: var(--cyan);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-  }
-  
-  .sat-node {
-    background: rgba(15, 23, 42, 0.7);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 14px;
-    padding: 20px;
-  }
-  
-  .n1 { grid-area: node1; border-top: 3px solid var(--cyan); }
-  .n2 { grid-area: node2; border-top: 3px solid var(--emerald); }
-  .n3 { grid-area: node3; border-top: 3px solid var(--amber); }
-  .n4 { grid-area: node4; border-top: 3px solid var(--indigo); }
-  
-  .sat-title {
-    font-family: var(--font-display);
-    font-size: 16px;
-    font-weight: 700;
-    color: #FFFFFF;
-    margin-bottom: 6px;
-  }
-  
-  .sat-desc {
-    font-size: 12px;
-    color: var(--text-dim);
-    line-height: 1.4;
-  }
-  
-  .coop-summary-bar {
-    background: rgba(56, 189, 248, 0.06);
-    border: 1px solid rgba(56, 189, 248, 0.18);
-    border-radius: 10px;
-    padding: 14px 20px;
-    font-size: 13px;
-    color: var(--text-dim);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .coop-summary-bar strong {
-    color: var(--cyan);
-  }
+  .coop-box strong { color: #0F172A; }
 </style>
 </head>
 <body>
@@ -164,76 +72,54 @@
     <div class="header-left">
       <div class="badge-row">
         <div class="speaker-pill">Speaker 6</div>
-        <div class="target-badge">Institutional Network Design</div>
+        <div class="target-badge">Global Cooperation Hubs</div>
       </div>
-      <h2 class="slide-title">Scientific cooperation makes national observations comparable</h2>
+      <h2 class="slide-title">Scientific cooperation connects local observation with global climate policy</h2>
     </div>
     <div class="header-right">
       <div class="slide-number-display">14 <span>/ 15</span></div>
-      <div class="track-label">Global Coordination</div>
+      <div class="track-label">Institutional Networks</div>
     </div>
   </div>
 
   <div class="slide-body">
-    <div class="network-layout">
-      <!-- Left: Key Pillars -->
-      <div class="network-text-side">
-        <div class="inst-card">
-          <h3>IOC-UNESCO: The Sovereign Custodian</h3>
-          <p>Coordinates annual data calls to member states, standardizes reporting guidelines, and provides technical capacity building for developing island nations.</p>
+    <div class="coop-grid">
+      <!-- Hub 1 -->
+      <div class="coop-card">
+        <div>
+          <div class="coop-tag">UN CUSTODIAN AGENCY</div>
+          <h3 class="coop-title">IOC-UNESCO</h3>
+          <p class="coop-desc">Leads global ocean science, sets methodological standards for Indicator 14.3.1, and manages the International Oceanographic Data and Information Exchange (IODE).</p>
         </div>
-
-        <div class="inst-card">
-          <h3>GOA-ON: The Global Scientific Observing Network</h3>
-          <p>Links over 900 scientists and autonomous observing platforms across 100+ nations to maintain shared quality standards and regional collaboration hubs.</p>
-        </div>
-
-        <div class="inst-card">
-          <h3>IODE & The SDG 14.3.1 Data Portal</h3>
-          <p>The International Oceanographic Data and Information Exchange manages the secure open-access portal where national focal points upload certified datasets.</p>
+        <div class="coop-box">
+          <div><strong>Role:</strong> Global statistical compiling agency.</div>
+          <div><strong>Hub:</strong> SDG 14.3.1 Data Portal & IODE.</div>
         </div>
       </div>
 
-      <!-- Right: Star Network Hub Visual -->
-      <div class="diagram-wrapper">
-        <div class="diagram-header">
-          <span class="diagram-title-text">Decentralized Collaboration Architecture</span>
-          <span style="font-family:var(--font-mono); font-size:12px; color:var(--text-muted);">Transnational Data Mesh</span>
+      <!-- Hub 2 -->
+      <div class="coop-card">
+        <div>
+          <div class="coop-tag">SCIENTIFIC OBSERVING NETWORK</div>
+          <h3 class="coop-title">GOA-ON Network</h3>
+          <p class="coop-desc">The Global Ocean Acidification Observing Network links hundreds of researchers worldwide, standardizing sensor calibrations and deploying 'GOA-ON in a Box' low-cost kits to developing states.</p>
         </div>
-
-        <div class="network-grid-display">
-          <!-- Hub -->
-          <div class="hub-node">
-            <h4>IOC-UNESCO</h4>
-            <span>UN Custodian Hub</span>
-            <div style="font-size:10px; color:var(--text-muted); margin-top:6px;">Harmonization & QC Audit</div>
-          </div>
-
-          <!-- Satellite Nodes -->
-          <div class="sat-node n1">
-            <div class="sat-title">NSOs & IOC Focal Points</div>
-            <div class="sat-desc">National Statistical Offices officially accrediting state marine submissions.</div>
-          </div>
-
-          <div class="sat-node n2">
-            <div class="sat-title">GOA-ON Regional Hubs</div>
-            <div class="sat-desc">Field scientists sharing sensor calibration, reference standards & inter-lab assays.</div>
-          </div>
-
-          <div class="sat-node n3">
-            <div class="sat-title">National Data Centres (NODCs)</div>
-            <div class="sat-desc">Archiving raw sensor logs, CTD casts, and long-term oceanographic baselines.</div>
-          </div>
-
-          <div class="sat-node n4">
-            <div class="sat-title">SDG 14.3.1 Data Portal (IODE)</div>
-            <div class="sat-desc">Harmonized global data warehouse feeding the annual UN Secretary-General report.</div>
-          </div>
+        <div class="coop-box">
+          <div><strong>Capacity:</strong> Pier-to-peer scientist mentoring.</div>
+          <div><strong>Toolkit:</strong> Low-cost spectrophotometric kits.</div>
         </div>
+      </div>
 
-        <div class="coop-summary-bar">
-          <div><strong>Core Breakthrough:</strong> Scientific cooperation transforms isolated sensors into a globally comparable planetary audit.</div>
-          <span style="font-family:var(--font-mono); color:var(--cyan); font-size:12px;">SDG 14.3 Mandate</span>
+      <!-- Hub 3 -->
+      <div class="coop-card">
+        <div>
+          <div class="coop-tag">GLOBAL POLICY LINKAGE</div>
+          <h3 class="coop-title">UNFCCC & Paris Agreement</h3>
+          <p class="coop-desc">Local ocean acidification data feeds directly into the UNFCCC Ocean and Climate Change Dialogue, grounding Nationally Determined Contributions (NDCs) in empirical ocean chemistry.</p>
+        </div>
+        <div class="coop-box">
+          <div><strong>Pillar:</strong> Mitigation of global CO₂ emissions.</div>
+          <div><strong>Outcome:</strong> Ocean-climate integrated governance.</div>
         </div>
       </div>
     </div>
@@ -241,10 +127,10 @@
 
   <div class="slide-footer">
     <div class="footer-source">
-      <strong>Source:</strong> UNSD Metadata; IOC-UNESCO Ocean Acidification Programme & GOA-ON Guidelines [9–10].
+      <strong>Source:</strong> IOC-UNESCO Ocean Acidification programme; GOA-ON; UNFCCC Ocean Dialogue [1, 9–10].
     </div>
     <div class="footer-rule">
-      Rule: Depict the star network centered on IOC-UNESCO connecting national authorities with field science.
+      Rule: Connect local pH sampling to global scientific coordination and UNFCCC climate negotiations.
     </div>
   </div>
 </div>
