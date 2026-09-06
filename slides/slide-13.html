@@ -1,0 +1,243 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920, height=1080">
+<title>Slide 13 — Standardized Measurement Pipeline</title>
+<link rel="stylesheet" href="../shared/deck.css">
+<style>
+  .pipeline-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    height: 100%;
+    justify-content: center;
+  }
+  
+  /* 4-Stage Horizontal Pipeline */
+  .stages-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    position: relative;
+  }
+  
+  .stage-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 16px;
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    box-shadow: 0 12px 28px rgba(0,0,0,0.35);
+  }
+  
+  .stage-item::after {
+    content: '→';
+    position: absolute;
+    right: -16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--cyan);
+    font-size: 24px;
+    font-weight: 700;
+    z-index: 10;
+  }
+  
+  .stage-item:last-child::after {
+    display: none;
+  }
+  
+  .stage-tag {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--cyan);
+    background: rgba(56, 189, 248, 0.1);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    padding: 4px 10px;
+    border-radius: 6px;
+    width: fit-content;
+    margin-bottom: 16px;
+  }
+  
+  .stage-name {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-bottom: 8px;
+  }
+  
+  .stage-body-text {
+    font-size: 14px;
+    color: var(--text-dim);
+    line-height: 1.5;
+    margin-bottom: 16px;
+  }
+  
+  .stage-bullet-list {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    padding-top: 12px;
+  }
+  
+  .bullet-tag {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+  
+  /* Mandatory Statistical Output Format */
+  .output-box {
+    background: rgba(15, 23, 42, 0.7);
+    border: 1px dashed rgba(56, 189, 248, 0.3);
+    border-radius: 16px;
+    padding: 24px 32px;
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 32px;
+    align-items: center;
+  }
+  
+  .output-heading h4 {
+    font-family: var(--font-display);
+    font-size: 18px;
+    color: #FFFFFF;
+    margin-bottom: 4px;
+  }
+  
+  .output-heading span {
+    font-size: 12px;
+    color: var(--cyan);
+    font-family: var(--font-mono);
+  }
+  
+  .stats-metrics-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  
+  .stat-card {
+    background: rgba(255,255,255,0.03);
+    border-radius: 10px;
+    padding: 14px 18px;
+  }
+  
+  .stat-title {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+    text-transform: uppercase;
+  }
+  
+  .stat-content {
+    font-size: 14px;
+    color: #FFFFFF;
+    font-weight: 600;
+  }
+</style>
+</head>
+<body>
+<div class="slide-stage">
+  <div class="slide-header">
+    <div class="header-left">
+      <div class="badge-row">
+        <div class="speaker-pill">Speaker 6</div>
+        <div class="target-badge">Quality Assurance Pipeline</div>
+      </div>
+      <h2 class="slide-title">Repeated, quality-controlled observations produce the annual value</h2>
+    </div>
+    <div class="header-right">
+      <div class="slide-number-display">13 <span>/ 15</span></div>
+      <div class="track-label">Data Lifecycle</div>
+    </div>
+  </div>
+
+  <div class="slide-body">
+    <div class="pipeline-layout">
+      <!-- 4 Stages -->
+      <div class="stages-row">
+        <div class="stage-item">
+          <div class="stage-tag">PHASE 1</div>
+          <div class="stage-name">Station / Sensor</div>
+          <p class="stage-body-text">Automated ISFET pH electrodes, spectrophotometric dye sensors, or Niskin bottle rosette casts collecting raw samples.</p>
+          <div class="stage-bullet-list">
+            <span class="bullet-tag">• High-frequency moorings</span>
+            <span class="bullet-tag">• Research ship transects</span>
+          </div>
+        </div>
+
+        <div class="stage-item">
+          <div class="stage-tag">PHASE 2</div>
+          <div class="stage-name">Laboratory & QC</div>
+          <p class="stage-body-text">Primary quality control using Certified Reference Materials (CRMs), calibrating electrode drift, and filtering outliers.</p>
+          <div class="stage-bullet-list">
+            <span class="bullet-tag">• Dickson seawater CRMs</span>
+            <span class="bullet-tag">• Uncertainty quantification</span>
+          </div>
+        </div>
+
+        <div class="stage-item">
+          <div class="stage-tag">PHASE 3</div>
+          <div class="stage-name">Annual Statistics</div>
+          <p class="stage-body-text">Aggregating time-series data into an equally weighted annual mean, factoring in seasonal cycle completeness and standard deviation.</p>
+          <div class="stage-bullet-list">
+            <span class="bullet-tag">• Seasonal cycle weighting</span>
+            <span class="bullet-tag">• Full annual range (Min-Max)</span>
+          </div>
+        </div>
+
+        <div class="stage-item">
+          <div class="stage-tag">PHASE 4</div>
+          <div class="stage-name">SDG Data Portal</div>
+          <p class="stage-body-text">Submission to IOC-UNESCO through National Oceanographic Data Centres (NODCs) for international peer review and registry.</p>
+          <div class="stage-bullet-list">
+            <span class="bullet-tag">• SDG 14.3.1 Data Portal</span>
+            <span class="bullet-tag">• Open science repository</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mandatory Annual Submission Triad -->
+      <div class="output-box">
+        <div class="output-heading">
+          <h4>Required Submission Triad</h4>
+          <span>Mandatory IOC-UNESCO Format</span>
+        </div>
+
+        <div class="stats-metrics-row">
+          <div class="stat-card">
+            <div class="stat-title">METRIC 01</div>
+            <div class="stat-content">Equally Weighted Annual Mean (pH_T)</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-title">METRIC 02</div>
+            <div class="stat-content">Standard Deviation (± σ dispersion)</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-title">METRIC 03</div>
+            <div class="stat-content">Annual Min–Max Extrema Range</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <div class="footer-source">
+      <strong>Source:</strong> UNSD Metadata for Indicator 14.3.1; IOC-UNESCO Quality Assurance Guidelines [9].
+    </div>
+    <div class="footer-rule">
+      Rule: Detail the journey from physical sensor to laboratory calibration to official UN annual statistics.
+    </div>
+  </div>
+</div>
+</body>
+</html>

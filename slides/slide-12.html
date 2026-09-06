@@ -1,0 +1,263 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920, height=1080">
+<title>Slide 12 — Indicator 14.3.1 Station Sampling</title>
+<link rel="stylesheet" href="../shared/deck.css">
+<style>
+  .station-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 40px;
+    height: 100%;
+    align-items: center;
+  }
+  
+  .spec-column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .spec-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 16px;
+    padding: 24px 28px;
+    border-left: 4px solid var(--cyan);
+  }
+  
+  .spec-card h3 {
+    font-family: var(--font-display);
+    font-size: 20px;
+    color: #FFFFFF;
+    margin-bottom: 8px;
+  }
+  
+  .spec-card p {
+    font-size: 15px;
+    color: var(--text-dim);
+    line-height: 1.5;
+  }
+  
+  /* Right: Time-Series & Multi-Parameter Visual */
+  .station-visual-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 20px;
+    padding: 32px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 16px 36px rgba(0,0,0,0.4);
+  }
+  
+  .station-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .station-title {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--cyan);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  
+  /* Trend Box */
+  .trend-box {
+    background: rgba(15, 23, 42, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    padding: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .trend-chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  
+  .chart-name {
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 700;
+    color: #FFFFFF;
+  }
+  
+  .chart-metric {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--cyan);
+  }
+  
+  .svg-chart-container {
+    width: 100%;
+    height: 160px;
+  }
+  
+  /* Four Core Parameters Grid */
+  .params-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  
+  .param-chip {
+    background: rgba(10, 20, 36, 0.8);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    border-radius: 10px;
+    padding: 12px 14px;
+    text-align: center;
+  }
+  
+  .param-code {
+    font-family: var(--font-mono);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--cyan);
+    margin-bottom: 4px;
+  }
+  
+  .param-name {
+    font-size: 11px;
+    color: var(--text-dim);
+    line-height: 1.3;
+  }
+  
+  .meta-note {
+    background: rgba(56, 189, 248, 0.06);
+    border: 1px solid rgba(56, 189, 248, 0.18);
+    border-radius: 10px;
+    padding: 12px 18px;
+    font-size: 13px;
+    color: var(--text-dim);
+  }
+  
+  .meta-note strong {
+    color: var(--cyan);
+  }
+</style>
+</head>
+<body>
+<div class="slide-stage">
+  <div class="slide-header">
+    <div class="header-left">
+      <div class="badge-row">
+        <div class="speaker-pill">Speaker 5</div>
+        <div class="target-badge">Observation Methodology</div>
+      </div>
+      <h2 class="slide-title">Representative stations track pH through time</h2>
+    </div>
+    <div class="header-right">
+      <div class="slide-number-display">12 <span>/ 15</span></div>
+      <div class="track-label">Indicator 14.3.1 Parameters</div>
+    </div>
+  </div>
+
+  <div class="slide-body">
+    <div class="station-layout">
+      <!-- Left Column: Statistical Mandate -->
+      <div class="spec-column">
+        <div class="spec-card">
+          <h3>Indicator 14.3.1 Standard</h3>
+          <p>Average marine acidity (pH) measured at an agreed suite of representative sampling stations, reported on the <strong>total scale (pH_T)</strong>.</p>
+        </div>
+
+        <div class="spec-card">
+          <h3>The Minimum "Two-of-Four" Rule</h3>
+          <p>Because carbonate equilibrium is mathematically constrained, a complete chemical solution requires measuring at least <strong>two of four core parameters</strong>: pH, pCO₂, DIC, or Total Alkalinity.</p>
+        </div>
+
+        <div class="spec-card">
+          <h3>Distinguishing Season from Secular Trend</h3>
+          <p>Coastal pH naturally swings over daily and seasonal cycles due to photosynthesis and respiration. A single annual snapshot is useless; only high-frequency repeated observation detects the multi-decadal shift.</p>
+        </div>
+      </div>
+
+      <!-- Right Column: Time Series & Parameter Grid -->
+      <div class="station-visual-card">
+        <div class="station-header">
+          <span class="station-title">Station Time-Series Decomposition</span>
+          <span style="font-family:var(--font-mono); font-size:12px; color:var(--text-muted);">High-Frequency Sensor Mooring</span>
+        </div>
+
+        <div class="trend-box">
+          <div class="trend-chart-header">
+            <span class="chart-name">Multi-Decadal Decline vs Seasonal Cycles</span>
+            <span class="chart-metric">Total Scale pH (8.15 → 8.05)</span>
+          </div>
+
+          <!-- Conceptual SVG Chart showing seasonal sinusoidal oscillation overlying a declining secular trendline -->
+          <div class="svg-chart-container">
+            <svg viewBox="0 0 700 160" width="100%" height="100%">
+              <!-- Grid lines -->
+              <line x1="50" y1="30" x2="680" y2="30" stroke="rgba(255,255,255,0.06)" stroke-dasharray="4"/>
+              <line x1="50" y1="80" x2="680" y2="80" stroke="rgba(255,255,255,0.06)" stroke-dasharray="4"/>
+              <line x1="50" y1="130" x2="680" y2="130" stroke="rgba(255,255,255,0.06)" stroke-dasharray="4"/>
+              
+              <text x="15" y="35" fill="#64748B" font-family="monospace" font-size="12">8.20</text>
+              <text x="15" y="85" fill="#64748B" font-family="monospace" font-size="12">8.10</text>
+              <text x="15" y="135" fill="#64748B" font-family="monospace" font-size="12">8.00</text>
+              
+              <!-- Secular long-term linear trendline -->
+              <line x1="60" y1="45" x2="660" y2="125" stroke="#F43F5E" stroke-width="2.5" stroke-dasharray="6"/>
+              
+              <!-- Seasonal oscillating sine wave -->
+              <path d="M 60 45 Q 90 25, 120 55 T 180 65 T 240 75 T 300 85 T 360 95 T 420 100 T 480 110 T 540 120 T 600 125 T 660 135" fill="none" stroke="#38BDF8" stroke-width="2.5"/>
+              
+              <!-- Legend labels inside SVG -->
+              <circle cx="480" cy="25" r="5" fill="#38BDF8"/>
+              <text x="495" y="29" fill="#94A3B8" font-family="sans-serif" font-size="12">High-frequency cycle</text>
+              <line x1="590" y1="25" x2="615" y2="25" stroke="#F43F5E" stroke-width="2" stroke-dasharray="4"/>
+              <text x="625" y="29" fill="#F43F5E" font-family="sans-serif" font-size="12">Secular trend</text>
+            </svg>
+          </div>
+        </div>
+
+        <div class="params-grid">
+          <div class="param-chip">
+            <div class="param-code">pH_T</div>
+            <div class="param-name">Total Scale Acidity</div>
+          </div>
+          <div class="param-chip">
+            <div class="param-code">pCO₂</div>
+            <div class="param-name">Partial Pressure CO₂</div>
+          </div>
+          <div class="param-chip">
+            <div class="param-code">DIC</div>
+            <div class="param-name">Dissolved Inorganic Carbon</div>
+          </div>
+          <div class="param-chip">
+            <div class="param-code">TA</div>
+            <div class="param-name">Total Alkalinity</div>
+          </div>
+        </div>
+
+        <div class="meta-note">
+          <strong>Key Mandatory Metadata:</strong> Temperature, Salinity, and Exact Water Depth must accompany every sample to calculate carbonate saturation states (Ω_aragonite).
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <div class="footer-source">
+      <strong>Source:</strong> UNSD Metadata for Indicator 14.3.1 (Updated December 2023) [9].
+    </div>
+    <div class="footer-rule">
+      Rule: Clarify why single pH readings are insufficient and why two of four parameters are required.
+    </div>
+  </div>
+</div>
+</body>
+</html>

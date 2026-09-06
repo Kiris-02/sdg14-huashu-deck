@@ -1,0 +1,494 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SDG 14.1–14.3 — Huashu Cinematic Presentation Deck</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<script>
+  window.DECK_MANIFEST = [
+    { file: "slides/slide-01.html", label: "01 · Overview (Spk 1)" },
+    { file: "slides/slide-02.html", label: "02 · Ocean Risk Chain (Spk 1)" },
+    { file: "slides/slide-03.html", label: "03 · Target 14.1 Source-to-Sea (Spk 1)" },
+    { file: "slides/slide-04.html", label: "04 · Indicator 14.1.1 Pathways (Spk 1)" },
+    { file: "slides/slide-05.html", label: "05 · 14.1.1 Measurement (Spk 2)" },
+    { file: "slides/slide-06.html", label: "06 · 14.1 Governance Levers (Spk 2)" },
+    { file: "slides/slide-07.html", label: "07 · Target 14.2 Management (Spk 3)" },
+    { file: "slides/slide-08.html", label: "08 · Indicator 14.2.1 Logic (Spk 3)" },
+    { file: "slides/slide-09.html", label: "09 · 14.2.1 Stages (Spk 4)" },
+    { file: "slides/slide-10.html", label: "10 · Capacity vs Performance (Spk 4)" },
+    { file: "slides/slide-11.html", label: "11 · Target 14.3 Chemistry (Spk 5)" },
+    { file: "slides/slide-12.html", label: "12 · Indicator 14.3.1 Sampling (Spk 5)" },
+    { file: "slides/slide-13.html", label: "13 · 14.3.1 Data Pipeline (Spk 6)" },
+    { file: "slides/slide-14.html", label: "14 · Scientific Cooperation (Spk 6)" },
+    { file: "slides/slide-15.html", label: "15 · Final Synthesis (Spk 6)" }
+  ];
+  window.DECK_WIDTH = 1920;
+  window.DECK_HEIGHT = 1080;
+  window.DECK_OVERVIEW = 'grid'; // Grid wall mode default
+</script>
+
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    height: 100%;
+    overflow: hidden;
+    font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+    background: #030712;
+    color: #F8FAFC;
+  }
+
+  .overview { position: fixed; inset: 0; }
+  body[data-mode="present"] .overview { display: none; }
+  body[data-mode="present"] .start-btn { display: none; }
+  body[data-mode="overview"] #present-ui { display: none; }
+
+  /* Grid Wall Overview Mode */
+  #ov-grid {
+    display: flex;
+    justify-content: center;
+    perspective: 2000px;
+    perspective-origin: 50% 40%;
+    background: radial-gradient(130% 100% at 50% 0%, #0A192F 0%, #030712 85%);
+    overflow-y: auto;
+    overflow-x: hidden;
+    align-items: flex-start;
+    padding: 70px 40px 100px;
+  }
+
+  .overview-header-bar {
+    position: fixed;
+    top: 20px;
+    left: 30px;
+    right: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    pointer-events: none;
+  }
+
+  .deck-brand-tag {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: #38BDF8;
+    letter-spacing: 0.05em;
+    background: rgba(15, 23, 42, 0.85);
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    padding: 8px 16px;
+    border-radius: 999px;
+    pointer-events: auto;
+    backdrop-filter: blur(8px);
+  }
+
+  .overview-instructions {
+    font-size: 13px;
+    color: #94A3B8;
+    background: rgba(15, 23, 42, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 8px 18px;
+    border-radius: 999px;
+    pointer-events: auto;
+    backdrop-filter: blur(8px);
+  }
+
+  .wall {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 22px;
+    width: 100%;
+    max-width: 1760px;
+    margin: 20px auto 0;
+    transform: rotateX(8deg);
+    transform-origin: center top;
+  }
+
+  .card {
+    position: relative;
+    aspect-ratio: 16/9;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #071220;
+    border: 1px solid rgba(56, 189, 248, 0.18);
+    cursor: pointer;
+    box-shadow: 0 12px 28px rgba(0,0,0,0.5);
+    transition: transform .25s cubic-bezier(.2,.7,.2,1), box-shadow .25s, border-color .25s;
+  }
+
+  .card:hover {
+    transform: scale(1.08) translateY(-6px);
+    border-color: #38BDF8;
+    box-shadow: 0 24px 50px rgba(0,0,0,0.8), 0 0 25px rgba(56, 189, 248, 0.25);
+    z-index: 50;
+  }
+
+  .card .thumb {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1920px;
+    height: 1080px;
+    transform-origin: top left;
+    pointer-events: none;
+  }
+
+  .card .thumb iframe {
+    width: 1920px;
+    height: 1080px;
+    border: 0;
+    display: block;
+    background: #030712;
+    pointer-events: none;
+  }
+
+  .card .num-badge {
+    position: absolute;
+    bottom: 8px;
+    left: 8px;
+    background: rgba(3, 7, 18, 0.9);
+    color: #38BDF8;
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 8px;
+    border-radius: 6px;
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  .start-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 40px;
+    background: #38BDF8;
+    color: #030712;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 999px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    z-index: 200;
+    box-shadow: 0 10px 30px rgba(56, 189, 248, 0.4);
+    transition: transform .18s, box-shadow .18s;
+  }
+
+  .start-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 40px rgba(56, 189, 248, 0.6);
+  }
+
+  /* Presentation Mode */
+  #stage {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform-origin: top left;
+    will-change: transform;
+    background: #030712;
+    box-shadow: 0 20px 80px rgba(0,0,0,0.8);
+  }
+
+  #stage iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+    background: #030712;
+  }
+
+  .counter-display {
+    position: fixed;
+    bottom: 24px;
+    right: 32px;
+    background: rgba(15, 23, 42, 0.85);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: #FFFFFF;
+    padding: 8px 18px;
+    border-radius: 999px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 600;
+    z-index: 100;
+    backdrop-filter: blur(12px);
+  }
+
+  .counter-display .label {
+    color: #38BDF8;
+    margin-left: 8px;
+  }
+
+  .action-btn-group {
+    position: fixed;
+    top: 24px;
+    left: 32px;
+    display: flex;
+    gap: 12px;
+    z-index: 100;
+  }
+
+  .top-btn {
+    background: rgba(15, 23, 42, 0.85);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: #E2E8F0;
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    backdrop-filter: blur(12px);
+    transition: all .2s;
+  }
+
+  .top-btn:hover {
+    background: #38BDF8;
+    color: #030712;
+    border-color: #38BDF8;
+  }
+
+  .nav-zone {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 12%;
+    cursor: pointer;
+    z-index: 50;
+  }
+
+  .nav-zone.left { left: 0; }
+  .nav-zone.right { right: 0; }
+
+  .nav-hint-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(15, 23, 42, 0.8);
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    color: #38BDF8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    opacity: 0;
+    transition: opacity .2s, transform .2s;
+  }
+
+  .nav-zone.left .nav-hint-arrow { left: 24px; }
+  .nav-zone.right .nav-hint-arrow { right: 24px; }
+  .nav-zone:hover .nav-hint-arrow { opacity: 1; transform: translateY(-50%) scale(1.1); }
+
+  @media print {
+    @page { size: 1920px 1080px; margin: 0; }
+    html, body { background: #030712; overflow: visible; height: auto; }
+    body[data-mode] .overview { display: none !important; }
+    #stage { position: static; transform: none !important; box-shadow: none; }
+    .counter-display, .nav-zone, .action-btn-group, .start-btn { display: none !important; }
+    .print-stack { display: block; }
+    .print-stack iframe { width: 1920px; height: 1080px; page-break-after: always; display: block; }
+  }
+</style>
+</head>
+<body data-mode="overview">
+
+<!-- Overview Grid Wall -->
+<div id="ov-grid" class="overview">
+  <div class="overview-header-bar">
+    <div class="deck-brand-tag">SDG 14.1, 14.2 & 14.3 · Huashu Cinematic Presentation Deck</div>
+    <div class="overview-instructions">Click any slide to enter Presenter Mode · [ESC] returns to Grid · [F] Fullscreen</div>
+  </div>
+  <div class="wall" id="wall"></div>
+</div>
+
+<button class="start-btn" id="startBtn">▶ Start Presentation</button>
+
+<!-- Presenter Mode UI -->
+<div id="present-ui">
+  <div id="stage"><iframe id="frame" src="about:blank"></iframe></div>
+  <div class="action-btn-group">
+    <button class="top-btn" id="overviewBtn">⊞ Overview (ESC)</button>
+    <button class="top-btn" id="fsBtn">⛶ Fullscreen (F)</button>
+    <button class="top-btn" id="printBtn">🖶 Export / Print (P)</button>
+  </div>
+  <div class="nav-zone left" id="navL"><div class="nav-hint-arrow">‹</div></div>
+  <div class="nav-zone right" id="navR"><div class="nav-hint-arrow">›</div></div>
+  <div class="counter-display" id="counter">1 / 15</div>
+</div>
+
+<div class="print-stack" id="printStack" style="display:none;"></div>
+
+<script>
+(function() {
+  const W = window.DECK_WIDTH || 1920;
+  const H = window.DECK_HEIGHT || 1080;
+  const deck = window.DECK_MANIFEST || [];
+  const stage = document.getElementById('stage');
+  const frame = document.getElementById('frame');
+  const counter = document.getElementById('counter');
+  const wall = document.getElementById('wall');
+  const printStack = document.getElementById('printStack');
+  let current = 0;
+
+  stage.style.width = W + 'px';
+  stage.style.height = H + 'px';
+
+  function setMode(mode) {
+    document.body.setAttribute('data-mode', mode);
+    if (mode === 'present') {
+      fit();
+      show(current);
+    } else {
+      requestAnimationFrame(buildGrid);
+    }
+  }
+
+  function makeCard(idx) {
+    const card = document.createElement('div');
+    card.className = 'card';
+    const item = deck[idx];
+    
+    const thumb = document.createElement('div');
+    thumb.className = 'thumb';
+    const ifr = document.createElement('iframe');
+    ifr.src = item.file;
+    ifr.setAttribute('scrolling', 'no');
+    thumb.appendChild(ifr);
+    card.appendChild(thumb);
+
+    const badge = document.createElement('div');
+    badge.className = 'num-badge';
+    badge.textContent = item.label || ('Slide ' + (idx + 1));
+    card.appendChild(badge);
+
+    card.addEventListener('click', () => {
+      current = idx;
+      setMode('present');
+    });
+    return card;
+  }
+
+  function buildGrid() {
+    wall.innerHTML = '';
+    for (let i = 0; i < deck.length; i++) {
+      wall.appendChild(makeCard(i));
+    }
+    scaleThumbs();
+  }
+
+  function scaleThumbs() {
+    wall.querySelectorAll('.card').forEach(c => {
+      const t = c.querySelector('.thumb');
+      if (c.clientWidth && t) {
+        t.style.transform = 'scale(' + (c.clientWidth / W) + ')';
+      }
+    });
+  }
+
+  function fit() {
+    const s = Math.min(window.innerWidth / W, window.innerHeight / H);
+    stage.style.transform = 'translate(' + ((window.innerWidth - W * s) / 2) + 'px, ' + ((window.innerHeight - H * s) / 2) + 'px) scale(' + s + ')';
+    stage.style.top = '0';
+    stage.style.left = '0';
+  }
+
+  function show(idx) {
+    if (idx < 0 || idx >= deck.length) return;
+    current = idx;
+    if (frame.getAttribute('src') !== deck[idx].file) {
+      frame.src = deck[idx].file;
+    }
+    counter.innerHTML = (idx + 1) + ' / ' + deck.length + ' <span class="label">' + (deck[idx].label || '') + '</span>';
+    history.replaceState(null, '', '#' + (idx + 1));
+  }
+
+  function next() { show(Math.min(current + 1, deck.length - 1)); }
+  function prev() { show(Math.max(current - 1, 0)); }
+
+  function toggleFullscreen() {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().catch(() => {});
+    } else {
+      document.exitFullscreen().catch(() => {});
+    }
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      if (document.body.getAttribute('data-mode') === 'present') {
+        e.preventDefault();
+        setMode('overview');
+      }
+      return;
+    }
+    if (e.key === 'f' || e.key === 'F') {
+      e.preventDefault();
+      toggleFullscreen();
+      return;
+    }
+    if (e.key === 'p' || e.key === 'P') {
+      window.print();
+      return;
+    }
+    if (document.body.getAttribute('data-mode') !== 'present') return;
+    switch(e.key) {
+      case 'ArrowRight': case ' ': case 'PageDown':
+        e.preventDefault(); next(); break;
+      case 'ArrowLeft': case 'PageUp':
+        e.preventDefault(); prev(); break;
+      case 'Home':
+        e.preventDefault(); show(0); break;
+      case 'End':
+        e.preventDefault(); show(deck.length - 1); break;
+    }
+  });
+
+  document.getElementById('navL').addEventListener('click', prev);
+  document.getElementById('navR').addEventListener('click', next);
+  document.getElementById('startBtn').addEventListener('click', () => setMode('present'));
+  document.getElementById('overviewBtn').addEventListener('click', () => setMode('overview'));
+  document.getElementById('fsBtn').addEventListener('click', toggleFullscreen);
+  document.getElementById('printBtn').addEventListener('click', () => window.print());
+
+  window.addEventListener('resize', () => {
+    fit();
+    scaleThumbs();
+  });
+
+  // Check URL hash
+  const hash = location.hash.match(/^#(\d+)$/);
+  if (hash) {
+    current = Math.min(parseInt(hash[1], 10) - 1, deck.length - 1);
+    setMode('present');
+  } else {
+    setMode('overview');
+  }
+
+  window.addEventListener('beforeprint', () => {
+    printStack.innerHTML = '';
+    deck.forEach(item => {
+      const f = document.createElement('iframe');
+      f.src = item.file;
+      printStack.appendChild(f);
+    });
+    printStack.style.display = 'block';
+    stage.style.display = 'none';
+  });
+
+  window.addEventListener('afterprint', () => {
+    printStack.innerHTML = '';
+    printStack.style.display = 'none';
+    stage.style.display = '';
+  });
+})();
+</script>
+</body>
+</html>

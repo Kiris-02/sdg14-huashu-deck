@@ -1,0 +1,242 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920, height=1080">
+<title>Slide 04 — Indicator 14.1.1 Dual Pathways</title>
+<link rel="stylesheet" href="../shared/deck.css">
+<style>
+  .split-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+    height: 100%;
+    align-items: stretch;
+  }
+  
+  .pathway-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 20px;
+    padding: 36px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 16px 36px rgba(0,0,0,0.4);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .card-eutro {
+    border-top: 5px solid var(--emerald);
+  }
+  
+  .card-plastic {
+    border-top: 5px solid var(--cyan);
+  }
+  
+  .sub-indicator-badge {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    margin-bottom: 12px;
+  }
+  
+  .card-eutro .sub-indicator-badge { color: var(--emerald); }
+  .card-plastic .sub-indicator-badge { color: var(--cyan); }
+  
+  .pathway-title {
+    font-family: var(--font-display);
+    font-size: 32px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+  
+  .pathway-summary {
+    font-size: 16px;
+    color: var(--text-dim);
+    line-height: 1.55;
+    margin-bottom: 28px;
+  }
+  
+  .mechanics-box {
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    padding: 20px 24px;
+    margin-bottom: 24px;
+  }
+  
+  .mechanic-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    font-size: 14px;
+  }
+  
+  .mechanic-row:last-child {
+    border-bottom: none;
+  }
+  
+  .mech-label {
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+  
+  .mech-val {
+    color: var(--text-main);
+    font-family: var(--font-mono);
+    font-weight: 600;
+  }
+  
+  .visual-preview-strip {
+    border-radius: 12px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  
+  .card-eutro .visual-preview-strip {
+    background: rgba(16, 185, 129, 0.08);
+    border: 1px dashed rgba(16, 185, 129, 0.3);
+  }
+  
+  .card-plastic .visual-preview-strip {
+    background: rgba(56, 189, 248, 0.08);
+    border: 1px dashed rgba(56, 189, 248, 0.3);
+  }
+  
+  .strip-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  
+  .card-eutro .strip-icon { background: var(--emerald); color: #04100C; }
+  .card-plastic .strip-icon { background: var(--cyan); color: #04121A; }
+  
+  .strip-desc {
+    font-size: 13px;
+    color: var(--text-dim);
+    line-height: 1.45;
+  }
+</style>
+</head>
+<body>
+<div class="slide-stage">
+  <div class="slide-header">
+    <div class="header-left">
+      <div class="badge-row">
+        <div class="speaker-pill">Speaker 1</div>
+        <div class="target-badge">Dual Statistical Architecture</div>
+      </div>
+      <h2 class="slide-title">One indicator tracks two different pollution pathways</h2>
+    </div>
+    <div class="header-right">
+      <div class="slide-number-display">04 <span>/ 15</span></div>
+      <div class="track-label">Indicator 14.1.1 (a & b)</div>
+    </div>
+  </div>
+
+  <div class="slide-body">
+    <div class="split-layout">
+      <!-- Left: 14.1.1(a) Eutrophication -->
+      <div class="pathway-card card-eutro">
+        <div>
+          <div class="sub-indicator-badge">SUB-INDICATOR 14.1.1 (a)</div>
+          <h3 class="pathway-title">Index of Coastal Eutrophication (ICEP)</h3>
+          <p class="pathway-summary">
+            Measures biogeochemical stress driven by excessive nitrogen (N) and phosphorus (P) delivery relative to silica (Si), triggering toxic algal blooms and hypoxic "dead zones".
+          </p>
+
+          <div class="mechanics-box">
+            <div class="mechanic-row">
+              <span class="mech-label">Primary Proxy:</span>
+              <span class="mech-val">Chlorophyll-a Anomaly Index</span>
+            </div>
+            <div class="mechanic-row">
+              <span class="mech-label">Driver Compound:</span>
+              <span class="mech-val">N:P:Si Nutrient Imbalance</span>
+            </div>
+            <div class="mechanic-row">
+              <span class="mech-label">Impact Spectrum:</span>
+              <span class="mech-val">Hypoxia & Ecosystem Suffocation</span>
+            </div>
+            <div class="mechanic-row">
+              <span class="mech-label">Spatial Scope:</span>
+              <span class="mech-val">EEZ & Coastal Territorial Waters</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="visual-preview-strip">
+          <div class="strip-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="9"/><path d="M8 12a4 4 0 0 1 8 0"/></svg>
+          </div>
+          <div class="strip-desc">
+            <strong>Biological Productivity Shift:</strong> Satellite-derived chlor-a anomaly tracking compared against the 2000–2004 historical seasonal baseline.
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: 14.1.1(b) Plastic Debris -->
+      <div class="pathway-card card-plastic">
+        <div>
+          <div class="sub-indicator-badge">SUB-INDICATOR 14.1.1 (b)</div>
+          <h3 class="pathway-title">Plastic Debris Density</h3>
+          <p class="pathway-summary">
+            Measures the physical distribution and mass concentration of persistent synthetic polymers across shorelines, the ocean surface layer, the water column, and the benthos.
+          </p>
+
+          <div class="mechanics-box">
+            <div class="mechanic-row">
+              <span class="mech-label">Beach Metric:</span>
+              <span class="mech-val">Items / 100m Shoreline Transect</span>
+            </div>
+            <div class="mechanic-row">
+              <span class="mech-label">Floating Metric:</span>
+              <span class="mech-val">Items / km² (Manta Trawl)</span>
+            </div>
+            <div class="mechanic-row">
+              <span class="mech-label">Deep Water:</span>
+              <span class="mech-val">ROV & Seabed Video Sampling</span>
+            </div>
+            <div class="mechanic-row">
+              <span class="mech-label">Persistence:</span>
+              <span class="mech-val">Centuries / Fragmentation to Micro</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="visual-preview-strip">
+          <div class="strip-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+          </div>
+          <div class="strip-desc">
+            <strong>Physical Contamination Matrix:</strong> Multi-environment survey data capturing both macroscopic waste items and microscopic particles in ocean gyres.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <div class="footer-source">
+      <strong>Source:</strong> UNSD Metadata for Indicator 14.1.1 (Updated March 2025) [2].
+    </div>
+    <div class="footer-rule">
+      Rule: Clarify that nutrient imbalance and solid plastic debris require separate monitoring systems.
+    </div>
+  </div>
+</div>
+</body>
+</html>

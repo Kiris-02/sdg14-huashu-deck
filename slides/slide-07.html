@@ -1,0 +1,279 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920, height=1080">
+<title>Slide 07 — Target 14.2 Ecosystem-Based Management</title>
+<link rel="stylesheet" href="../shared/deck.css">
+<style>
+  .layout-container {
+    display: grid;
+    grid-template-columns: 1fr 1.35fr;
+    gap: 40px;
+    height: 100%;
+    align-items: center;
+  }
+  
+  .policy-side {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .deadline-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    background: rgba(244, 63, 94, 0.12);
+    border: 1px solid rgba(244, 63, 94, 0.35);
+    color: var(--rose);
+    font-family: var(--font-mono);
+    font-size: 13px;
+    font-weight: 600;
+    width: fit-content;
+  }
+  
+  .core-mandate-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 16px;
+    padding: 24px 28px;
+    border-left: 4px solid var(--emerald);
+  }
+  
+  .core-mandate-card h3 {
+    font-family: var(--font-display);
+    font-size: 20px;
+    color: #FFFFFF;
+    margin-bottom: 8px;
+  }
+  
+  .core-mandate-card p {
+    font-size: 15px;
+    color: var(--text-dim);
+    line-height: 1.5;
+  }
+  
+  /* Right: Integrated Coast Cross-Section Visual */
+  .cross-section-box {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 20px;
+    padding: 32px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 16px 36px rgba(0,0,0,0.4);
+  }
+  
+  .cross-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .cross-section-title {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--emerald);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  
+  .cross-section-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  
+  .zone-card {
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 20px 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .zone-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+  }
+  
+  .z1 .zone-icon { background: rgba(56, 189, 248, 0.15); color: var(--cyan); }
+  .z2 .zone-icon { background: rgba(16, 185, 129, 0.15); color: var(--emerald); }
+  .z3 .zone-icon { background: rgba(245, 158, 11, 0.15); color: var(--amber); }
+  .z4 .zone-icon { background: rgba(99, 102, 241, 0.15); color: var(--indigo); }
+  .z5 .zone-icon { background: rgba(244, 63, 94, 0.15); color: var(--rose); }
+  
+  .zone-name {
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-bottom: 6px;
+  }
+  
+  .zone-detail {
+    font-size: 12px;
+    color: var(--text-dim);
+    line-height: 1.4;
+  }
+  
+  .comparison-banner {
+    background: rgba(16, 185, 129, 0.06);
+    border: 1px solid rgba(16, 185, 129, 0.25);
+    border-radius: 12px;
+    padding: 18px 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  
+  .comp-col h5 {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 4px;
+  }
+  
+  .comp-col.bad h5 { color: var(--rose); }
+  .comp-col.good h5 { color: var(--emerald); }
+  
+  .comp-col p {
+    font-size: 13px;
+    color: var(--text-dim);
+    line-height: 1.4;
+  }
+</style>
+</head>
+<body>
+<div class="slide-stage">
+  <div class="slide-header">
+    <div class="header-left">
+      <div class="badge-row">
+        <div class="speaker-pill">Speaker 3</div>
+        <div class="target-badge">Target 14.2 Focus</div>
+      </div>
+      <h2 class="slide-title">Target 14.2 manages the ecosystem—not isolated sectors</h2>
+    </div>
+    <div class="header-right">
+      <div class="slide-number-display">07 <span>/ 15</span></div>
+      <div class="track-label">Ecosystem Resilience</div>
+    </div>
+  </div>
+
+  <div class="slide-body">
+    <div class="layout-container">
+      <!-- Left Column: Core Mandate -->
+      <div class="policy-side">
+        <div class="deadline-tag">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          ORIGINAL STATUTORY DEADLINE: 2020 (PASSED)
+        </div>
+
+        <div class="core-mandate-card">
+          <h3>Holistic Ecosystem Resilience</h3>
+          <p>Shift from managing individual economic sectors in silos to protecting whole biomes so oceans remain biologically productive and climatically resilient.</p>
+        </div>
+
+        <div class="core-mandate-card">
+          <h3>Integrated Coastal Zone Management (ICZM)</h3>
+          <p>Unifies terrestrial and coastal administrative bodies to manage the critical land-sea transition zone against shoreline erosion and habitat degradation.</p>
+        </div>
+
+        <div class="core-mandate-card">
+          <h3>Marine Spatial Planning (MSP)</h3>
+          <p>A public process of analyzing and allocating the spatial and temporal distribution of human activities in marine areas to achieve ecological and economic objectives.</p>
+        </div>
+      </div>
+
+      <!-- Right Column: Integrated Cross-Section Visual -->
+      <div class="cross-section-box">
+        <div class="cross-section-header">
+          <span class="cross-section-title">Ecosystem-Based Cross-Sectional Continuum</span>
+          <span style="font-family:var(--font-mono); font-size:12px; color:var(--text-muted);">Spatial Interdependence</span>
+        </div>
+
+        <div class="cross-section-grid">
+          <div class="zone-card z1">
+            <div class="zone-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 20h18M5 20V8l7-5 7 5v12"/></svg>
+            </div>
+            <div class="zone-name">Watershed</div>
+            <div class="zone-detail">Upstream catchment, land-use zoning & freshwater inflows.</div>
+          </div>
+
+          <div class="zone-card z2">
+            <div class="zone-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 0 1 10 10c0 5.523-4.477 10-10 10S2 17.523 2 12A10 10 0 0 1 12 2z"/></svg>
+            </div>
+            <div class="zone-name">Mangroves & Coast</div>
+            <div class="zone-detail">Blue carbon nurseries, storm buffering & shoreline stability.</div>
+          </div>
+
+          <div class="zone-card z3">
+            <div class="zone-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            </div>
+            <div class="zone-name">Fisheries</div>
+            <div class="zone-detail">Quota allocation, seasonal bans & selective gear enforcement.</div>
+          </div>
+
+          <div class="zone-card z4">
+            <div class="zone-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12h20M2 17h20"/></svg>
+            </div>
+            <div class="zone-name">Tourism & Ports</div>
+            <div class="zone-detail">Shipping fairway deconfliction & coastal recreation limits.</div>
+          </div>
+
+          <div class="zone-card z5">
+            <div class="zone-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div class="zone-name">MPAs</div>
+            <div class="zone-detail">No-take replenishment zones & strict ecological restoration.</div>
+          </div>
+        </div>
+
+        <div class="comparison-banner">
+          <div class="comp-col bad">
+            <h5>Traditional Siloed Approach</h5>
+            <p>Fisheries ministry maximizes catch, port authority expands berths, environment agency fights alone.</p>
+          </div>
+          <div class="comp-col good">
+            <h5>Ecosystem-Based Management (EBM)</h5>
+            <p>Single spatial map resolving competing uses before cumulative environmental tipping points are breached.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <div class="footer-source">
+      <strong>Source:</strong> UN Statistics Division, Target 14.2 Statutory Mandate [1].
+    </div>
+    <div class="footer-rule">
+      Rule: Demonstrate why managing sectors in isolation inevitably causes cumulative marine degradation.
+    </div>
+  </div>
+</div>
+</body>
+</html>

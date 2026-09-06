@@ -1,0 +1,168 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920, height=1080">
+<title>Slide 01 — SDG 14.1–14.3 Overview</title>
+<link rel="stylesheet" href="../shared/deck.css">
+<style>
+  .hero-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100%;
+    padding-left: 40px;
+    max-width: 1440px;
+  }
+  
+  .super-tag {
+    font-family: var(--font-mono);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--cyan);
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .super-tag::before {
+    content: '';
+    display: inline-block;
+    width: 28px;
+    height: 2px;
+    background: var(--cyan);
+  }
+  
+  .main-hero-title {
+    font-family: var(--font-display);
+    font-size: 76px;
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -0.04em;
+    margin-bottom: 28px;
+    background: linear-gradient(135deg, #FFFFFF 30%, #BAE6FD 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .hero-subclaim {
+    font-size: 26px;
+    line-height: 1.5;
+    color: var(--text-dim);
+    max-width: 980px;
+    margin-bottom: 48px;
+  }
+  
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    width: 100%;
+  }
+  
+  .pillar-card {
+    background: rgba(15, 23, 42, 0.7);
+    border: 1px solid var(--border-subtle);
+    border-radius: 14px;
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .pillar-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--cyan), transparent);
+  }
+  
+  .pillar-num {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--cyan);
+    margin-bottom: 8px;
+    letter-spacing: 0.1em;
+  }
+  
+  .pillar-name {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-bottom: 6px;
+  }
+  
+  .pillar-desc {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.45;
+  }
+</style>
+</head>
+<body>
+<div class="slide-stage">
+  <div class="slide-header">
+    <div class="header-left">
+      <div class="badge-row">
+        <div class="speaker-pill">Speaker 1</div>
+        <div class="target-badge">UN SDG 14 · Life Below Water</div>
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="slide-number-display">01 <span>/ 15</span></div>
+      <div class="track-label">Executive Opening</div>
+    </div>
+  </div>
+
+  <div class="slide-body">
+    <div class="hero-wrapper">
+      <div class="super-tag">Global Ocean Governance Framework</div>
+      <h1 class="main-hero-title">SDG 14.1–14.3: How Ocean Progress Is Governed and Measured</h1>
+      <p class="hero-subclaim">
+        Examining the continuum between international political ambition, quantitative empirical evidence, and cross-border institutional compliance across three interconnected marine crises.
+      </p>
+
+      <div class="pillars-grid">
+        <div class="pillar-card">
+          <div class="pillar-num">DIMENSION 01</div>
+          <div class="pillar-name">Targets</div>
+          <div class="pillar-desc">Agreed international policy mandates and timelines established by UN member states.</div>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-num">DIMENSION 02</div>
+          <div class="pillar-name">Indicators</div>
+          <div class="pillar-desc">Standardized statistical variables (14.1.1, 14.2.1, 14.3.1) designed for uniform tracking.</div>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-num">DIMENSION 03</div>
+          <div class="pillar-name">Measurement</div>
+          <div class="pillar-desc">Earth observation satellites, oceanic buoys, in-situ water sampling, and national reporting.</div>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-num">DIMENSION 04</div>
+          <div class="pillar-name">Governance</div>
+          <div class="pillar-desc">Custodian agencies (UNEP, IOC-UNESCO), Regional Seas, and sovereign enforceable laws.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <div class="footer-source">
+      <strong>Source:</strong> UN Statistics Division, Goal 14 Global Indicator Framework [1]
+    </div>
+    <div class="footer-rule">
+      Rule: Deliver clear visual claim; verbal script unpacks context and methodology.
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,237 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920, height=1080">
+<title>Slide 05 — Multi-Level Measurement Hierarchy</title>
+<link rel="stylesheet" href="../shared/deck.css">
+<style>
+  .content-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    height: 100%;
+    justify-content: center;
+  }
+  
+  /* 4-Step Pipeline */
+  .pipeline-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    position: relative;
+  }
+  
+  .pipeline-step {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 16px;
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    box-shadow: 0 12px 28px rgba(0,0,0,0.35);
+  }
+  
+  .pipeline-step::after {
+    content: '→';
+    position: absolute;
+    right: -16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--cyan);
+    font-size: 24px;
+    font-weight: 700;
+    z-index: 10;
+  }
+  
+  .pipeline-step:last-child::after {
+    display: none;
+  }
+  
+  .step-num-badge {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--cyan);
+    background: rgba(56, 189, 248, 0.1);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    padding: 4px 10px;
+    border-radius: 6px;
+    width: fit-content;
+    margin-bottom: 16px;
+  }
+  
+  .step-heading {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-bottom: 10px;
+  }
+  
+  .step-desc {
+    font-size: 14px;
+    color: var(--text-dim);
+    line-height: 1.5;
+    margin-bottom: 16px;
+  }
+  
+  .step-pills {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  
+  .tech-pill {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 4px;
+    padding: 4px 8px;
+    color: var(--text-muted);
+  }
+  
+  /* Two-Level Tier Box */
+  .tier-comparison {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  
+  .tier-box {
+    border-radius: 14px;
+    padding: 22px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .tier-1 {
+    background: rgba(56, 189, 248, 0.08);
+    border: 1px solid rgba(56, 189, 248, 0.25);
+  }
+  
+  .tier-2 {
+    background: rgba(16, 185, 129, 0.08);
+    border: 1px solid rgba(16, 185, 129, 0.25);
+  }
+  
+  .tier-info h4 {
+    font-family: var(--font-display);
+    font-size: 18px;
+    color: #FFFFFF;
+    margin-bottom: 4px;
+  }
+  
+  .tier-info p {
+    font-size: 13px;
+    color: var(--text-dim);
+  }
+  
+  .tier-badge {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 700;
+    padding: 6px 12px;
+    border-radius: 8px;
+  }
+  
+  .tier-1 .tier-badge { background: var(--cyan); color: #02121E; }
+  .tier-2 .tier-badge { background: var(--emerald); color: #02140F; }
+</style>
+</head>
+<body>
+<div class="slide-stage">
+  <div class="slide-header">
+    <div class="header-left">
+      <div class="badge-row">
+        <div class="speaker-pill">Speaker 2</div>
+        <div class="target-badge">Measurement Architecture</div>
+      </div>
+      <h2 class="slide-title">Global observations are strengthened by national field data</h2>
+    </div>
+    <div class="header-right">
+      <div class="slide-number-display">05 <span>/ 15</span></div>
+      <div class="track-label">Data Harmonization</div>
+    </div>
+  </div>
+
+  <div class="slide-body">
+    <div class="content-stack">
+      <!-- 4-Step Operational Flow -->
+      <div class="pipeline-grid">
+        <div class="pipeline-step">
+          <div class="step-num-badge">STEP 01</div>
+          <div class="step-heading">Observe</div>
+          <div class="step-desc">Continuous orbital ocean color sensing combined with beach quadrat counts and ship-based net tows.</div>
+          <div class="step-pills">
+            <span class="tech-pill">• Sentinel-3 / MODIS Chlor-a</span>
+            <span class="tech-pill">• Manta trawls & beach transects</span>
+          </div>
+        </div>
+
+        <div class="pipeline-step">
+          <div class="step-num-badge">STEP 02</div>
+          <div class="step-heading">Model & Measure</div>
+          <div class="step-desc">Estimating riverine nutrient loads (N-P-Si ratios) and plastic drift models to generate global gridded baselines.</div>
+          <div class="step-pills">
+            <span class="tech-pill">• Global NEWS river model</span>
+            <span class="tech-pill">• Hydrodynamic transport grids</span>
+          </div>
+        </div>
+
+        <div class="pipeline-step">
+          <div class="step-num-badge">STEP 03</div>
+          <div class="step-heading">Validate Nationally</div>
+          <div class="step-desc">Member states conduct in-situ water sampling to calibrate satellite anomalies against local water quality.</div>
+          <div class="step-pills">
+            <span class="tech-pill">• In-situ nutrient profiling</span>
+            <span class="tech-pill">• National focal point audit</span>
+          </div>
+        </div>
+
+        <div class="pipeline-step">
+          <div class="step-num-badge">STEP 04</div>
+          <div class="step-heading">Report Indicator</div>
+          <div class="step-desc">Synthesizing validated time-series into official UN SDG 14.1.1 reporting tiers published for multilateral review.</div>
+          <div class="step-pills">
+            <span class="tech-pill">• UNSD Global Database</span>
+            <span class="tech-pill">• Regional Seas quality checks</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tier 1 vs Tier 2 Architecture -->
+      <div class="tier-comparison">
+        <div class="tier-box tier-1">
+          <div class="tier-info">
+            <h4>Level 1: Global Satellite & Modeling Layer</h4>
+            <p>Globally complete, uniform earth observation providing universal coverage even for low-capacity nations.</p>
+          </div>
+          <div class="tier-badge">SATELLITE BASELINE</div>
+        </div>
+
+        <div class="tier-box tier-2">
+          <div class="tier-info">
+            <h4>Level 2: National In-Situ Field Data Layer</h4>
+            <p>Ground-truth physical and chemical measurements providing depth profile validation and regulatory weight.</p>
+          </div>
+          <div class="tier-badge">GROUND-TRUTH VALIDATION</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <div class="footer-source">
+      <strong>Source:</strong> UNSD Metadata for Indicator 14.1.1 (Level 1 & Level 2 Methodological Design) [2].
+    </div>
+    <div class="footer-rule">
+      Rule: Clarify the two-tier structure: satellites see the whole surface, but national sensors prove the cause.
+    </div>
+  </div>
+</div>
+</body>
+</html>

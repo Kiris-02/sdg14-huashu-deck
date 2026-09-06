@@ -1,0 +1,204 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920, height=1080">
+<title>Slide 10 — Capacity vs Performance Limitation</title>
+<link rel="stylesheet" href="../shared/deck.css">
+<style>
+  .contrast-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+    height: 100%;
+    align-items: stretch;
+  }
+  
+  .contrast-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 20px;
+    padding: 36px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 16px 36px rgba(0,0,0,0.4);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .card-capacity {
+    border-top: 5px solid var(--emerald);
+  }
+  
+  .card-performance {
+    border-top: 5px solid var(--rose);
+  }
+  
+  .col-label {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  
+  .card-capacity .col-label { color: var(--emerald); }
+  .card-performance .col-label { color: var(--rose); }
+  
+  .col-title {
+    font-family: var(--font-display);
+    font-size: 32px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+  
+  .col-summary {
+    font-size: 16px;
+    color: var(--text-dim);
+    line-height: 1.55;
+    margin-bottom: 28px;
+  }
+  
+  .feature-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 24px;
+  }
+  
+  .feature-item {
+    background: rgba(15, 23, 42, 0.6);
+    border-radius: 10px;
+    padding: 14px 18px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 14px;
+    color: var(--text-dim);
+    line-height: 1.45;
+  }
+  
+  .feature-icon {
+    flex-shrink: 0;
+    margin-top: 2px;
+    font-weight: 700;
+  }
+  
+  .card-capacity .feature-icon { color: var(--emerald); }
+  .card-performance .feature-icon { color: var(--rose); }
+  
+  .bottom-verdict {
+    border-radius: 12px;
+    padding: 16px 20px;
+    font-family: var(--font-mono);
+    font-size: 13px;
+  }
+  
+  .card-capacity .bottom-verdict {
+    background: rgba(16, 185, 129, 0.08);
+    border: 1px dashed rgba(16, 185, 129, 0.3);
+    color: #A7F3D0;
+  }
+  
+  .card-performance .bottom-verdict {
+    background: rgba(244, 63, 94, 0.08);
+    border: 1px dashed rgba(244, 63, 94, 0.3);
+    color: #FECDD3;
+  }
+</style>
+</head>
+<body>
+<div class="slide-stage">
+  <div class="slide-header">
+    <div class="header-left">
+      <div class="badge-row">
+        <div class="speaker-pill">Speaker 4</div>
+        <div class="target-badge">Critical Analytical Evaluation</div>
+      </div>
+      <h2 class="slide-title">A management plan is evidence of capacity—not performance</h2>
+    </div>
+    <div class="header-right">
+      <div class="slide-number-display">10 <span>/ 15</span></div>
+      <div class="track-label">Institutional Limitation</div>
+    </div>
+  </div>
+
+  <div class="slide-body">
+    <div class="contrast-grid">
+      <!-- Left Column: What the Indicator Confirms (Capacity) -->
+      <div class="contrast-card card-capacity">
+        <div>
+          <div class="col-label">STATISTICAL SCOPE (CONFIRMED)</div>
+          <h3 class="col-title">Administrative Capacity Exists</h3>
+          <p class="col-summary">
+            Indicator 14.2.1 accurately verifies whether an inter-agency framework has been drafted, zoned, and designated into formal state legislation.
+          </p>
+
+          <div class="feature-list">
+            <div class="feature-item">
+              <span class="feature-icon">✓</span>
+              <span><strong>Cross-Sectoral Mandate:</strong> Ministries of fisheries, transport, tourism, and energy sit in regular planning dialogue.</span>
+            </div>
+            <div class="feature-item">
+              <span class="feature-icon">✓</span>
+              <span><strong>Spatial Demarcation:</strong> Maps officially allocate navigation corridors, wind farms, and marine protected boundaries.</span>
+            </div>
+            <div class="feature-item">
+              <span class="feature-icon">✓</span>
+              <span><strong>Global Reporting Binary:</strong> Coded as 1 in the UN global database, reflecting institutional presence.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bottom-verdict">
+          EVIDENCE OF POLICY FORMULATION: Plan gazetted and legally registered.
+        </div>
+      </div>
+
+      <!-- Right Column: What the Indicator Misses (Performance) -->
+      <div class="contrast-card card-performance">
+        <div>
+          <div class="col-label">METHODOLOGICAL BLINDSPOT (UNVERIFIED)</div>
+          <h3 class="col-title">Ecological Outcome Remains Unmeasured</h3>
+          <p class="col-summary">
+            A state can achieve a perfect score of 1 without adequately funding patrol boats, monitoring fish stocks, or halting habitat destruction.
+          </p>
+
+          <div class="feature-list">
+            <div class="feature-item">
+              <span class="feature-icon">⚠</span>
+              <span><strong>"Paper Parks" Risk:</strong> Protected areas and spatial zones existing on official maps but lacking field patrol enforcement.</span>
+            </div>
+            <div class="feature-item">
+              <span class="feature-icon">⚠</span>
+              <span><strong>Fiscal & Staffing Deficits:</strong> Lack of sustained multi-year budgets to conduct regular adaptive ecological audits.</span>
+            </div>
+            <div class="feature-item">
+              <span class="feature-icon">⚠</span>
+              <span><strong>No Biological Metric:</strong> Indicator does not record coral cover, biomass abundance, or nursery habitat recovery.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bottom-verdict">
+          REQUIREMENT FOR COMPLEMENTARITY: Must combine 14.2.1 with CBD Kunming-Montreal Target 3 audits.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <div class="footer-source">
+      <strong>Source:</strong> UNSD Metadata for Indicator 14.2.1; UNEP; CBD Kunming-Montreal GBF [5–8].
+    </div>
+    <div class="footer-rule">
+      Rule: Explicitly state that adopting a plan is not equivalent to successfully restoring an ocean ecosystem.
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,256 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920, height=1080">
+<title>Slide 15 — Master Synthesis & Coordinated Action</title>
+<link rel="stylesheet" href="../shared/deck.css">
+<style>
+  .synthesis-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    height: 100%;
+    justify-content: center;
+  }
+  
+  /* 3 Columns Matrix */
+  .matrix-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  
+  .matrix-col {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 18px;
+    padding: 32px 28px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 16px 36px rgba(0,0,0,0.4);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .col-14-1 { border-top: 5px solid var(--amber); }
+  .col-14-2 { border-top: 5px solid var(--emerald); }
+  .col-14-3 { border-top: 5px solid var(--cyan); }
+  
+  .col-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  
+  .target-badge-num {
+    font-family: var(--font-mono);
+    font-size: 24px;
+    font-weight: 800;
+  }
+  
+  .col-14-1 .target-badge-num { color: var(--amber); }
+  .col-14-2 .target-badge-num { color: var(--emerald); }
+  .col-14-3 .target-badge-num { color: var(--cyan); }
+  
+  .col-topic-name {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+  
+  .matrix-entry {
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .entry-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  
+  .entry-val {
+    font-size: 14px;
+    color: var(--text-dim);
+    line-height: 1.45;
+  }
+  
+  .entry-val strong {
+    color: #FFFFFF;
+  }
+  
+  /* Connecting Unified Action Bar */
+  .unified-action-banner {
+    background: radial-gradient(100% 120% at 50% 0%, rgba(56, 189, 248, 0.15), rgba(15, 23, 42, 0.95));
+    border: 1px solid var(--border-strong);
+    border-radius: 16px;
+    padding: 24px 36px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  }
+  
+  .action-title-group h4 {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .action-title-group span {
+    font-size: 14px;
+    color: var(--text-dim);
+  }
+  
+  .action-callout-pill {
+    background: var(--cyan);
+    color: #030D17;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    font-weight: 700;
+    padding: 10px 20px;
+    border-radius: 999px;
+    letter-spacing: 0.04em;
+    flex-shrink: 0;
+  }
+</style>
+</head>
+<body>
+<div class="slide-stage">
+  <div class="slide-header">
+    <div class="header-left">
+      <div class="badge-row">
+        <div class="speaker-pill">Speaker 6</div>
+        <div class="target-badge">Comprehensive Synthesis</div>
+      </div>
+      <h2 class="slide-title">Ocean action needs targets, evidence and institutions together</h2>
+    </div>
+    <div class="header-right">
+      <div class="slide-number-display">15 <span>/ 15</span></div>
+      <div class="track-label">Executive Conclusion</div>
+    </div>
+  </div>
+
+  <div class="slide-body">
+    <div class="synthesis-layout">
+      <!-- 3-Column Synthesis Matrix -->
+      <div class="matrix-grid">
+        <!-- Col 1 -->
+        <div class="matrix-col col-14-1">
+          <div class="col-header">
+            <span class="target-badge-num">14.1</span>
+            <span style="font-family:var(--font-mono); font-size:12px; color:var(--amber);">SOURCE CONTROL</span>
+          </div>
+          <div class="col-topic-name">Pollution Pressure</div>
+
+          <div class="matrix-entry">
+            <span class="entry-label">Observed Reality</span>
+            <span class="entry-val">Nutrient loads, coastal chlorophyll anomalies & plastic debris densities.</span>
+          </div>
+          <div class="matrix-entry">
+            <span class="entry-label">Measurement Type</span>
+            <span class="entry-val"><strong>Physical / Earth Observation:</strong> Orbital satellites, trawls, and beach counts.</span>
+          </div>
+          <div class="matrix-entry">
+            <span class="entry-label">Custodian Agency</span>
+            <span class="entry-val"><strong>UNEP:</strong> Global Programme of Action & Regional Seas.</span>
+          </div>
+          <div class="matrix-entry" style="border-bottom:none;">
+            <span class="entry-label">Policy Lever</span>
+            <span class="entry-val">Municipal sewage treatment, farming subsidies, and packaging EPR bans.</span>
+          </div>
+        </div>
+
+        <!-- Col 2 -->
+        <div class="matrix-col col-14-2">
+          <div class="col-header">
+            <span class="target-badge-num">14.2</span>
+            <span style="font-family:var(--font-mono); font-size:12px; color:var(--emerald);">ECOSYSTEM STATE</span>
+          </div>
+          <div class="col-topic-name">Ecosystem Governance</div>
+
+          <div class="matrix-entry">
+            <span class="entry-label">Observed Reality</span>
+            <span class="entry-val">Cross-sectoral spatial management resolving human activity conflicts.</span>
+          </div>
+          <div class="matrix-entry">
+            <span class="entry-label">Measurement Type</span>
+            <span class="entry-val"><strong>Institutional Audit (1/0):</strong> Presence of enacted ICZM or MSP plans.</span>
+          </div>
+          <div class="matrix-entry">
+            <span class="entry-label">Custodian Agency</span>
+            <span class="entry-val"><strong>UNEP:</strong> Validated via intergovernmental questionnaires.</span>
+          </div>
+          <div class="matrix-entry" style="border-bottom:none;">
+            <span class="entry-label">Policy Lever</span>
+            <span class="entry-val">Marine zoning, MPA enforcement budgets, and biological recovery audits.</span>
+          </div>
+        </div>
+
+        <!-- Col 3 -->
+        <div class="matrix-col col-14-3">
+          <div class="col-header">
+            <span class="target-badge-num">14.3</span>
+            <span style="font-family:var(--font-mono); font-size:12px; color:var(--cyan);">CHEMICAL REGIME</span>
+          </div>
+          <div class="col-topic-name">Ocean Chemistry</div>
+
+          <div class="matrix-entry">
+            <span class="entry-label">Observed Reality</span>
+            <span class="entry-val">Planetary secular pH decline driven by atmospheric greenhouse gas dissolution.</span>
+          </div>
+          <div class="matrix-entry">
+            <span class="entry-label">Measurement Type</span>
+            <span class="entry-val"><strong>Biogeochemical Time-Series:</strong> Two-of-four carbonate parameters (pH_T).</span>
+          </div>
+          <div class="matrix-entry">
+            <span class="entry-label">Custodian Agency</span>
+            <span class="entry-val"><strong>IOC-UNESCO:</strong> Global Ocean Acidification Observing Network.</span>
+          </div>
+          <div class="matrix-entry" style="border-bottom:none;">
+            <span class="entry-label">Policy Lever</span>
+            <span class="entry-val">Global atmospheric CO₂ mitigation under the UNFCCC Paris Agreement.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Connecting Governance Banner -->
+      <div class="unified-action-banner">
+        <div class="action-title-group">
+          <h4>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            The Ultimate Synthesis: Data Must Compel Action
+          </h4>
+          <span>Targets set political ambition; Indicators define the questions; Measurement proves the state; Institutions enforce the change.</span>
+        </div>
+        <div class="action-callout-pill">EVIDENCE → ACTION</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <div class="footer-source">
+      <strong>Source:</strong> Comprehensive Synthesis based on official UN Indicator Metadata [1–2, 5, 9].
+    </div>
+    <div class="footer-rule">
+      Rule: Unify all 15 slides into one cohesive narrative arc connecting all six speakers.
+    </div>
+  </div>
+</div>
+</body>
+</html>
